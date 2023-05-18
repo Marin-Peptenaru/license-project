@@ -1,0 +1,17 @@
+{
+  "name": "receive-scripts",
+  "version": "1.0.0",
+  "description": "Scripts for receiving notifications through sse and ws",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "type": "module",
+  "author": "Marin Peptenaru",
+  "license": "ISC",
+  "dependencies": {
+    "@titelmedia/node-fetch": "^3.1.1",
+    "event-source-polyfill": "^1.0.31",
+    "ws": "^8.13.0"
+  }
+}
