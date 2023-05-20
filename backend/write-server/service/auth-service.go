@@ -4,6 +4,7 @@ import (
 	"commons/apperrors"
 	"commons/domain"
 	"commons/repo"
+	"commons/repo/cache"
 	"commons/utils"
 	"crypto/sha256"
 	"encoding/json"
@@ -27,7 +28,7 @@ type AuthenticationService interface {
 
 type authService struct {
 	users repo.UserRepository
-	cache repo.CacheMap
+	cache cache.CacheMap
 }
 
 func createTokenForUser(userId string, username string, duration time.Duration, isRefresh bool) (string, error) {
@@ -131,6 +132,6 @@ func (a authService) Authenticate(username string, email string, password string
 
 }
 
-func NewAuthService(users repo.UserRepository, cache repo.CacheMap) AuthenticationService {
+func NewAuthService(users repo.UserRepository, cache cache.CacheMap) AuthenticationService {
 	return authService{users: users, cache: cache}
 }

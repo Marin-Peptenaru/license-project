@@ -7,12 +7,13 @@ import (
 	"commons/utils"
 	"encoding/json"
 	"fmt"
-	"github.com/go-chi/chi"
-	"github.com/go-chi/jwtauth/v5"
 	"log"
 	"net/http"
 	"strings"
 	"write-server/service"
+
+	"github.com/go-chi/chi"
+	"github.com/go-chi/jwtauth/v5"
 )
 
 type TopicController interface {
@@ -75,7 +76,7 @@ func (t topicController) SubscribeToTopic(w http.ResponseWriter, r *http.Request
 		return
 	}
 
-	username := claims["user"].(string)
+	username := claims["user_id"].(string)
 
 	topicData := dto.TopicDTO{}
 
@@ -105,7 +106,7 @@ func (t topicController) UnsubscribeToTopic(w http.ResponseWriter, r *http.Reque
 		return
 	}
 
-	username := claims["user"].(string)
+	userId := claims["user_id"].(string)
 
 	topicData := dto.TopicDTO{}
 
@@ -116,7 +117,7 @@ func (t topicController) UnsubscribeToTopic(w http.ResponseWriter, r *http.Reque
 		return
 	}
 
-	user, err := t.topics.UnsubscribeToTopic(username, topicData.Title)
+	user, err := t.topics.UnsubscribeToTopic(userId, topicData.Title)
 
 	if err != nil {
 		utils.RespondWithError(w, err)

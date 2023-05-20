@@ -1,9 +1,10 @@
-package repo
+package cache
 
 import (
 	"commons/utils"
-	"github.com/gomodule/redigo/redis"
 	"time"
+
+	"github.com/gomodule/redigo/redis"
 )
 
 type CacheMap interface {

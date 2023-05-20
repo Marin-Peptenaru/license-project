@@ -12,6 +12,7 @@ import (
 
 type UserService interface {
 	RegisterUser(username string, password string, email string) (user *domain.User, err error)
+	GetUser(userId string) (*domain.User, error)
 	UserDetails(username string, email string) (*domain.User, error)
 	SearchUsers(usernameSearchKey string) ([]domain.User, error)
 }
@@ -30,6 +31,23 @@ func (u userServ) SearchUsers(usernameSearchKey string) ([]domain.User, error) {
 	}
 
 	return []domain.User{}, nil
+}
+
+func (u userServ) GetUser(userId string) (*domain.User, error) {
+	user := &domain.User{}
+
+	err := u.users.FindById(u.users.Ctx(), userId, user)
+
+	if err != nil {
+		if err == repo.ErrNoMatchingEntity {
+			if err == repo.ErrNoMatchingEntity {
+				return &domain.User{}, apperrors.InvalidEntity("no user with specified username or email")
+			}
+			return &domain.User{}, err
+		}
+	}
+
+	return user, err
 }
 
 func (u userServ) UserDetails(username string, email string) (*domain.User, error) {

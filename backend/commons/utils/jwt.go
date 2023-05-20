@@ -1,6 +1,8 @@
 package utils
 
-import "github.com/go-chi/jwtauth/v5"
+import (
+	"github.com/go-chi/jwtauth/v5"
+)
 
 const jwtSecret = "mysecret"
 

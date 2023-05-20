@@ -5,9 +5,10 @@ import (
 	commonservices "commons/service"
 	"commons/utils"
 	"encoding/json"
-	"github.com/go-chi/jwtauth/v5"
 	"net/http"
 	"write-server/service"
+
+	"github.com/go-chi/jwtauth/v5"
 )
 
 type MessageController interface {
@@ -27,7 +28,7 @@ func (m msgController) SendMessage(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	sender := claims["user"].(string)
+	senderId := claims["user_id"].(string)
 
 	msg := dto.MessageDTO{}
 	err = json.NewDecoder(r.Body).Decode(&msg)
@@ -36,7 +37,7 @@ func (m msgController) SendMessage(w http.ResponseWriter, r *http.Request) {
 		utils.RespondWithError(w, err)
 	} else {
 
-		message, err := m.msgService.SaveMessage(sender, msg.Topic, msg.Content)
+		message, err := m.msgService.SaveMessage(senderId, msg.Topic, msg.Content)
 
 		if err != nil {
 			utils.RespondWithError(w, err)

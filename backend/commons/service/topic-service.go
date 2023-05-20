@@ -7,8 +7,9 @@ import (
 	"commons/repo/transaction"
 	"commons/validation"
 	"fmt"
-	"github.com/kamva/mgm/v3"
 	"strings"
+
+	"github.com/kamva/mgm/v3"
 )
 
 type TopicService interface {
@@ -72,9 +73,9 @@ func (t *topicService) TopicDetails(id string) (*domain.Topic, error) {
 	return topic, err
 }
 
-func (t *topicService) UnsubscribeToTopic(username string, title string) (*domain.User, error) {
+func (t *topicService) UnsubscribeToTopic(userId string, title string) (*domain.User, error) {
 	user := &domain.User{}
-	err := t.users.FindByUsername(t.users.Ctx(), username, user)
+	err := t.users.FindById(t.users.Ctx(), userId, user)
 
 	if err != nil {
 		if err == repo.ErrNoMatchingEntity {
@@ -97,7 +98,7 @@ func (t *topicService) UnsubscribeToTopic(username string, title string) (*domai
 	return user, nil
 }
 
-func (t *topicService) SubscribeToTopic(subscriber string, id string, password string) (*domain.User, *domain.Topic, error) {
+func (t *topicService) SubscribeToTopic(userId string, id string, password string) (*domain.User, *domain.Topic, error) {
 
 	topic := &domain.Topic{}
 
@@ -118,7 +119,7 @@ func (t *topicService) SubscribeToTopic(subscriber string, id string, password s
 
 	user := &domain.User{}
 
-	err = t.users.FindByUsername(t.topics.Ctx(), subscriber, user)
+	err = t.users.FindById(t.topics.Ctx(), userId, user)
 
 	if err != nil {
 		if err == repo.ErrNoMatchingEntity {

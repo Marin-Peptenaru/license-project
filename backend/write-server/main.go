@@ -3,6 +3,7 @@ package main
 import (
 	commonmiddleware "commons/middleware"
 	"commons/repo"
+	"commons/repo/cache"
 	commonservices "commons/service"
 	"commons/utils"
 	"commons/utils/mongo"
@@ -21,7 +22,7 @@ import (
 func main() {
 
 	mongo.InitDB()
-	cache := repo.NewCache()
+	cache := cache.NewCache()
 
 	userRepo := repo.NewMgmUserRepository()
 	userService := commonservices.NewUserService(userRepo)

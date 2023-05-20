@@ -6,9 +6,10 @@ import (
 	"commons/utils"
 	"encoding/json"
 	"fmt"
+	"net/http"
+
 	"github.com/go-chi/chi"
 	"github.com/go-chi/jwtauth/v5"
-	"net/http"
 )
 
 type UserController interface {
@@ -64,9 +65,9 @@ func (u userController) UserDetails(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	username := claims["user"].(string)
+	userId := claims["user_id"].(string)
 
-	user, err := u.users.UserDetails(username, "")
+	user, err := u.users.GetUser(userId)
 
 	if err != nil {
 		utils.RespondWithError(w, err)
