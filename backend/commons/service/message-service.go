@@ -3,6 +3,7 @@ package service
 import (
 	"commons/apperrors"
 	"commons/domain"
+	"commons/dto"
 	"commons/repo"
 	"commons/repo/transaction"
 	"fmt"
@@ -12,7 +13,7 @@ import (
 
 type MessageService interface {
 	SaveMessage(senderId string, topic string, content string) (*domain.Message, error)
-	FetchMessages(userId string, topic string, afterTimestamp int64) ([]domain.Message, error)
+	FetchMessages(userId string, topic string, afterTimestamp int64, page *dto.PageInfo) ([]domain.Message, error)
 }
 
 type msgService struct {
@@ -21,7 +22,7 @@ type msgService struct {
 	messages repo.MessageRepository
 }
 
-func (m *msgService) FetchMessages(userId string, topicTitle string, afterTimestamp int64) ([]domain.Message, error) {
+func (m *msgService) FetchMessages(userId string, topicTitle string, afterTimestamp int64, page *dto.PageInfo) ([]domain.Message, error) {
 
 	user := &domain.User{}
 	err := m.users.FindById(m.users.Ctx(), userId, user)
@@ -42,7 +43,7 @@ func (m *msgService) FetchMessages(userId string, topicTitle string, afterTimest
 	}
 
 	msgs := make([]domain.Message, 0)
-	err = m.messages.FindByTopicAndAfterTimestamp(m.messages.Ctx(), topicTitle, afterTimestamp, &msgs)
+	err = m.messages.FindByTopicAndAfterTimestamp(m.messages.Ctx(), topicTitle, afterTimestamp, &msgs, page)
 
 	return msgs, err
 

@@ -2,7 +2,9 @@ package repo
 
 import (
 	"commons/domain"
+	"commons/dto"
 	"context"
+
 	"github.com/kamva/mgm/v3"
 	"github.com/kamva/mgm/v3/operator"
 	"go.mongodb.org/mongo-driver/bson"
@@ -52,7 +54,9 @@ func (m *mgmUserRepo) FindByUsernameOrEmail(ctx context.Context, username string
 	return err
 }
 
-func (m *mgmUserRepo) SearchByUsername(ctx context.Context, searchKey string, users *[]domain.User) error {
+func (m *mgmUserRepo) SearchByUsername(ctx context.Context, searchKey string, users *[]domain.User, page *dto.PageInfo) error {
+
+	opts := pageInfoToFindOptions(page)
 
 	err := mgm.Coll(&domain.User{}).SimpleFindWithCtx(ctx, users, bson.M{
 		"username": bson.M{
@@ -60,7 +64,7 @@ func (m *mgmUserRepo) SearchByUsername(ctx context.Context, searchKey string, us
 				Pattern: searchKey, Options: "i",
 			},
 		},
-	})
+	}, opts)
 
 	return err
 }

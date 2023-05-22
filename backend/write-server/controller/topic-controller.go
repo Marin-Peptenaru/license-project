@@ -5,6 +5,7 @@ import (
 	"commons/dto"
 	commonservices "commons/service"
 	"commons/utils"
+	httputils "commons/utils/http-utils"
 	"encoding/json"
 	"fmt"
 	"log"
@@ -42,7 +43,9 @@ func (t topicController) SearchTopic(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	topics, err := t.topics.SearchTopicByTitle(searchKey)
+	page := httputils.GetPageInfo(r)
+
+	topics, err := t.topics.SearchTopicByTitle(searchKey, page)
 
 	if err != nil {
 		utils.RespondWithError(w, err)
@@ -128,8 +131,9 @@ func (t topicController) UnsubscribeToTopic(w http.ResponseWriter, r *http.Reque
 	w.WriteHeader(http.StatusOK)
 }
 
-func (t topicController) getTopicsOf(w http.ResponseWriter, username string) {
-	topics, err := t.topics.TopicsCreatedBy(username)
+func (t topicController) getTopicsOf(w http.ResponseWriter, username string, page *dto.PageInfo) {
+
+	topics, err := t.topics.TopicsCreatedBy(username, page)
 
 	if err != nil {
 		utils.RespondWithError(w, err)
@@ -143,8 +147,9 @@ func (t topicController) getTopicsOf(w http.ResponseWriter, username string) {
 
 func (t topicController) TopicsOfUser(w http.ResponseWriter, r *http.Request) {
 	user := chi.URLParam(r, "user")
+	page := httputils.GetPageInfo(r)
 
-	t.getTopicsOf(w, user)
+	t.getTopicsOf(w, user, page)
 }
 
 func (t topicController) CreatedTopics(w http.ResponseWriter, r *http.Request) {
@@ -155,7 +160,9 @@ func (t topicController) CreatedTopics(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	t.getTopicsOf(w, claims["user"].(string))
+	page := httputils.GetPageInfo(r)
+
+	t.getTopicsOf(w, claims["user"].(string), page)
 
 }
 

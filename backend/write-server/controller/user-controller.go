@@ -4,6 +4,7 @@ import (
 	"commons/dto"
 	"commons/service"
 	"commons/utils"
+	httputils "commons/utils/http-utils"
 	"encoding/json"
 	"fmt"
 	"net/http"
@@ -25,7 +26,9 @@ type userController struct {
 func (u userController) SearchUsers(w http.ResponseWriter, r *http.Request) {
 	searchKey := chi.URLParam(r, "username-search-key")
 
-	users, err := u.users.SearchUsers(searchKey)
+	page := httputils.GetPageInfo(r)
+
+	users, err := u.users.SearchUsers(searchKey, page)
 
 	if err != nil {
 		utils.RespondWithError(w, err)
