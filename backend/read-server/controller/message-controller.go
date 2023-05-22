@@ -4,6 +4,7 @@ import (
 	"commons/domain"
 	commonservices "commons/service"
 	"commons/utils"
+	httputils "commons/utils/http-utils"
 	"context"
 	"encoding/json"
 	"fmt"
@@ -175,7 +176,9 @@ func (m msgController) FetchMessages(w http.ResponseWriter, r *http.Request) {
 
 	}
 
-	messages, err := m.msgService.FetchMessages(userId, topicTitle, after)
+	page := httputils.GetPageInfo(r)
+
+	messages, err := m.msgService.FetchMessages(userId, topicTitle, after, page)
 
 	if err != nil {
 		utils.RespondWithError(w, err)

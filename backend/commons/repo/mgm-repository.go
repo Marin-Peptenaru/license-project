@@ -1,12 +1,25 @@
 package repo
 
 import (
+	"commons/dto"
 	"context"
 
 	"github.com/kamva/mgm/v3"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
+	"go.mongodb.org/mongo-driver/mongo/options"
 )
+
+func pageInfoToFindOptions(page *dto.PageInfo) *options.FindOptions {
+	opts := options.Find()
+
+	if page != nil {
+		opts.SetSkip(int64(page.PageSize * page.PageNumber))
+		opts.SetLimit(int64(page.PageSize))
+	}
+
+	return opts
+}
 
 type mgmRepository struct {
 	nullEntityGenerator func() mgm.Model
@@ -35,9 +48,16 @@ func (m *mgmRepository) FindById(ctx context.Context, id string, result mgm.Mode
 	return err
 }
 
-func (m *mgmRepository) FindAll(ctx context.Context, result *[]mgm.Model) error {
+func (m *mgmRepository) Find(ctx context.Context, result *[]mgm.Model, page *dto.PageInfo) error {
 
-	err := mgm.Coll(m.NullEntity()).SimpleFindWithCtx(ctx, result, bson.M{})
+	opts := pageInfoToFindOptions(page)
+
+	err := mgm.Coll(m.NullEntity()).SimpleFindWithCtx(
+		ctx,
+		result,
+		bson.M{},
+		opts,
+	)
 
 	return err
 }
