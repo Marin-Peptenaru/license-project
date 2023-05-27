@@ -5,11 +5,11 @@ import (
 	"commons/service"
 	"commons/utils"
 	httputils "commons/utils/http-utils"
+	httpfilter "commons/utils/http-utils/http-filter"
 	"encoding/json"
 	"fmt"
 	"net/http"
 
-	"github.com/go-chi/chi"
 	"github.com/go-chi/jwtauth/v5"
 )
 
@@ -24,11 +24,10 @@ type userController struct {
 }
 
 func (u userController) SearchUsers(w http.ResponseWriter, r *http.Request) {
-	searchKey := chi.URLParam(r, "username-search-key")
-
 	page := httputils.GetPageInfo(r)
+	filter := httpfilter.ExtractUserFilter(r)
 
-	users, err := u.users.SearchUsers(searchKey, page)
+	users, err := u.users.FilterUsers(filter, page)
 
 	if err != nil {
 		utils.RespondWithError(w, err)

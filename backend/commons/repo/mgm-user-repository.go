@@ -2,6 +2,7 @@ package repo
 
 import (
 	"commons/domain"
+	"commons/domain/filter"
 	"commons/dto"
 	"context"
 
@@ -54,14 +55,14 @@ func (m *mgmUserRepo) FindByUsernameOrEmail(ctx context.Context, username string
 	return err
 }
 
-func (m *mgmUserRepo) SearchByUsername(ctx context.Context, searchKey string, users *[]domain.User, page *dto.PageInfo) error {
+func (m *mgmUserRepo) FilterUsers(ctx context.Context, filter *filter.UserFilter, users *[]domain.User, page *dto.PageInfo) error {
 
 	opts := pageInfoToFindOptions(page)
 
 	err := mgm.Coll(&domain.User{}).SimpleFindWithCtx(ctx, users, bson.M{
 		"username": bson.M{
 			operator.Regex: primitive.Regex{
-				Pattern: searchKey, Options: "i",
+				Pattern: filter.Username, Options: "i",
 			},
 		},
 	}, opts)

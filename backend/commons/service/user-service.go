@@ -3,35 +3,31 @@ package service
 import (
 	"commons/apperrors"
 	"commons/domain"
+	"commons/domain/filter"
 	"commons/dto"
 	"commons/repo"
 	"commons/repo/transaction"
 	"commons/validation"
 	"fmt"
-	"strings"
 )
 
 type UserService interface {
 	RegisterUser(username string, password string, email string) (user *domain.User, err error)
 	GetUser(userId string) (*domain.User, error)
 	UserDetails(username string, email string) (*domain.User, error)
-	SearchUsers(usernameSearchKey string, page *dto.PageInfo) ([]domain.User, error)
+	FilterUsers(filter *filter.UserFilter, page *dto.PageInfo) ([]domain.User, error)
 }
 
 type userServ struct {
 	users repo.UserRepository
 }
 
-func (u userServ) SearchUsers(usernameSearchKey string, page *dto.PageInfo) ([]domain.User, error) {
-	usernameSearchKey = strings.TrimSpace(usernameSearchKey)
+func (u userServ) FilterUsers(filter *filter.UserFilter, page *dto.PageInfo) ([]domain.User, error) {
 
-	if len(usernameSearchKey) != 0 {
-		users := make([]domain.User, 0)
-		err := u.users.SearchByUsername(u.users.Ctx(), usernameSearchKey, &users, page)
-		return users, err
-	}
+	users := make([]domain.User, 0)
+	err := u.users.FilterUsers(u.users.Ctx(), filter, &users, page)
+	return users, err
 
-	return []domain.User{}, nil
 }
 
 func (u userServ) GetUser(userId string) (*domain.User, error) {

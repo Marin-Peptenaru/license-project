@@ -5,6 +5,7 @@ import (
 	commonservices "commons/service"
 	"commons/utils"
 	httputils "commons/utils/http-utils"
+	httpfilter "commons/utils/http-utils/http-filter"
 	"context"
 	"encoding/json"
 	"fmt"
@@ -13,7 +14,6 @@ import (
 	"read-server/service"
 	"time"
 
-	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/jwtauth/v5"
 	"github.com/gorilla/websocket"
 )
@@ -26,7 +26,7 @@ const (
 type MessageController interface {
 	ListenForMessagesSSE(w http.ResponseWriter, r *http.Request)
 	ListenForMessagesWS(w http.ResponseWriter, r *http.Request)
-	FetchMessages(w http.ResponseWriter, r *http.Request)
+	FilterMessages(w http.ResponseWriter, r *http.Request)
 }
 
 type msgController struct {
@@ -146,7 +146,7 @@ func (m msgController) ListenForMessagesWS(w http.ResponseWriter, r *http.Reques
 	cancel()
 }
 
-func (m msgController) FetchMessages(w http.ResponseWriter, r *http.Request) {
+func (m msgController) FilterMessages(w http.ResponseWriter, r *http.Request) {
 	_, claims, err := jwtauth.FromContext(r.Context())
 
 	if err != nil {
@@ -156,29 +156,10 @@ func (m msgController) FetchMessages(w http.ResponseWriter, r *http.Request) {
 
 	userId := claims["user_id"].(string)
 
-	topicTitle := chi.URLParam(r, "topic")
-
-	query := r.URL.Query()
-
-	var after int64
-	afterQueryParam, exists := query["after"]
-
-	if !exists || len(afterQueryParam) == 0 {
-		after = time.Now().Unix()
-	} else {
-		parsedAfterDate, err := time.Parse(utils.DateLayout, afterQueryParam[0])
-
-		if err != nil {
-			http.Error(w, "wrong date format: "+err.Error(), http.StatusBadRequest)
-			return
-		}
-		after = parsedAfterDate.Unix()
-
-	}
-
 	page := httputils.GetPageInfo(r)
+	filter := httpfilter.ExtractMessageFilter(r)
 
-	messages, err := m.msgService.FetchMessages(userId, topicTitle, after, page)
+	messages, err := m.msgService.FetchMessages(userId, filter, page)
 
 	if err != nil {
 		utils.RespondWithError(w, err)

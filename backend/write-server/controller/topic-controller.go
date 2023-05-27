@@ -1,16 +1,14 @@
 package controller
 
 import (
-	"commons/domain"
 	"commons/dto"
 	commonservices "commons/service"
 	"commons/utils"
 	httputils "commons/utils/http-utils"
+	httpfilter "commons/utils/http-utils/http-filter"
 	"encoding/json"
-	"fmt"
 	"log"
 	"net/http"
-	"strings"
 	"write-server/service"
 
 	"github.com/go-chi/chi"
@@ -20,13 +18,11 @@ import (
 type TopicController interface {
 	CreateTopic(w http.ResponseWriter, r *http.Request)
 	SubscribedTopics(w http.ResponseWriter, r *http.Request)
-	TopicsOfUser(w http.ResponseWriter, r *http.Request)
 	// CreatedTopics return the topics created by the user calling this endpoint
-	CreatedTopics(w http.ResponseWriter, r *http.Request)
 	SubscribeToTopic(w http.ResponseWriter, r *http.Request)
 	UnsubscribeToTopic(w http.ResponseWriter, r *http.Request)
 	TopicDetails(w http.ResponseWriter, r *http.Request)
-	SearchTopic(w http.ResponseWriter, r *http.Request)
+	FilterTopics(w http.ResponseWriter, r *http.Request)
 }
 
 type topicController struct {
@@ -35,17 +31,12 @@ type topicController struct {
 	subscriptionNotifier service.SubscriptionNotifier
 }
 
-func (t topicController) SearchTopic(w http.ResponseWriter, r *http.Request) {
-	searchKey := strings.TrimSpace(chi.URLParam(r, "search-key"))
-
-	if len(searchKey) == 0 {
-		json.NewEncoder(w).Encode([]domain.Topic{})
-		return
-	}
+func (t topicController) FilterTopics(w http.ResponseWriter, r *http.Request) {
+	filter := httpfilter.ExtractTopicFilter(r)
 
 	page := httputils.GetPageInfo(r)
 
-	topics, err := t.topics.SearchTopicByTitle(searchKey, page)
+	topics, err := t.topics.FilterTopics(filter, page)
 
 	if err != nil {
 		utils.RespondWithError(w, err)
@@ -129,41 +120,6 @@ func (t topicController) UnsubscribeToTopic(w http.ResponseWriter, r *http.Reque
 
 	t.subscriptionNotifier.Notify(*user, topicData.Title)
 	w.WriteHeader(http.StatusOK)
-}
-
-func (t topicController) getTopicsOf(w http.ResponseWriter, username string, page *dto.PageInfo) {
-
-	topics, err := t.topics.TopicsCreatedBy(username, page)
-
-	if err != nil {
-		utils.RespondWithError(w, err)
-		return
-	}
-
-	if json.NewEncoder(w).Encode(topics) != nil {
-		log.Print("could not encode topics to response")
-	}
-}
-
-func (t topicController) TopicsOfUser(w http.ResponseWriter, r *http.Request) {
-	user := chi.URLParam(r, "user")
-	page := httputils.GetPageInfo(r)
-
-	t.getTopicsOf(w, user, page)
-}
-
-func (t topicController) CreatedTopics(w http.ResponseWriter, r *http.Request) {
-	_, claims, err := jwtauth.FromContext(r.Context())
-
-	if err != nil {
-		http.Error(w, fmt.Sprintf("could not extract token: %s", err.Error()), http.StatusUnauthorized)
-		return
-	}
-
-	page := httputils.GetPageInfo(r)
-
-	t.getTopicsOf(w, claims["user"].(string), page)
-
 }
 
 func (t topicController) CreateTopic(w http.ResponseWriter, r *http.Request) {
