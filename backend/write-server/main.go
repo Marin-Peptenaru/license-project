@@ -102,10 +102,7 @@ func main() {
 		topicApi.Use(commonmiddleware.TokenMustNotBeRefresh)
 
 		topicApi.Post("/", topicController.CreateTopic)
-		topicApi.Get("/", topicController.CreatedTopics)
-		topicApi.Get("/of/{user}", topicController.TopicsOfUser)
-		topicApi.Get("/search/{search-key}", topicController.SearchTopic)
-
+		topicApi.Get("/", topicController.FilterTopics)
 		topicApi.Get("/{topic-id}", topicController.TopicDetails)
 
 		topicApi.Put("/subscribe", topicController.SubscribeToTopic)

@@ -3,22 +3,20 @@ package service
 import (
 	"commons/apperrors"
 	"commons/domain"
+	"commons/domain/filter"
 	"commons/dto"
 	"commons/repo"
 	"commons/repo/transaction"
 	"commons/validation"
 	"fmt"
 	"strings"
-
-	"github.com/kamva/mgm/v3"
 )
 
 type TopicService interface {
 	// CreateTopic password parameter will be ignored if public is true
 	CreateTopic(admin string, title string, public bool, password string) (topic *domain.Topic, err error)
-	SearchTopicByTitle(titleSearchKey string, page *dto.PageInfo) ([]domain.Topic, error)
+	FilterTopics(filter *filter.TopicFilter, page *dto.PageInfo) ([]domain.Topic, error)
 	TopicDetails(id string) (*domain.Topic, error)
-	TopicsCreatedBy(admin string, page *dto.PageInfo) ([]domain.Topic, error)
 	SubscribeToTopic(subscriber string, title string, password string) (*domain.User, *domain.Topic, error)
 	UnsubscribeToTopic(username string, title string) (*domain.User, error)
 	SubscribedTopics(userid string) ([]domain.Topic, error)
@@ -29,9 +27,9 @@ type topicService struct {
 	topics repo.TopicRepository
 }
 
-func (t *topicService) SearchTopicByTitle(titleSearchKey string, page *dto.PageInfo) ([]domain.Topic, error) {
+func (t *topicService) FilterTopics(filter *filter.TopicFilter, page *dto.PageInfo) ([]domain.Topic, error) {
 	topics := make([]domain.Topic, 0)
-	err := t.topics.FindByTitleMatch(t.topics.Ctx(), titleSearchKey, &topics, page)
+	err := t.topics.FilterTopics(t.topics.Ctx(), filter, &topics, page)
 	return topics, err
 }
 
@@ -141,12 +139,6 @@ func (t *topicService) SubscribeToTopic(userId string, id string, password strin
 
 	return user, topic, nil
 
-}
-
-func (t *topicService) TopicsCreatedBy(admin string, page *dto.PageInfo) ([]domain.Topic, error) {
-	topics := make([]domain.Topic, 0)
-	err := t.topics.FindByAdmin(mgm.Ctx(), admin, &topics, page)
-	return topics, err
 }
 
 func (t *topicService) CreateTopic(admin string, title string, public bool, password string) (*domain.Topic, error) {

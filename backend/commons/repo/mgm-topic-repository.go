@@ -2,6 +2,7 @@ package repo
 
 import (
 	"commons/domain"
+	"commons/domain/filter"
 	"commons/dto"
 	"context"
 
@@ -16,29 +17,21 @@ type mgmTopicRepository struct {
 	mgmRepository
 }
 
-func (m *mgmTopicRepository) FindByAdmin(ctx context.Context, admin string, topics *[]domain.Topic, page *dto.PageInfo) error {
-	opts := pageInfoToFindOptions(page)
-
-	err := mgm.Coll(&domain.Topic{}).SimpleFindWithCtx(ctx, topics, bson.M{"admin": admin}, opts)
-
-	if err == mongo.ErrNoDocuments {
-		return ErrNoMatchingEntity
-	}
-	return err
-}
-
-func (m *mgmTopicRepository) FindByTitleMatch(ctx context.Context, titleMatch string, topics *[]domain.Topic, page *dto.PageInfo) error {
-
+func (m *mgmTopicRepository) FilterTopics(ctx context.Context, filter *filter.TopicFilter, topics *[]domain.Topic, page *dto.PageInfo) error {
 	opts := pageInfoToFindOptions(page)
 
 	err := mgm.Coll(&domain.Topic{}).SimpleFindWithCtx(ctx, topics, bson.M{
+		"admin": filter.Admin,
 		"title": bson.M{
 			operator.Regex: primitive.Regex{
-				Pattern: titleMatch, Options: "i",
+				Pattern: filter.Title, Options: "i",
 			},
 		},
 	}, opts)
 
+	if err == mongo.ErrNoDocuments {
+		return ErrNoMatchingEntity
+	}
 	return err
 }
 

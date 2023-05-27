@@ -2,6 +2,7 @@ package repo
 
 import (
 	"commons/domain"
+	"commons/domain/filter"
 	"commons/dto"
 	"context"
 
@@ -14,13 +15,13 @@ type mgmMessageRepository struct {
 	mgmRepository
 }
 
-func (m *mgmMessageRepository) FindByTopicAndAfterTimestamp(ctx context.Context, topic string, after int64, messages *[]domain.Message, page *dto.PageInfo) error {
+func (m *mgmMessageRepository) FindByTopicAndAfterTimestamp(ctx context.Context, filter *filter.MessageFilter, messages *[]domain.Message, page *dto.PageInfo) error {
 
 	opts := pageInfoToFindOptions(page)
 
 	err := mgm.Coll(&domain.Message{}).SimpleFindWithCtx(ctx, messages, bson.M{
-		"to":        topic,
-		"timestamp": bson.M{operator.Gte: after},
+		"to":        filter.To,
+		"timestamp": bson.M{operator.Gte: filter.After},
 	}, opts)
 
 	return err
