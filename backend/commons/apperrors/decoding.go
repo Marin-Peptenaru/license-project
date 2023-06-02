@@ -1,6 +1,7 @@
 package apperrors
 
 import (
+	"commons/utils"
 	"fmt"
 	"net/http"
 )
@@ -18,7 +19,10 @@ func (e ErrFailedDecoding) StatusCode() int {
 }
 
 func FailedDecoding(msg string) error {
+	errMsg := fmt.Sprintf("could not decode data: %s", msg)
+	utils.Logger().Error(errMsg)
+
 	return &ErrFailedDecoding{
-		msg: fmt.Sprintf("could not decode data: %s", msg),
+		msg: errMsg,
 	}
 }

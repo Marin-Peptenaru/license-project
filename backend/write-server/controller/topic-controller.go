@@ -3,7 +3,6 @@ package controller
 import (
 	"commons/dto"
 	commonservices "commons/service"
-	"commons/utils"
 	httputils "commons/utils/http-utils"
 	httpfilter "commons/utils/http-utils/http-filter"
 	"encoding/json"
@@ -39,7 +38,7 @@ func (t topicController) FilterTopics(w http.ResponseWriter, r *http.Request) {
 	topics, err := t.topics.FilterTopics(filter, page)
 
 	if err != nil {
-		utils.RespondWithError(w, err)
+		httputils.RespondWithError(w, err)
 		return
 	}
 
@@ -52,7 +51,7 @@ func (t topicController) TopicDetails(w http.ResponseWriter, r *http.Request) {
 	topic, err := t.topics.TopicDetails(topicId)
 
 	if err != nil {
-		utils.RespondWithError(w, err)
+		httputils.RespondWithError(w, err)
 		return
 	}
 
@@ -84,7 +83,7 @@ func (t topicController) SubscribeToTopic(w http.ResponseWriter, r *http.Request
 	user, topic, err := t.topics.SubscribeToTopic(username, topicData.Id, topicData.Password)
 
 	if err != nil {
-		utils.RespondWithError(w, err)
+		httputils.RespondWithError(w, err)
 		return
 	}
 
@@ -114,7 +113,7 @@ func (t topicController) UnsubscribeToTopic(w http.ResponseWriter, r *http.Reque
 	user, err := t.topics.UnsubscribeToTopic(userId, topicData.Title)
 
 	if err != nil {
-		utils.RespondWithError(w, err)
+		httputils.RespondWithError(w, err)
 		return
 	}
 
@@ -140,7 +139,7 @@ func (t topicController) CreateTopic(w http.ResponseWriter, r *http.Request) {
 	newTopic, err := t.topics.CreateTopic(claims["user"].(string), topicData.Title, topicData.Public, topicData.Password)
 
 	if err != nil {
-		utils.RespondWithError(w, err)
+		httputils.RespondWithError(w, err)
 		return
 	}
 
@@ -161,7 +160,7 @@ func (t topicController) SubscribedTopics(w http.ResponseWriter, r *http.Request
 	topics, err := t.topics.SubscribedTopics(userId)
 
 	if err != nil {
-		utils.RespondWithError(w, err)
+		httputils.RespondWithError(w, err)
 		return
 	}
 

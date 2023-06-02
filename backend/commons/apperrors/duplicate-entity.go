@@ -1,6 +1,7 @@
 package apperrors
 
 import (
+	"commons/utils"
 	"fmt"
 	"net/http"
 )
@@ -18,7 +19,10 @@ func (e ErrDuplicateEntity) StatusCode() int {
 }
 
 func DuplicateEntity(msg string) error {
+	errMsg := fmt.Sprintf("duplicate entity: %s", msg)
+	utils.Logger().Error(errMsg)
+
 	return &ErrDuplicateEntity{
-		msg: fmt.Sprintf("duplicate entity: %s", msg),
+		msg: errMsg,
 	}
 }

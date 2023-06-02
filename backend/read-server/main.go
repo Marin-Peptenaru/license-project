@@ -7,7 +7,6 @@ import (
 	"commons/utils"
 	mongoutils "commons/utils/mongo"
 	"context"
-	"log"
 	"net/http"
 	"read-server/controller"
 	"read-server/service"
@@ -61,6 +60,6 @@ func main() {
 
 	r.Get("/api/messages/ws", msgController.ListenForMessagesWS)
 
-	log.Fatal(http.ListenAndServe(":8081", r))
+	utils.Logger().Fatal(http.ListenAndServe(":8081", r).Error())
 
 }

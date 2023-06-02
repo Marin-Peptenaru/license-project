@@ -1,6 +1,7 @@
 package apperrors
 
 import (
+	"commons/utils"
 	"fmt"
 	"net/http"
 )
@@ -18,7 +19,10 @@ func (e ErrInvalidCredentials) StatusCode() int {
 }
 
 func InvalidCredentials(msg string) error {
+	errMsg := fmt.Sprintf("invalid credentials: %s", msg)
+	utils.Logger().Error(errMsg)
+	
 	return &ErrInvalidCredentials{
-		msg: fmt.Sprintf("invalid credentials: %s", msg),
+		msg: errMsg,
 	}
 }

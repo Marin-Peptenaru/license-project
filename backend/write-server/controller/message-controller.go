@@ -3,7 +3,7 @@ package controller
 import (
 	"commons/dto"
 	commonservices "commons/service"
-	"commons/utils"
+	httputils "commons/utils/http-utils"
 	"encoding/json"
 	"net/http"
 	"write-server/service"
@@ -34,13 +34,13 @@ func (m msgController) SendMessage(w http.ResponseWriter, r *http.Request) {
 	err = json.NewDecoder(r.Body).Decode(&msg)
 
 	if err != nil {
-		utils.RespondWithError(w, err)
+		httputils.RespondWithError(w, err)
 	} else {
 
 		message, err := m.msgService.SaveMessage(senderId, msg.Topic, msg.Content)
 
 		if err != nil {
-			utils.RespondWithError(w, err)
+			httputils.RespondWithError(w, err)
 		} else {
 			json.NewEncoder(w).Encode(message)
 			m.msgNotifier.Notify(*message)

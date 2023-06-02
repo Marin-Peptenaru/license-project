@@ -3,8 +3,10 @@ package service
 import (
 	"commons/domain"
 	"commons/dto"
-	"fmt"
+	"commons/utils"
 	"write-server/streaming"
+
+	"go.uber.org/zap"
 )
 
 type SubscriptionNotifier interface {
@@ -29,7 +31,9 @@ func (s subscriptionNotifier) Notify(user domain.User, topicTitle string) {
 
 	err := s.writer.Write("sub", notification)
 	if err != nil {
-		fmt.Println(err)
+		utils.Logger().Error("error while trying to send subscription notification to stream",
+			zap.Error(err),
+		)
 	}
 }
 

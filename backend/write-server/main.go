@@ -7,8 +7,6 @@ import (
 	commonservices "commons/service"
 	"commons/utils"
 	"commons/utils/mongo"
-	"fmt"
-	"log"
 	"net/http"
 	"write-server/controller"
 	"write-server/service"
@@ -20,6 +18,9 @@ import (
 )
 
 func main() {
+	utils.InitLogger(false)
+	log := utils.Logger()
+	defer log.Sync()
 
 	mongo.InitDB()
 	cache := cache.NewCache()
@@ -110,7 +111,8 @@ func main() {
 		topicApi.Get("/subscribed", topicController.SubscribedTopics)
 	})
 
-	fmt.Println("About to start the server")
-	log.Fatal(http.ListenAndServe(":8082", r))
+	log.Error("Some error occurred")
+	log.Info("Test Log 2")
+	log.Fatal(http.ListenAndServe(":8082", r).Error())
 
 }

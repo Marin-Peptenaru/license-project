@@ -1,10 +1,12 @@
 package domain
 
 import (
+	"commons/utils"
 	"crypto/rand"
 	"crypto/sha256"
-	"fmt"
+
 	"github.com/xdg-go/pbkdf2"
+	"go.uber.org/zap"
 )
 
 const saltLen = 16
@@ -25,7 +27,9 @@ func NewPassword(pswd string) Password {
 	_, err := rand.Read(salt)
 
 	if err != nil {
-		fmt.Println(err.Error())
+		utils.Logger().Error("error while generating password salt",
+			zap.String("error msg", err.Error()),
+		)
 	}
 
 	hash := pbkdf2.Key([]byte(pswd), salt, 10000, 64, sha256.New)
