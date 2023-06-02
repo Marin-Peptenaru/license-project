@@ -67,9 +67,6 @@ func (a authService) RefreshToken(userId string, refreshToken string) (authToken
 
 	tokenHash := sha256.Sum256([]byte(refreshToken))
 	marshalledHash, _ := json.Marshal(tokenHash)
-	fmt.Println(refreshToken)
-	fmt.Println(savedToken)
-	fmt.Println(string(tokenHash[:]))
 
 	if savedToken != string(marshalledHash) {
 		return "", apperrors.InvalidCredentials("invalid refresh token")
@@ -84,7 +81,6 @@ func (a authService) RefreshToken(userId string, refreshToken string) (authToken
 	}
 
 	if jwt.Validate(token) != nil {
-		fmt.Println("validation problem")
 		return "", apperrors.InvalidCredentials("invalid refresh token")
 	}
 

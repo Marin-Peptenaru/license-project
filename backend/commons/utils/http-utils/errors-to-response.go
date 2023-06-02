@@ -1,7 +1,8 @@
-package utils
+package httputils
 
 import (
 	"commons/apperrors"
+
 	"net/http"
 )
 
@@ -16,5 +17,6 @@ func ErrorToStatusCode(e error) int {
 }
 
 func RespondWithError(w http.ResponseWriter, e error) {
+
 	http.Error(w, e.Error(), ErrorToStatusCode(e))
 }

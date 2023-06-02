@@ -1,0 +1,24 @@
+2023-05-29T03:54:01.986+0300	info	Test Log 1
+2023-05-29T03:54:01.988+0300	info	Test Log 2
+2023-05-29T04:12:51.220+0300	info	Test Log 1
+2023-05-29T04:12:51.221+0300	info	Test Log 2
+{"level":"info","ts":"2023-05-29T04:13:55.795+0300","msg":"Test Log 1"}
+{"level":"info","ts":"2023-05-29T04:13:55.796+0300","msg":"Test Log 2"}
+{"level":"info","ts":"2023-05-29T04:17:20.404+0300","msg":"Test Log 1"}
+{"level":"info","ts":"2023-05-29T04:17:20.405+0300","msg":"Test Log 2"}
+{"level":"error","ts":"2023-05-29T04:19:47.477+0300","msg":"Some error occurred"}
+{"level":"info","ts":"2023-05-29T04:19:47.479+0300","msg":"Test Log 2"}
+{"level":"error","ts":"2023-05-29T04:21:54.886+0300","caller":"C:/Users/mpeptenaru/license/backend/write-server/main.go:114","msg":"Some error occurred","stacktrace":"main.main\n\tC:/Users/mpeptenaru/license/backend/write-server/main.go:114\nruntime.main\n\tC:/Program Files/src/runtime/proc.go:250"}
+{"level":"info","ts":"2023-05-29T04:21:54.888+0300","caller":"C:/Users/mpeptenaru/license/backend/write-server/main.go:115","msg":"Test Log 2"}
+2023-05-29T04:23:30.765+0300	error	C:/Users/mpeptenaru/license/backend/write-server/main.go:114	Some error occurred
+main.main
+	C:/Users/mpeptenaru/license/backend/write-server/main.go:114
+runtime.main
+	C:/Program Files/src/runtime/proc.go:250
+2023-05-29T04:23:30.767+0300	info	C:/Users/mpeptenaru/license/backend/write-server/main.go:115	Test Log 2
+2023-05-29T04:25:06.491+0300	error	write-server/main.go:114	Some error occurred
+main.main
+	C:/Users/mpeptenaru/license/backend/write-server/main.go:114
+runtime.main
+	C:/Program Files/src/runtime/proc.go:250
+2023-05-29T04:25:06.491+0300	info	write-server/main.go:115	Test Log 2

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="6ea4a5a2-0b14-482b-901a-98b40e15ec56" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../backend/commons/apperrors/decoding.go" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/commons/apperrors/decoding.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/commons/apperrors/duplicate-entity.go" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/commons/apperrors/duplicate-entity.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/commons/apperrors/failed-marshalling.go" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/commons/apperrors/failed-marshalling.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/commons/apperrors/invalid-credentials.go" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/commons/apperrors/invalid-credentials.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/commons/apperrors/invalid-entity.go" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/commons/apperrors/invalid-entity.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/commons/domain/password.go" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/commons/domain/password.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/commons/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/commons/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/commons/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/commons/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/commons/service/topic-service.go" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/commons/service/topic-service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/commons/utils/errors-to-response.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/read-server/controller/message-controller.go" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/read-server/controller/message-controller.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/read-server/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/read-server/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/read-server/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/read-server/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/read-server/streaming/stream-observer.go" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/read-server/streaming/stream-observer.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/write-server/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/write-server/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/write-server/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/write-server/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/write-server/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/write-server/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/write-server/service/auth-service.go" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/write-server/service/auth-service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/write-server/service/subscription-notifier-service.go" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/write-server/service/subscription-notifier-service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/write-server/streaming/stream-writer.go" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/write-server/streaming/stream-writer.go" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="2QZNT5zjYBjIpNDW3lVZeSBZuTf" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6ea4a5a2-0b14-482b-901a-98b40e15ec56" name="Changes" comment="" />
+      <created>1685557150073</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1685557150073</updated>
+    </task>
+    <servers />
+  </component>
+</project>

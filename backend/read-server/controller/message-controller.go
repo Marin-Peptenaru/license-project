@@ -16,6 +16,7 @@ import (
 
 	"github.com/go-chi/jwtauth/v5"
 	"github.com/gorilla/websocket"
+	"go.uber.org/zap"
 )
 
 const (
@@ -41,14 +42,14 @@ func waitForToken(conn *websocket.Conn) string {
 	err := conn.SetReadDeadline(time.Now().Add(wsTokenWaitTimout))
 
 	if err != nil {
-		fmt.Printf("could not set read deadline: %s\n", err.Error())
+		utils.Logger().Error(err.Error())
 		return ""
 	}
 
 	_, msg, err := conn.ReadMessage()
 
 	if err != nil {
-		fmt.Printf("error while wainting for token: %s \n", err.Error())
+		utils.Logger().Error("error while wainting for token: %s \n", zap.Error(err))
 		return ""
 	}
 
@@ -63,15 +64,15 @@ func writeToWs(conn *websocket.Conn, msg any) {
 	err := conn.SetWriteDeadline(time.Now().Add(wsWriteTimeout))
 
 	if err != nil {
-		fmt.Printf("error setting ws write timeout %s\n", err.Error())
+		utils.Logger().Error("error setting ws write timeout %s\n", zap.Error(err))
 	}
 
-	jsonMsg, err := json.Marshal(msg)
+	jsonMsg, _ := json.Marshal(msg)
 
 	err = conn.WriteMessage(websocket.TextMessage, jsonMsg)
 
 	if err != nil {
-		fmt.Printf("error writing to ws: %s\n", err.Error())
+		utils.Logger().Error("error writing to ws: %s\n", zap.Error(err))
 	}
 
 }
@@ -88,13 +89,13 @@ func (m msgController) ListenForMessagesWS(w http.ResponseWriter, r *http.Reques
 	conn, err := m.upgrader.Upgrade(w, r, nil)
 
 	if err != nil {
-		fmt.Println(">>>>>>>>>> err: " + err.Error())
+		utils.Logger().Error("error doing ws upgrade", zap.Error(err))
 	}
 
 	defer func(conn *websocket.Conn) {
 		err := conn.Close()
 		if err != nil {
-			fmt.Println("Error closing ws connection: " + err.Error())
+			utils.Logger().Error("error closing ws connection: ", zap.Error(err))
 		}
 	}(conn)
 
@@ -104,30 +105,28 @@ func (m msgController) ListenForMessagesWS(w http.ResponseWriter, r *http.Reques
 		writeToWs(conn, "missing user_id claim")
 		err := conn.Close()
 		if err != nil {
-			fmt.Printf("error closing ws: %s\n", err.Error())
+			utils.Logger().Error("error closing ws connection: ", zap.Error(err))
 		}
 	}
 
 	tokenExpired, cancel := context.WithDeadline(context.Background(), parsedToken.Expiration())
 	defer cancel()
 
-	messagesForUser, err := m.msgListener.MessagesForUser(r.Context(), userId.(string))
+	messagesForUser, _ := m.msgListener.MessagesForUser(r.Context(), userId.(string))
 
 	cancelled := false
 
 	for !cancelled {
 		select {
 		case <-r.Context().Done():
-			fmt.Println("connection closed")
 			cancelled = true
 		case <-tokenExpired.Done():
-
 			writeToWs(conn, "token exp")
 			newToken := waitForToken(conn)
 			parsedToken, err := jwtauth.VerifyToken(utils.JwtToken, newToken)
 
 			if err != nil {
-				fmt.Printf("error parsing token: %s\n %s\n", err.Error(), token)
+				utils.Logger().Error("error parsing token", zap.String("token", token), zap.Any("user id", userId))
 				cancelled = true
 			}
 
@@ -143,6 +142,7 @@ func (m msgController) ListenForMessagesWS(w http.ResponseWriter, r *http.Reques
 		}
 	}
 
+	utils.Logger().Info("closing ws connection for user", zap.Any("user id", userId))
 	cancel()
 }
 
@@ -162,7 +162,7 @@ func (m msgController) FilterMessages(w http.ResponseWriter, r *http.Request) {
 	messages, err := m.msgService.FetchMessages(userId, filter, page)
 
 	if err != nil {
-		utils.RespondWithError(w, err)
+		httputils.RespondWithError(w, err)
 		return
 	}
 
@@ -180,16 +180,13 @@ func (m msgController) ListenForMessagesSSE(w http.ResponseWriter, r *http.Reque
 
 	userId := claims["user_id"].(string)
 
-	fmt.Println(claims["exp"].(time.Time))
-	fmt.Print(time.Now())
 	tokenExpOrReqClosed, cancel := context.WithDeadline(r.Context(), claims["exp"].(time.Time))
 	defer cancel()
 
 	userMessages, err := m.msgListener.MessagesForUser(tokenExpOrReqClosed, userId)
 
 	if err != nil {
-		fmt.Println("Error when creating message channel")
-		utils.RespondWithError(w, err)
+		httputils.RespondWithError(w, err)
 		return
 	}
 
@@ -198,8 +195,6 @@ func (m msgController) ListenForMessagesSSE(w http.ResponseWriter, r *http.Reque
 	flusher := sse.UpgradeToSSEWriter(w)
 
 	cancelled := false
-
-	fmt.Println(">>>>>>>>>>>  Connected")
 
 	for !cancelled {
 		select {

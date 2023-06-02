@@ -3,7 +3,6 @@ package controller
 import (
 	"commons/dto"
 	"commons/service"
-	"commons/utils"
 	httputils "commons/utils/http-utils"
 	httpfilter "commons/utils/http-utils/http-filter"
 	"encoding/json"
@@ -30,7 +29,7 @@ func (u userController) SearchUsers(w http.ResponseWriter, r *http.Request) {
 	users, err := u.users.FilterUsers(filter, page)
 
 	if err != nil {
-		utils.RespondWithError(w, err)
+		httputils.RespondWithError(w, err)
 		return
 	}
 
@@ -51,7 +50,7 @@ func (u userController) RegisterUser(w http.ResponseWriter, r *http.Request) {
 	newUser, err := u.users.RegisterUser(userData.Username, userData.Password, userData.Email)
 
 	if err != nil {
-		utils.RespondWithError(w, err)
+		httputils.RespondWithError(w, err)
 		return
 	}
 
@@ -72,7 +71,7 @@ func (u userController) UserDetails(w http.ResponseWriter, r *http.Request) {
 	user, err := u.users.GetUser(userId)
 
 	if err != nil {
-		utils.RespondWithError(w, err)
+		httputils.RespondWithError(w, err)
 		return
 	}
 

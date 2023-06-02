@@ -51,9 +51,7 @@ func (t *topicService) SubscribedTopics(userId string) ([]domain.Topic, error) {
 
 	for title := range user.Topics {
 		err := t.topics.FindByTitle(t.topics.Ctx(), title, topic)
-		if err != nil {
-			fmt.Println(err)
-		} else {
+		if err == nil {
 			topics[i] = *topic
 		}
 		i++
@@ -67,8 +65,6 @@ func (t *topicService) TopicDetails(id string) (*domain.Topic, error) {
 	topic := &domain.Topic{}
 	err := t.topics.FindById(t.topics.Ctx(), id, topic)
 
-	// just a debug print to check that the password field is unmarshalled properly
-	fmt.Println(topic.Pswd)
 	return topic, err
 }
 
@@ -102,8 +98,6 @@ func (t *topicService) SubscribeToTopic(userId string, id string, password strin
 	topic := &domain.Topic{}
 
 	err := t.topics.FindById(t.topics.Ctx(), id, topic)
-
-	fmt.Println(topic.ID())
 
 	if err != nil {
 		if err == repo.ErrNoMatchingEntity {

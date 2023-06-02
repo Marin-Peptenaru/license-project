@@ -1,6 +1,7 @@
 package apperrors
 
 import (
+	"commons/utils"
 	"fmt"
 	"net/http"
 )
@@ -18,7 +19,10 @@ func (e ErrInvalidEntity) StatusCode() int {
 }
 
 func InvalidEntity(msg string) error {
+	errMsg := fmt.Sprintf("invalid entity: %s", msg)
+	utils.Logger().Error(errMsg)
+
 	return &ErrInvalidEntity{
-		msg: fmt.Sprintf("invalid entity: %s", msg),
+		msg: errMsg,
 	}
 }

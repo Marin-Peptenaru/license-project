@@ -4,8 +4,9 @@ import (
 	"commons/apperrors"
 	"commons/utils"
 	"encoding/json"
-	"fmt"
+
 	"github.com/gomodule/redigo/redis"
+	"go.uber.org/zap"
 )
 
 type StreamWriter[T any] interface {
@@ -26,7 +27,12 @@ func (s streamWriter[T]) Write(key string, entry T) error {
 	}
 
 	_, err = s.conn.Do("XADD", s.stream, "*", key, string(marshalledEntry))
-	fmt.Println("notification sent")
+
+	utils.Logger().Info("entry written to stream",
+		zap.String("stream", s.stream),
+		zap.String("entry", string(marshalledEntry)),
+	)
+
 	return err
 }
 

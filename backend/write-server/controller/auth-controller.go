@@ -2,11 +2,12 @@ package controller
 
 import (
 	"commons/dto"
-	"commons/utils"
+	httputils "commons/utils/http-utils"
 	"encoding/json"
-	"github.com/go-chi/jwtauth/v5"
 	"net/http"
 	"write-server/service"
+
+	"github.com/go-chi/jwtauth/v5"
 )
 
 type AuthenticationController interface {
@@ -30,7 +31,7 @@ func (a authController) Logout(w http.ResponseWriter, r *http.Request) {
 	userId := claims["user_id"].(string)
 
 	if err = a.auth.EndSession(userId); err != nil {
-		utils.RespondWithError(w, err)
+		httputils.RespondWithError(w, err)
 		return
 	}
 
@@ -51,7 +52,7 @@ func (a authController) RefreshToken(w http.ResponseWriter, r *http.Request) {
 	newToken, err := a.auth.RefreshToken(userId, tokenString)
 
 	if err != nil {
-		utils.RespondWithError(w, err)
+		httputils.RespondWithError(w, err)
 		return
 	}
 
@@ -73,11 +74,11 @@ func (a authController) Login(w http.ResponseWriter, r *http.Request) {
 
 	if err != nil {
 		if err == service.ErrIncorrectCredentials {
-			utils.RespondWithError(w, err)
+			httputils.RespondWithError(w, err)
 			return
 		}
 
-		utils.RespondWithError(w, err)
+		httputils.RespondWithError(w, err)
 		return
 	}
 
