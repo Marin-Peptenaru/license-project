@@ -42,14 +42,14 @@ func waitForToken(conn *websocket.Conn) string {
 	err := conn.SetReadDeadline(time.Now().Add(wsTokenWaitTimout))
 
 	if err != nil {
-		utils.Logger().Error(err.Error())
+		utils.Logger.Error(err.Error())
 		return ""
 	}
 
 	_, msg, err := conn.ReadMessage()
 
 	if err != nil {
-		utils.Logger().Error("error while wainting for token: %s \n", zap.Error(err))
+		utils.Logger.Error("error while wainting for token: %s \n", zap.Error(err))
 		return ""
 	}
 
@@ -64,7 +64,7 @@ func writeToWs(conn *websocket.Conn, msg any) {
 	err := conn.SetWriteDeadline(time.Now().Add(wsWriteTimeout))
 
 	if err != nil {
-		utils.Logger().Error("error setting ws write timeout %s\n", zap.Error(err))
+		utils.Logger.Error("error setting ws write timeout %s\n", zap.Error(err))
 	}
 
 	jsonMsg, _ := json.Marshal(msg)
@@ -72,7 +72,7 @@ func writeToWs(conn *websocket.Conn, msg any) {
 	err = conn.WriteMessage(websocket.TextMessage, jsonMsg)
 
 	if err != nil {
-		utils.Logger().Error("error writing to ws: %s\n", zap.Error(err))
+		utils.Logger.Error("error writing to ws: %s\n", zap.Error(err))
 	}
 
 }
@@ -89,13 +89,13 @@ func (m msgController) ListenForMessagesWS(w http.ResponseWriter, r *http.Reques
 	conn, err := m.upgrader.Upgrade(w, r, nil)
 
 	if err != nil {
-		utils.Logger().Error("error doing ws upgrade", zap.Error(err))
+		utils.Logger.Error("error doing ws upgrade", zap.Error(err))
 	}
 
 	defer func(conn *websocket.Conn) {
 		err := conn.Close()
 		if err != nil {
-			utils.Logger().Error("error closing ws connection: ", zap.Error(err))
+			utils.Logger.Error("error closing ws connection: ", zap.Error(err))
 		}
 	}(conn)
 
@@ -105,7 +105,7 @@ func (m msgController) ListenForMessagesWS(w http.ResponseWriter, r *http.Reques
 		writeToWs(conn, "missing user_id claim")
 		err := conn.Close()
 		if err != nil {
-			utils.Logger().Error("error closing ws connection: ", zap.Error(err))
+			utils.Logger.Error("error closing ws connection: ", zap.Error(err))
 		}
 	}
 
@@ -126,7 +126,7 @@ func (m msgController) ListenForMessagesWS(w http.ResponseWriter, r *http.Reques
 			parsedToken, err := jwtauth.VerifyToken(utils.JwtToken, newToken)
 
 			if err != nil {
-				utils.Logger().Error("error parsing token", zap.String("token", token), zap.Any("user id", userId))
+				utils.Logger.Error("error parsing token", zap.String("token", token), zap.Any("user id", userId))
 				cancelled = true
 			}
 
@@ -142,7 +142,7 @@ func (m msgController) ListenForMessagesWS(w http.ResponseWriter, r *http.Reques
 		}
 	}
 
-	utils.Logger().Info("closing ws connection for user", zap.Any("user id", userId))
+	utils.Logger.Info("closing ws connection for user", zap.Any("user id", userId))
 	cancel()
 }
 

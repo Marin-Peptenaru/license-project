@@ -27,7 +27,7 @@ func NewPassword(pswd string) Password {
 	_, err := rand.Read(salt)
 
 	if err != nil {
-		utils.Logger().Error("error while generating password salt",
+		utils.Logger.Error("error while generating password salt",
 			zap.String("error msg", err.Error()),
 		)
 	}

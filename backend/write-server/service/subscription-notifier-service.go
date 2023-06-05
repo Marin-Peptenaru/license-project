@@ -31,7 +31,7 @@ func (s subscriptionNotifier) Notify(user domain.User, topicTitle string) {
 
 	err := s.writer.Write("sub", notification)
 	if err != nil {
-		utils.Logger().Error("error while trying to send subscription notification to stream",
+		utils.Logger.Error("error while trying to send subscription notification to stream",
 			zap.Error(err),
 		)
 	}

@@ -22,3 +22,16 @@ main.main
 runtime.main
 	C:/Program Files/src/runtime/proc.go:250
 2023-05-29T04:25:06.491+0300	info	write-server/main.go:115	Test Log 2
+2023-06-03T23:36:08.553+0300	error	write-server/main.go:114	Some error occurred
+main.main
+	C:/Users/mpeptenaru/license/backend/write-server/main.go:114
+runtime.main
+	C:/Program Files/src/runtime/proc.go:250
+2023-06-03T23:36:08.555+0300	info	write-server/main.go:115	Test Log 2
+2023-06-04T16:32:43.581+0300	error	write-server/main.go:119	Some error occurred
+main.main
+	C:/Users/mpeptenaru/license/backend/write-server/main.go:119
+runtime.main
+	C:/Program Files/src/runtime/proc.go:250
+2023-06-04T16:32:43.582+0300	info	write-server/main.go:120	Test Log 2
+2023-06-04T17:26:42.487+0300	info	write-server/main.go:35	Configs loaded	{"Configs": {"Server":{"Port":"8080","Host":"localhost"},"Database":{"Cluster":"licensecluster.skrknve.mongodb.net","Username":"marin_mongo","Password":"NapocaMongo10","Options":"retryWrites=true&w=majority"},"Security":{"TokenSecret":"mysecret"},"Logging":{"FileName":"log.txt","MaxSize":512,"MaxBackups":3,"MaxAge":1,"Compress":false},"Redis":{"Protocol":"","Url":"","MaxIdle":0,"MaxActive":0}}}

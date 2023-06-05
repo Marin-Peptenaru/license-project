@@ -1,6 +1,7 @@
 package main
 
 import (
+	"commons/config"
 	commonmiddleware "commons/middleware"
 	"commons/repo"
 	commonservices "commons/service"
@@ -8,6 +9,7 @@ import (
 	mongoutils "commons/utils/mongo"
 	"context"
 	"net/http"
+	"os"
 	"read-server/controller"
 	"read-server/service"
 
@@ -18,11 +20,17 @@ import (
 )
 
 func main() {
+	configFilePath := os.Args[1]
+	cfg := config.Load(configFilePath)
+
+	utils.InitLogger(cfg)
 
 	appContext, cancel := context.WithCancel(context.Background())
 	defer cancel()
 
-	mongoutils.InitDB()
+	mongoutils.InitDB(cfg)
+	utils.InitJwtToken(cfg)
+	utils.InitRedisPool(cfg)
 
 	userRepo := repo.NewMgmUserRepository()
 	topicRepo := repo.NewMgmTopicRepository()
@@ -30,7 +38,7 @@ func main() {
 
 	msgService := commonservices.NewMessageService(userRepo, topicRepo, messageRepo)
 
-	msgListener := service.NewMessageListener(appContext, userRepo, topicRepo)
+	msgListener := service.NewMessageListener(appContext, userRepo, topicRepo, cfg)
 	msgController := controller.NewMessageController(msgListener, msgService)
 
 	r := chi.NewRouter()
@@ -60,6 +68,6 @@ func main() {
 
 	r.Get("/api/messages/ws", msgController.ListenForMessagesWS)
 
-	utils.Logger().Fatal(http.ListenAndServe(":8081", r).Error())
+	utils.Logger.Fatal(http.ListenAndServe(":8081", r).Error())
 
 }

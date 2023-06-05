@@ -20,7 +20,7 @@ func (e ErrFailedMarshalling) StatusCode() int {
 
 func FailedMarshalling(msg string) error {
 	errMsg := fmt.Sprintf("failed to marshall data: %s", msg)
-	utils.Logger().Error(errMsg)
+	utils.Logger.Error(errMsg)
 
 	return &ErrFailedMarshalling{
 		msg: errMsg,

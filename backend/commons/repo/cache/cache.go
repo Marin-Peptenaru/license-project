@@ -1,6 +1,7 @@
 package cache
 
 import (
+	"commons/config"
 	"commons/utils"
 	"time"
 
@@ -15,12 +16,14 @@ type CacheMap interface {
 }
 
 type redisCacheMap struct {
-	p    *redis.Pool
-	conn redis.Conn
+	p *redis.Pool
 }
 
 func (r redisCacheMap) Get(key string) (string, error) {
-	reply, err := redis.String(r.conn.Do("GET", key))
+	conn := r.p.Get()
+	defer conn.Close()
+
+	reply, err := redis.String(conn.Do("GET", key))
 
 	if err != nil {
 		return "", err
@@ -29,28 +32,32 @@ func (r redisCacheMap) Get(key string) (string, error) {
 	return reply, nil
 }
 
-func (r redisCacheMap) SetWithExpire(key string, value string, expire time.Duration) error {
-	_, err := r.conn.Do("SET", key, value, "PX", expire.Milliseconds())
+func (r *redisCacheMap) SetWithExpire(key string, value string, expire time.Duration) error {
+	conn := r.p.Get()
+	defer conn.Close()
+
+	_, err := conn.Do("SET", key, value, "PX", expire.Milliseconds())
 	return err
 }
 
-func (r redisCacheMap) Set(key string, value string) error {
-	_, err := r.conn.Do("SET", key, value)
+func (r *redisCacheMap) Set(key string, value string) error {
+	conn := r.p.Get()
+	defer conn.Close()
 
+	_, err := conn.Do("SET", key, value)
 	return err
 }
 
-func (r redisCacheMap) Remove(keys ...string) error {
-	_, err := r.conn.Do("DEL", keys)
+func (r *redisCacheMap) Remove(keys ...string) error {
+	conn := r.p.Get()
+	defer conn.Close()
+
+	_, err := conn.Do("DEL", keys)
 	return err
 }
 
-func NewCache() CacheMap {
-	pool := utils.NewRedisPool()
-	conn := pool.Get()
-
-	return redisCacheMap{
-		p:    pool,
-		conn: conn,
+func NewCache(cfg *config.Config) CacheMap {
+	return &redisCacheMap{
+		p: utils.RedisPool(),
 	}
 }

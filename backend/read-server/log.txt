@@ -1,0 +1,13 @@
+2023-06-05T15:20:19.702+0300	warn	streaming/stream-observer.go:139	could not read persisted latest event id for stream	{"stream": "subs-stream", "error": "open latestId-subs-stream.txt: The system cannot find the file specified."}
+2023-06-05T15:20:30.597+0300	error	streaming/stream-observer.go:74	error reading from stream	{"error": "redigo: connection pool exhausted"}
+read-server/streaming.(*streamObserver[...]).checkForNewMessages
+	C:/Users/mpeptenaru/license/backend/read-server/streaming/stream-observer.go:74
+read-server/streaming.streamObserver[...].StartObserving.func1
+	C:/Users/mpeptenaru/license/backend/read-server/streaming/stream-observer.go:41
+2023-06-05T15:22:04.829+0300	warn	streaming/stream-observer.go:139	could not read persisted latest event id for stream	{"stream": "subs-stream", "error": "open latestId-subs-stream.txt: The system cannot find the file specified."}
+2023-06-05T15:22:15.639+0300	error	streaming/stream-observer.go:74	error reading from stream	{"error": "redigo: connection pool exhausted"}
+read-server/streaming.(*streamObserver[...]).checkForNewMessages
+	C:/Users/mpeptenaru/license/backend/read-server/streaming/stream-observer.go:74
+read-server/streaming.streamObserver[...].StartObserving.func1
+	C:/Users/mpeptenaru/license/backend/read-server/streaming/stream-observer.go:41
+2023-06-05T19:58:51.518+0300	warn	streaming/stream-observer.go:142	could not read persisted latest event id for stream	{"stream": "subs-stream", "error": "open latestId-subs-stream.txt: The system cannot find the file specified."}

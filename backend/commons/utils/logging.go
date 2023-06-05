@@ -1,6 +1,7 @@
 package utils
 
 import (
+	"commons/config"
 	"os"
 
 	"go.uber.org/zap"
@@ -8,31 +9,31 @@ import (
 	"gopkg.in/natefinch/lumberjack.v2"
 )
 
-var logger *zap.Logger
+var Logger *zap.Logger
 
-func InitLogger(debug bool) {
+func InitLogger(cfg *config.Config) {
 
 	logFile := &lumberjack.Logger{
-		Filename:   "log.txt",
-		MaxSize:    512,
-		MaxBackups: 3,
-		MaxAge:     1,
-		Compress:   false,
+		Filename:   cfg.Logging.FileName,
+		MaxSize:    cfg.Logging.MaxSize,
+		MaxBackups: cfg.Logging.MaxBackups,
+		MaxAge:     cfg.Logging.MaxAge,
+		Compress:   cfg.Logging.Compress,
 	}
 
-	encoderConf := zap.NewProductionEncoderConfig()
-	encoderConf.EncodeCaller = zapcore.ShortCallerEncoder
-	encoderConf.EncodeTime = zapcore.ISO8601TimeEncoder
-	encoderConf.LevelKey = "level"
-	encoderConf.MessageKey = "msg"
-	encoderConf.CallerKey = "caller"
-	encoderConf.StacktraceKey = "stacktrace"
+	encoderCfg := zap.NewProductionEncoderConfig()
+	encoderCfg.EncodeCaller = zapcore.ShortCallerEncoder
+	encoderCfg.EncodeTime = zapcore.ISO8601TimeEncoder
+	encoderCfg.LevelKey = "level"
+	encoderCfg.MessageKey = "msg"
+	encoderCfg.CallerKey = "caller"
+	encoderCfg.StacktraceKey = "stacktrace"
 
-	logEncoder := zapcore.NewConsoleEncoder(encoderConf)
+	logEncoder := zapcore.NewConsoleEncoder(encoderCfg)
 
 	logLevel := zap.InfoLevel
 
-	if debug {
+	if cfg.Logging.Debug {
 		logLevel = zap.DebugLevel
 	}
 
@@ -45,9 +46,5 @@ func InitLogger(debug bool) {
 		logLevel,
 	)
 
-	logger = zap.New(core, zap.AddCaller(), zap.AddStacktrace(zapcore.ErrorLevel))
-}
-
-func Logger() *zap.Logger {
-	return logger
+	Logger = zap.New(core, zap.AddCaller(), zap.AddStacktrace(zapcore.ErrorLevel))
 }
