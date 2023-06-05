@@ -1,9 +1,13 @@
 package utils
 
 import (
+	"commons/config"
+
 	"github.com/go-chi/jwtauth/v5"
 )
 
-const jwtSecret = "mysecret"
+var JwtToken *jwtauth.JWTAuth
 
-var JwtToken = jwtauth.New("HS256", []byte(jwtSecret), nil)
+func InitJwtToken(cfg *config.Config) {
+	JwtToken = jwtauth.New("HS256", []byte(cfg.Security.TokenSecret), nil)
+}

@@ -20,7 +20,7 @@ func (e ErrDuplicateEntity) StatusCode() int {
 
 func DuplicateEntity(msg string) error {
 	errMsg := fmt.Sprintf("duplicate entity: %s", msg)
-	utils.Logger().Error(errMsg)
+	utils.Logger.Error(errMsg)
 
 	return &ErrDuplicateEntity{
 		msg: errMsg,

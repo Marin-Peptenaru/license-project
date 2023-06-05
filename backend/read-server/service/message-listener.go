@@ -2,6 +2,7 @@ package service
 
 import (
 	"commons/apperrors"
+	"commons/config"
 	"commons/domain"
 	"commons/dto"
 	"commons/repo"
@@ -55,11 +56,11 @@ func (m msgListener) MessagesForUser(ctx context.Context, userId string) (<-chan
 	return messagesForUser, nil
 }
 
-func NewMessageListener(ctx context.Context, users repo.UserRepository, topics repo.TopicRepository) MessageListener {
-	messageObserver := streaming.NewStreamObserver[domain.Message]("msg-stream", ctx)
+func NewMessageListener(ctx context.Context, users repo.UserRepository, topics repo.TopicRepository, cfg *config.Config) MessageListener {
+	messageObserver := streaming.NewStreamObserver[domain.Message]("msg-stream", ctx, cfg)
 	messageObserver.StartObserving()
 
-	subscriptionObserver := streaming.NewStreamObserver[dto.SubscriptionDTO]("subs-stream", ctx)
+	subscriptionObserver := streaming.NewStreamObserver[dto.SubscriptionDTO]("subs-stream", ctx, cfg)
 	subscriptionObserver.StartObserving()
 
 	return msgListener{

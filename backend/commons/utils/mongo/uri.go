@@ -1,18 +1,29 @@
 package mongo
 
 import (
-	"log"
+	"commons/config"
+	"commons/utils"
+	"fmt"
 
 	"github.com/kamva/mgm/v3"
 	"go.mongodb.org/mongo-driver/mongo/options"
+	"go.uber.org/zap"
 )
 
-const MongoUri = "mongodb+srv://marin_mongo:NapocaMongo10@licensecluster.skrknve.mongodb.net/?retryWrites=true&w=majority"
+const mongoUriFormat = "mongodb+srv://%s:%s@%s/?%s"
 
-func InitDB() {
-	err := mgm.SetDefaultConfig(nil, "mgm_db", options.Client().ApplyURI(MongoUri))
+func InitDB(cfg *config.Config) {
+
+	var uri = fmt.Sprintf(mongoUriFormat,
+		cfg.Database.Username,
+		cfg.Database.Password,
+		cfg.Database.Cluster,
+		cfg.Database.Options,
+	)
+
+	err := mgm.SetDefaultConfig(nil, cfg.Database.Name, options.Client().ApplyURI(uri))
 
 	if err != nil {
-		log.Fatalf("could not create mgm setup: %s\n", err.Error())
+		utils.Logger.Panic("could not init database", zap.Error(err))
 	}
 }

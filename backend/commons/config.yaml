@@ -1,0 +1,29 @@
+server:
+  host: "localhost"
+  port: 8080
+
+database:
+  name: "mgm_db"
+  cluster: "licensecluster.skrknve.mongodb.net"
+  username: "marin_mongo" 
+  password: "NapocaMongo10"
+  options: "retryWrites=true&w=majority"
+
+security:
+  tokensecret: "mysecret"
+
+logging:
+  filename: "log.txt"
+  maxsize: 512
+  maxbackups: 3
+  maxage: 1
+  compress: false
+  debug: false
+
+redis: 
+  protocol: "tcp"
+  url: "localhost:6379"
+  maxidle: 10
+  maxactive: 100
+  count: 100
+  waittime: 200 # ms

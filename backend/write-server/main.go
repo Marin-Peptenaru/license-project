@@ -1,13 +1,16 @@
 package main
 
 import (
+	"commons/config"
 	commonmiddleware "commons/middleware"
 	"commons/repo"
 	"commons/repo/cache"
 	commonservices "commons/service"
 	"commons/utils"
 	"commons/utils/mongo"
+	"fmt"
 	"net/http"
+	"os"
 	"write-server/controller"
 	"write-server/service"
 
@@ -18,12 +21,20 @@ import (
 )
 
 func main() {
-	utils.InitLogger(false)
-	log := utils.Logger()
-	defer log.Sync()
 
-	mongo.InitDB()
-	cache := cache.NewCache()
+	configFilePath := os.Args[1]
+	fmt.Println(configFilePath)
+
+	cfg := config.Load(configFilePath)
+
+	utils.InitLogger(cfg)
+	defer utils.Logger.Sync()
+
+	utils.InitRedisPool(cfg)
+	utils.InitJwtToken(cfg)
+
+	mongo.InitDB(cfg)
+	cache := cache.NewCache(cfg)
 
 	userRepo := repo.NewMgmUserRepository()
 	userService := commonservices.NewUserService(userRepo)
@@ -111,8 +122,6 @@ func main() {
 		topicApi.Get("/subscribed", topicController.SubscribedTopics)
 	})
 
-	log.Error("Some error occurred")
-	log.Info("Test Log 2")
-	log.Fatal(http.ListenAndServe(":8082", r).Error())
+	utils.Logger.Fatal(http.ListenAndServe(":8082", r).Error())
 
 }

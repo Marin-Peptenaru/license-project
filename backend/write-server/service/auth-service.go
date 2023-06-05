@@ -15,8 +15,6 @@ import (
 	"github.com/lestrrat-go/jwx/v2/jwt"
 )
 
-var ErrIncorrectCredentials = apperrors.InvalidCredentials("username/email or password are incorrect")
-
 const authTokenDuration = 1000 * 24 * time.Hour
 const refreshTokenDuration = 2 * time.Hour
 
@@ -94,7 +92,7 @@ func (a authService) Authenticate(username string, email string, password string
 	err := a.users.FindByUsernameOrEmail(a.users.Ctx(), username, email, user)
 
 	if err != nil {
-		return "", "", ErrIncorrectCredentials
+		return "", "", apperrors.InvalidCredentials("username/email or password are incorrect")
 	}
 
 	if user.Pswd.Equals(password) {
@@ -123,7 +121,7 @@ func (a authService) Authenticate(username string, email string, password string
 
 		return authToken, refreshToken, nil
 	} else {
-		return "", "", ErrIncorrectCredentials
+		return "", "", apperrors.InvalidCredentials("username/email or password are incorrect")
 	}
 
 }

@@ -73,11 +73,6 @@ func (a authController) Login(w http.ResponseWriter, r *http.Request) {
 	token, refresh, err := a.auth.Authenticate(userData.Username, userData.Email, userData.Password)
 
 	if err != nil {
-		if err == service.ErrIncorrectCredentials {
-			httputils.RespondWithError(w, err)
-			return
-		}
-
 		httputils.RespondWithError(w, err)
 		return
 	}
