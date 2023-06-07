@@ -10,6 +10,8 @@ database:
   options: "retryWrites=true&w=majority"
 
 security:
+  authtokenduration: 15 # in minutes
+  refreshtokenduration: 120 # in minutes
   tokensecret: "mysecret"
 
 logging:
@@ -27,3 +29,17 @@ redis:
   maxactive: 100
   count: 100
   waittime: 200 # ms
+
+notificiations: 
+  protocol: "ws" # ws or sse
+  ws:
+    timeout: #all in ms
+      handshake: 1000
+      write: 200
+      token: 1000
+  sse:
+    flush: true
+    ping:
+      enabled: true
+      interval: 15 # in s
+    

@@ -2,7 +2,6 @@ package main
 
 import (
 	"commons/config"
-	commonmiddleware "commons/middleware"
 	"commons/repo"
 	"commons/repo/cache"
 	commonservices "commons/service"
@@ -14,10 +13,9 @@ import (
 	"write-server/controller"
 	"write-server/service"
 
-	"github.com/go-chi/chi"
 	"github.com/go-chi/chi/middleware"
+	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/cors"
-	"github.com/go-chi/jwtauth/v5"
 )
 
 func main() {
@@ -40,7 +38,7 @@ func main() {
 	userService := commonservices.NewUserService(userRepo)
 	userController := controller.NewUserController(userService)
 
-	authService := service.NewAuthService(userRepo, cache)
+	authService := service.NewAuthService(userRepo, cache, cfg)
 	authController := controller.NewAuthenticationController(authService)
 
 	topicRepo := repo.NewMgmTopicRepository()
@@ -65,62 +63,10 @@ func main() {
 		ExposedHeaders: []string{"Link"},
 	}))
 
-	jwtVerifier := jwtauth.Verifier(utils.JwtToken)
-
-	r.Route("/api/messages", func(msgApi chi.Router) {
-
-		msgApi.Use(jwtVerifier)
-		msgApi.Use(jwtauth.Authenticator)
-		msgApi.Use(commonmiddleware.TokenMustNotBeRefresh)
-		msgApi.Post("/", msgController.SendMessage)
-	})
-
-	r.Post("/api/register", userController.RegisterUser)
-
-	r.Route("/api/users", func(usersApi chi.Router) {
-		usersApi.Use(jwtVerifier)
-		usersApi.Use(jwtauth.Authenticator)
-		usersApi.Use(commonmiddleware.TokenMustNotBeRefresh)
-
-		usersApi.Get("/", userController.UserDetails)
-		usersApi.Get("/search/{username-search-key}", userController.SearchUsers)
-
-	})
-
-	r.Route("/api/auth", func(authApi chi.Router) {
-
-		authApi.Post("/", authController.Login)
-	})
-
-	r.Route("/api/auth/logout", func(r chi.Router) {
-		r.Use(jwtVerifier)
-		r.Use(jwtauth.Authenticator)
-		r.Use(commonmiddleware.TokenMustBeRefresh)
-
-		r.Put("/", authController.Logout)
-	})
-
-	r.Route("/api/auth/refresh", func(r chi.Router) {
-		r.Use(jwtVerifier)
-		r.Use(jwtauth.Authenticator)
-		r.Use(commonmiddleware.TokenMustBeRefresh)
-
-		r.Post("/", authController.RefreshToken)
-	})
-
-	r.Route("/api/topics", func(topicApi chi.Router) {
-		topicApi.Use(jwtVerifier)
-		topicApi.Use(jwtauth.Authenticator)
-		topicApi.Use(commonmiddleware.TokenMustNotBeRefresh)
-
-		topicApi.Post("/", topicController.CreateTopic)
-		topicApi.Get("/", topicController.FilterTopics)
-		topicApi.Get("/{topic-id}", topicController.TopicDetails)
-
-		topicApi.Put("/subscribe", topicController.SubscribeToTopic)
-		topicApi.Put("/unsubscribe", topicController.UnsubscribeToTopic)
-		topicApi.Get("/subscribed", topicController.SubscribedTopics)
-	})
+	authController.InitEndpoints(r)
+	userController.InitEndpoints(r)
+	topicController.InitEndpoints(r)
+	msgController.InitEndpoints(r)
 
 	utils.Logger.Fatal(http.ListenAndServe(":8082", r).Error())
 

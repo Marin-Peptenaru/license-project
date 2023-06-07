@@ -1,7 +1,9 @@
 package controller
 
 import (
+	c "commons/Controller"
 	"commons/dto"
+	"commons/middleware"
 	commonservices "commons/service"
 	httputils "commons/utils/http-utils"
 	httpfilter "commons/utils/http-utils/http-filter"
@@ -10,11 +12,12 @@ import (
 	"net/http"
 	"write-server/service"
 
-	"github.com/go-chi/chi"
+	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/jwtauth/v5"
 )
 
 type TopicController interface {
+	c.Controller
 	CreateTopic(w http.ResponseWriter, r *http.Request)
 	SubscribedTopics(w http.ResponseWriter, r *http.Request)
 	// CreatedTopics return the topics created by the user calling this endpoint
@@ -30,7 +33,7 @@ type topicController struct {
 	subscriptionNotifier service.SubscriptionNotifier
 }
 
-func (t topicController) FilterTopics(w http.ResponseWriter, r *http.Request) {
+func (t *topicController) FilterTopics(w http.ResponseWriter, r *http.Request) {
 	filter := httpfilter.ExtractTopicFilter(r)
 
 	page := httputils.GetPageInfo(r)
@@ -61,7 +64,7 @@ func (t topicController) TopicDetails(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func (t topicController) SubscribeToTopic(w http.ResponseWriter, r *http.Request) {
+func (t *topicController) SubscribeToTopic(w http.ResponseWriter, r *http.Request) {
 	_, claims, err := jwtauth.FromContext(r.Context())
 
 	if err != nil {
@@ -91,7 +94,7 @@ func (t topicController) SubscribeToTopic(w http.ResponseWriter, r *http.Request
 	w.WriteHeader(http.StatusOK)
 }
 
-func (t topicController) UnsubscribeToTopic(w http.ResponseWriter, r *http.Request) {
+func (t *topicController) UnsubscribeToTopic(w http.ResponseWriter, r *http.Request) {
 	_, claims, err := jwtauth.FromContext(r.Context())
 
 	if err != nil {
@@ -121,7 +124,7 @@ func (t topicController) UnsubscribeToTopic(w http.ResponseWriter, r *http.Reque
 	w.WriteHeader(http.StatusOK)
 }
 
-func (t topicController) CreateTopic(w http.ResponseWriter, r *http.Request) {
+func (t *topicController) CreateTopic(w http.ResponseWriter, r *http.Request) {
 	_, claims, err := jwtauth.FromContext(r.Context())
 
 	if err != nil {
@@ -147,7 +150,7 @@ func (t topicController) CreateTopic(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(newTopic)
 }
 
-func (t topicController) SubscribedTopics(w http.ResponseWriter, r *http.Request) {
+func (t *topicController) SubscribedTopics(w http.ResponseWriter, r *http.Request) {
 	_, claims, err := jwtauth.FromContext(r.Context())
 
 	if err != nil {
@@ -172,6 +175,22 @@ func (t topicController) SubscribedTopics(w http.ResponseWriter, r *http.Request
 
 }
 
+func (t *topicController) InitEndpoints(r chi.Router) {
+	r.Route("/api/topics", func(topicApi chi.Router) {
+		topicApi.Use(middleware.JwtVerifier)
+		topicApi.Use(jwtauth.Authenticator)
+		topicApi.Use(middleware.TokenMustNotBeRefresh)
+
+		topicApi.Post("/", t.CreateTopic)
+		topicApi.Get("/", t.FilterTopics)
+		topicApi.Get("/{topic-id}", t.TopicDetails)
+
+		topicApi.Put("/subscribe", t.SubscribeToTopic)
+		topicApi.Put("/unsubscribe", t.UnsubscribeToTopic)
+		topicApi.Get("/subscribed", t.SubscribedTopics)
+	})
+}
+
 func NewTopicController(topics commonservices.TopicService, users commonservices.UserService) TopicController {
-	return topicController{topics: topics, users: users, subscriptionNotifier: service.NewSubscriptionNotifier()}
+	return &topicController{topics: topics, users: users, subscriptionNotifier: service.NewSubscriptionNotifier()}
 }

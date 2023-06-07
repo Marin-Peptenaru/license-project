@@ -6,13 +6,11 @@ import (
 	"net/http"
 )
 
-func UpgradeToSSEWriter(w http.ResponseWriter) (flusher http.Flusher) {
+func UpgradeToSSEWriter(w http.ResponseWriter) {
 	w.Header().Set("Content-Type", "text/event-stream")
 	w.Header().Set("Cache-Control", "no-cache")
 	w.Header().Set("Connection", "keep-alive")
 	w.Header().Set("Access-Control-Allow-Origin", "*")
-
-	return w.(http.Flusher)
 }
 
 type ServerSentEvent struct {
@@ -20,7 +18,7 @@ type ServerSentEvent struct {
 	event string
 }
 
-func (e ServerSentEvent) Send(w http.ResponseWriter, f http.Flusher) {
+func (e ServerSentEvent) Send(w http.ResponseWriter, flush bool) {
 	if len(e.event) != 0 {
 		fmt.Fprintf(w, "event: %s\n", e.event)
 	}
@@ -28,7 +26,10 @@ func (e ServerSentEvent) Send(w http.ResponseWriter, f http.Flusher) {
 	fmt.Fprintf(w, "data: %s\n", e.data)
 
 	fmt.Fprint(w, "\n")
-	f.Flush() // flush the response writer so that the event is not kept in the response buffer
+
+	if flush {
+		w.(http.Flusher).Flush() // flush the response writer so that the event is not kept in the response buffer
+	}
 }
 
 func Event(data any, event string) (ServerSentEvent, error) {

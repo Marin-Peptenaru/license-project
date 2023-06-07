@@ -21,7 +21,9 @@ type Config struct {
 	} `yaml:"database"`
 
 	Security struct {
-		TokenSecret string `yaml:"tokensecret"`
+		TokenSecret          string `yaml:"tokensecret"`
+		AuthTokenDuration    int    `yaml:"authtokenduration"`
+		RefreshTokenDuration int    `yaml:"refershtokenduration"`
 	} `yaml:"security"`
 
 	Logging struct {
@@ -41,6 +43,26 @@ type Config struct {
 		Count     int    `yaml:"count"`
 		WaitTime  int    `yaml:"waittime"`
 	} `yaml:"redis"`
+
+	Notifications struct {
+		Protocol string `yaml:"protocol"`
+
+		WS struct {
+			Timeout struct {
+				Handshake int `yaml:"handshake"`
+				Write     int `yaml:"write"`
+				Token     int `yaml:"token"`
+			} `yaml:"timeout"`
+		} `yaml:"ws"`
+
+		SSE struct {
+			Flush bool `yaml:"flush"`
+			Ping  struct {
+				Enabled  bool `yaml:"enabled"`
+				Interval int  `yaml:"interval"`
+			} `yaml:"ping"`
+		} `yaml:"sse"`
+	} `yaml:"notifications"`
 }
 
 func Load(configFilePath string) *Config {

@@ -1,8 +1,10 @@
 package middleware
 
 import (
-	"github.com/go-chi/jwtauth/v5"
+	"commons/utils"
 	"net/http"
+
+	"github.com/go-chi/jwtauth/v5"
 )
 
 func checkRefreshTokenClaims(next http.Handler, shouldBeRefresh bool) http.Handler {
@@ -21,6 +23,8 @@ func checkRefreshTokenClaims(next http.Handler, shouldBeRefresh bool) http.Handl
 		}
 	})
 }
+
+var JwtVerifier = jwtauth.Verifier(utils.JwtToken)
 
 func TokenMustBeRefresh(next http.Handler) http.Handler {
 	return checkRefreshTokenClaims(next, true)
