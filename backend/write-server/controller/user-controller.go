@@ -1,7 +1,9 @@
 package controller
 
 import (
+	c "commons/controller"
 	"commons/dto"
+	"commons/middleware"
 	"commons/service"
 	httputils "commons/utils/http-utils"
 	httpfilter "commons/utils/http-utils/http-filter"
@@ -9,10 +11,12 @@ import (
 	"fmt"
 	"net/http"
 
+	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/jwtauth/v5"
 )
 
 type UserController interface {
+	c.Controller
 	RegisterUser(w http.ResponseWriter, r *http.Request)
 	UserDetails(w http.ResponseWriter, r *http.Request)
 	SearchUsers(w http.ResponseWriter, r *http.Request)
@@ -22,7 +26,7 @@ type userController struct {
 	users service.UserService
 }
 
-func (u userController) SearchUsers(w http.ResponseWriter, r *http.Request) {
+func (u *userController) SearchUsers(w http.ResponseWriter, r *http.Request) {
 	page := httputils.GetPageInfo(r)
 	filter := httpfilter.ExtractUserFilter(r)
 
@@ -36,7 +40,7 @@ func (u userController) SearchUsers(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(users)
 }
 
-func (u userController) RegisterUser(w http.ResponseWriter, r *http.Request) {
+func (u *userController) RegisterUser(w http.ResponseWriter, r *http.Request) {
 	userData := dto.UserDTO{}
 
 	err := json.NewDecoder(r.Body).Decode(&userData)
@@ -58,7 +62,7 @@ func (u userController) RegisterUser(w http.ResponseWriter, r *http.Request) {
 
 }
 
-func (u userController) UserDetails(w http.ResponseWriter, r *http.Request) {
+func (u *userController) UserDetails(w http.ResponseWriter, r *http.Request) {
 	_, claims, err := jwtauth.FromContext(r.Context())
 
 	if err != nil {
@@ -78,9 +82,22 @@ func (u userController) UserDetails(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(user)
 
 }
+func (u *userController) InitEndpoints(r chi.Router) {
+	r.Post("/api/register", u.RegisterUser)
 
+	r.Route("/api/users", func(usersApi chi.Router) {
+		usersApi.Use(middleware.JwtVerifier)
+		usersApi.Use(jwtauth.Authenticator)
+		usersApi.Use(middleware.TokenMustNotBeRefresh)
+
+		usersApi.Get("/", u.UserDetails)
+		usersApi.Get("/search/{username-search-key}", u.SearchUsers)
+
+	})
+
+}
 func NewUserController(users service.UserService) UserController {
-	return userController{
+	return &userController{
 		users: users,
 	}
 }

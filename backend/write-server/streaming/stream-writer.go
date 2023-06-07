@@ -26,6 +26,8 @@ func (s streamWriter[T]) Write(key string, entry T) error {
 	}
 
 	conn := s.pool.Get()
+	defer conn.Close()
+
 	_, err = conn.Do("XADD", s.stream, "*", key, string(marshalledEntry))
 
 	utils.Logger.Info("entry written to stream",

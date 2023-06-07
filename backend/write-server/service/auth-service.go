@@ -2,6 +2,7 @@ package service
 
 import (
 	"commons/apperrors"
+	"commons/config"
 	"commons/domain"
 	"commons/repo"
 	"commons/repo/cache"
@@ -15,8 +16,8 @@ import (
 	"github.com/lestrrat-go/jwx/v2/jwt"
 )
 
-const authTokenDuration = 1000 * 24 * time.Hour
-const refreshTokenDuration = 2 * time.Hour
+var authTokenDuration = 15 * 60 * time.Second
+var refreshTokenDuration = 2 * time.Hour
 
 type AuthenticationService interface {
 	Authenticate(username string, email string, password string) (authToken string, refreshToken string, err error)
@@ -44,7 +45,7 @@ func createTokenForUser(userId string, username string, duration time.Duration, 
 	return token, err
 }
 
-func (a authService) EndSession(userId string) error {
+func (a *authService) EndSession(userId string) error {
 
 	err := a.cache.Remove(userId)
 
@@ -55,7 +56,7 @@ func (a authService) EndSession(userId string) error {
 	return nil
 }
 
-func (a authService) RefreshToken(userId string, refreshToken string) (authToken string, err error) {
+func (a *authService) RefreshToken(userId string, refreshToken string) (authToken string, err error) {
 
 	savedToken, err := a.cache.Get(userId)
 
@@ -86,7 +87,7 @@ func (a authService) RefreshToken(userId string, refreshToken string) (authToken
 
 }
 
-func (a authService) Authenticate(username string, email string, password string) (string, string, error) {
+func (a *authService) Authenticate(username string, email string, password string) (string, string, error) {
 
 	user := &domain.User{}
 	err := a.users.FindByUsernameOrEmail(a.users.Ctx(), username, email, user)
@@ -126,6 +127,9 @@ func (a authService) Authenticate(username string, email string, password string
 
 }
 
-func NewAuthService(users repo.UserRepository, cache cache.CacheMap) AuthenticationService {
-	return authService{users: users, cache: cache}
+func NewAuthService(users repo.UserRepository, cache cache.CacheMap, cfg *config.Config) AuthenticationService {
+	authTokenDuration = time.Duration(cfg.Security.AuthTokenDuration) * 60 * time.Second
+	refreshTokenDuration = time.Duration(cfg.Security.RefreshTokenDuration) * 60 * time.Second
+
+	return &authService{users: users, cache: cache}
 }

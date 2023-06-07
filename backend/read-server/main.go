@@ -2,7 +2,6 @@ package main
 
 import (
 	"commons/config"
-	commonmiddleware "commons/middleware"
 	"commons/repo"
 	commonservices "commons/service"
 	"commons/utils"
@@ -16,7 +15,6 @@ import (
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
 	"github.com/go-chi/cors"
-	"github.com/go-chi/jwtauth/v5"
 )
 
 func main() {
@@ -54,19 +52,17 @@ func main() {
 		ExposedHeaders: []string{"Link"},
 	}))
 
-	jwtVerifier := jwtauth.Verifier(utils.JwtToken)
+	msgController.InitEndpoints(r)
 
-	r.Route("/api/messages", func(msgApi chi.Router) {
-		msgApi.Use(jwtVerifier)
-		msgApi.Use(jwtauth.Authenticator)
-		msgApi.Use(commonmiddleware.TokenMustNotBeRefresh)
+	var messageNotificationController controller.MessageNotificationsController
 
-		msgApi.Get("/stream", msgController.ListenForMessagesSSE)
-		msgApi.Get("/", msgController.FilterMessages)
+	if cfg.Notifications.Protocol == "ws" {
+		messageNotificationController = controller.WSMessageNotificationsController(msgListener, msgService, cfg)
+	} else {
+		messageNotificationController = controller.SSEMEssageNotificationController(msgListener, msgService, cfg)
+	}
 
-	})
-
-	r.Get("/api/messages/ws", msgController.ListenForMessagesWS)
+	messageNotificationController.InitEndpoints(r)
 
 	utils.Logger.Fatal(http.ListenAndServe(":8081", r).Error())
 
