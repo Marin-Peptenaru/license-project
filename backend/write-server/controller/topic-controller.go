@@ -1,7 +1,7 @@
 package controller
 
 import (
-	c "commons/Controller"
+	c "commons/controller"
 	"commons/dto"
 	"commons/middleware"
 	commonservices "commons/service"
