@@ -121,12 +121,12 @@ func (m *messageNotificationControllerSSE) ListenForMessages(w http.ResponseWrit
 }
 
 func (m *messageNotificationControllerSSE) InitEndpoints(r chi.Router) {
-	r.Route("/api/messages", func(msgApi chi.Router) {
+	r.Route("/api/messages/stream", func(msgApi chi.Router) {
 		msgApi.Use(middleware.JwtVerifier)
 		msgApi.Use(jwtauth.Authenticator)
 		msgApi.Use(middleware.TokenMustNotBeRefresh)
 
-		msgApi.Get("/stream", m.ListenForMessages)
+		msgApi.Get("/", m.ListenForMessages)
 	})
 
 }

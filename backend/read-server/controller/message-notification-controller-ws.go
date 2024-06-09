@@ -67,9 +67,11 @@ func (m *messageNotificationControllerWS) writeToWs(conn *websocket.Conn, msg an
 
 func (m *messageNotificationControllerWS) ListenForMessages(w http.ResponseWriter, r *http.Request) {
 	token := r.URL.Query().Get("auth")
+
 	parsedToken, err := jwtauth.VerifyToken(utils.JwtToken, token)
 
 	if err != nil {
+		utils.Logger.Error("error parsing token ", zap.Error(err))
 		http.Error(w, "invalid token", http.StatusUnauthorized)
 		return
 	}
@@ -126,6 +128,7 @@ func (m *messageNotificationControllerWS) ListenForMessages(w http.ResponseWrite
 
 			tokenExpired, cancel = context.WithDeadline(context.Background(), parsedToken.Expiration())
 		case message := <-messagesForUser:
+			utils.Logger.Info("Received message", zap.Any("message", message))
 			m.writeToWs(conn, message)
 		}
 	}
@@ -135,7 +138,7 @@ func (m *messageNotificationControllerWS) ListenForMessages(w http.ResponseWrite
 }
 
 func (m messageNotificationControllerWS) InitEndpoints(r chi.Router) {
-	r.Get("/api/messages/stream", m.ListenForMessages)
+	r.Get("/api/messages/stream/", m.ListenForMessages)
 }
 
 func WSMessageNotificationsController(listener service.MessageListener, msgService commonservices.MessageService, cfg *config.Config) MessageNotificationsController {

@@ -146,6 +146,14 @@ func (t *topicController) CreateTopic(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	user, err := t.users.GetUser(claims["user_id"].(string))
+
+	if err != nil {
+		httputils.RespondWithError(w, err)
+	}
+
+	t.subscriptionNotifier.Notify(*user, newTopic.Title)
+
 	w.WriteHeader(http.StatusOK)
 	json.NewEncoder(w).Encode(newTopic)
 }

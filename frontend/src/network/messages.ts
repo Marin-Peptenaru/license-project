@@ -5,18 +5,17 @@ import { messages, messageSend, messageStream } from "../utils/endpoints";
 import { tokenAuthHeader } from "../utils/headers";
 import {EventSourcePolyfill} from "event-source-polyfill";
 import type { SendMessageDTO } from "../dtos/SendMessageDTO";
+import { MessageFilter } from "../dtos/filters/message-filter";
 
 
 export namespace MessagesAPI {
 
-    export async function fetchMessages(topicTitle: string, after: Date, token: string): Promise<Message[]> {
-        return axios.get(messages + `/${topicTitle}`, {
+    export async function fetchMessages(filter: MessageFilter, token: string): Promise<Message[]> {
+        return axios.get(messages, {
             headers: {
                 ...tokenAuthHeader(token),
             },
-            params: {
-                after: formatDate(after)
-            }
+            params: filter
         }).then((res) => {
             return res.data as Message[]
         }).catch((err) => {
@@ -34,7 +33,7 @@ export namespace MessagesAPI {
     }
 
     export async function listenForMessagesWS(token: string){
-        return  new WebSocket("ws://localhost:8081/api/messages/ws?auth="+token,)
+        return new WebSocket("ws://localhost:8081/api/messages/stream/?auth="+token,)
     }
 
     export async function sendMessage(messageData: SendMessageDTO, token: string){

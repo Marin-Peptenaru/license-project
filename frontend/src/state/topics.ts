@@ -6,7 +6,7 @@ import type { SubscribeDTO } from "../dtos/SubscribeDTO";
 import { TopicsApi } from "../network/topic";
 import {fetchUserDetails} from "../state/user"
 import { refreshEventSource } from "./messages";
-import { getToken, token } from "./auth";
+import { getToken } from "./auth";
 
 const _subscribedTopics = writable([] as Topic[])
 const _createdTopics = writable([] as Topic[])

@@ -42,3 +42,267 @@ main.main
 	C:/Users/mpeptenaru/license/backend/write-server/main.go:34
 runtime.main
 	C:/Program Files/src/runtime/proc.go:250
+2024-05-12T21:47:03.122+0300	panic	mongo/uri.go:27	could not init database	{"error": "error parsing uri: lookup _mongodb._tcp.licensecluster.skrknve.mongodb.net on 127.0.0.53:53: read udp 127.0.0.1:57456->127.0.0.53:53: i/o timeout"}
+commons/utils/mongo.InitDB
+	/home/marin/projects/license-project/backend/commons/utils/mongo/uri.go:27
+main.main
+	/home/marin/projects/license-project/backend/write-server/main.go:34
+runtime.main
+	/home/marin/.go/src/runtime/proc.go:271
+2024-06-06T12:44:59.395+0300	fatal	write-server/main.go:71	listen tcp :8082: bind: address already in use
+main.main
+	/home/marin/projects/license-project/backend/write-server/main.go:71
+runtime.main
+	/home/marin/.go/src/runtime/proc.go:271
+2024-06-06T14:54:52.414+0300	error	apperrors/invalid-credentials.go:23	invalid credentials: password is too weak
+commons/apperrors.InvalidCredentials
+	/home/marin/projects/license-project/backend/commons/apperrors/invalid-credentials.go:23
+commons/validation.ValidatePassword
+	/home/marin/projects/license-project/backend/commons/validation/user-validator.go:28
+commons/service.userServ.RegisterUser
+	/home/marin/projects/license-project/backend/commons/service/user-service.go:65
+write-server/controller.(*userController).RegisterUser
+	/home/marin/projects/license-project/backend/write-server/controller/user-controller.go:54
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).routeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:444
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/cors.(*Cors).Handler-fm.(*Cors).Handler.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/cors@v1.2.1/cors.go:228
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/middleware.Recoverer.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/chi@v1.5.4/middleware/recoverer.go:37
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/middleware.init.0.RequestLogger.func1.1
+	/home/marin/go/pkg/mod/github.com/go-chi/chi@v1.5.4/middleware/logger.go:57
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).ServeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:90
+net/http.serverHandler.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:3137
+net/http.(*conn).serve
+	/home/marin/.go/src/net/http/server.go:2039
+2024-06-06T14:55:11.464+0300	error	apperrors/invalid-credentials.go:23	invalid credentials: password is too weak
+commons/apperrors.InvalidCredentials
+	/home/marin/projects/license-project/backend/commons/apperrors/invalid-credentials.go:23
+commons/validation.ValidatePassword
+	/home/marin/projects/license-project/backend/commons/validation/user-validator.go:28
+commons/service.userServ.RegisterUser
+	/home/marin/projects/license-project/backend/commons/service/user-service.go:65
+write-server/controller.(*userController).RegisterUser
+	/home/marin/projects/license-project/backend/write-server/controller/user-controller.go:54
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).routeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:444
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/cors.(*Cors).Handler-fm.(*Cors).Handler.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/cors@v1.2.1/cors.go:228
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/middleware.Recoverer.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/chi@v1.5.4/middleware/recoverer.go:37
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/middleware.init.0.RequestLogger.func1.1
+	/home/marin/go/pkg/mod/github.com/go-chi/chi@v1.5.4/middleware/logger.go:57
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).ServeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:90
+net/http.serverHandler.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:3137
+net/http.(*conn).serve
+	/home/marin/.go/src/net/http/server.go:2039
+2024-06-09T00:17:35.146+0300	error	apperrors/invalid-credentials.go:23	invalid credentials: username/email or password are incorrect
+commons/apperrors.InvalidCredentials
+	/home/marin/projects/license-project/backend/commons/apperrors/invalid-credentials.go:23
+write-server/service.(*authService).Authenticate
+	/home/marin/projects/license-project/backend/write-server/service/auth-service.go:129
+write-server/controller.(*authController).Login
+	/home/marin/projects/license-project/backend/write-server/controller/auth-controller.go:77
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).routeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:444
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).ServeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:73
+github.com/go-chi/chi/v5.(*Mux).Mount.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:316
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).routeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:444
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/cors.(*Cors).Handler-fm.(*Cors).Handler.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/cors@v1.2.1/cors.go:228
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/middleware.Recoverer.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/chi@v1.5.4/middleware/recoverer.go:37
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/middleware.init.0.RequestLogger.func1.1
+	/home/marin/go/pkg/mod/github.com/go-chi/chi@v1.5.4/middleware/logger.go:57
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).ServeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:90
+net/http.serverHandler.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:3137
+net/http.(*conn).serve
+	/home/marin/.go/src/net/http/server.go:2039
+2024-06-09T19:29:28.579+0300	error	apperrors/invalid-credentials.go:23	invalid credentials: only the admin of a topic can send messages
+commons/apperrors.InvalidCredentials
+	/home/marin/projects/license-project/backend/commons/apperrors/invalid-credentials.go:23
+commons/service.(*msgService).SaveMessage.func1
+	/home/marin/projects/license-project/backend/commons/service/message-service.go:70
+commons/service.(*msgService).SaveMessage.Do.func2
+	/home/marin/projects/license-project/backend/commons/repo/transaction/transaction.go:40
+github.com/kamva/mgm/v3.TransactionWithClient.func1
+	/home/marin/go/pkg/mod/github.com/kamva/mgm/v3@v3.5.0/transaction.go:35
+go.mongodb.org/mongo-driver/mongo.WithSession
+	/home/marin/go/pkg/mod/go.mongodb.org/mongo-driver@v1.11.2/mongo/client.go:736
+github.com/kamva/mgm/v3.TransactionWithClient
+	/home/marin/go/pkg/mod/github.com/kamva/mgm/v3@v3.5.0/transaction.go:38
+github.com/kamva/mgm/v3.Transaction
+	/home/marin/go/pkg/mod/github.com/kamva/mgm/v3@v3.5.0/transaction.go:13
+commons/repo/transaction.Do
+	/home/marin/projects/license-project/backend/commons/repo/transaction/transaction.go:34
+commons/service.(*msgService).SaveMessage
+	/home/marin/projects/license-project/backend/commons/service/message-service.go:57
+write-server/controller.(*msgController).SendMessage
+	/home/marin/projects/license-project/backend/write-server/controller/message-controller.go:46
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).routeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:444
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+commons/middleware.TokenMustNotBeRefresh.checkRefreshTokenClaims.func1
+	/home/marin/projects/license-project/backend/commons/middleware/token.go:19
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/jwtauth/v5.Authenticator.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/jwtauth/v5@v5.1.0/jwtauth.go:177
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+commons/utils.InitJwtToken.Verifier.Verify.func1.1
+	/home/marin/go/pkg/mod/github.com/go-chi/jwtauth/v5@v5.1.0/jwtauth.go:73
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).ServeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:73
+github.com/go-chi/chi/v5.(*Mux).Mount.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:316
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).routeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:444
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/cors.(*Cors).Handler-fm.(*Cors).Handler.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/cors@v1.2.1/cors.go:228
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/middleware.Recoverer.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/chi@v1.5.4/middleware/recoverer.go:37
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/middleware.init.0.RequestLogger.func1.1
+	/home/marin/go/pkg/mod/github.com/go-chi/chi@v1.5.4/middleware/logger.go:57
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).ServeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:90
+net/http.serverHandler.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:3137
+net/http.(*conn).serve
+	/home/marin/.go/src/net/http/server.go:2039
+2024-06-09T19:30:18.549+0300	error	apperrors/invalid-credentials.go:23	invalid credentials: only the admin of a topic can send messages
+commons/apperrors.InvalidCredentials
+	/home/marin/projects/license-project/backend/commons/apperrors/invalid-credentials.go:23
+commons/service.(*msgService).SaveMessage.func1
+	/home/marin/projects/license-project/backend/commons/service/message-service.go:70
+commons/service.(*msgService).SaveMessage.Do.func2
+	/home/marin/projects/license-project/backend/commons/repo/transaction/transaction.go:40
+github.com/kamva/mgm/v3.TransactionWithClient.func1
+	/home/marin/go/pkg/mod/github.com/kamva/mgm/v3@v3.5.0/transaction.go:35
+go.mongodb.org/mongo-driver/mongo.WithSession
+	/home/marin/go/pkg/mod/go.mongodb.org/mongo-driver@v1.11.2/mongo/client.go:736
+github.com/kamva/mgm/v3.TransactionWithClient
+	/home/marin/go/pkg/mod/github.com/kamva/mgm/v3@v3.5.0/transaction.go:38
+github.com/kamva/mgm/v3.Transaction
+	/home/marin/go/pkg/mod/github.com/kamva/mgm/v3@v3.5.0/transaction.go:13
+commons/repo/transaction.Do
+	/home/marin/projects/license-project/backend/commons/repo/transaction/transaction.go:34
+commons/service.(*msgService).SaveMessage
+	/home/marin/projects/license-project/backend/commons/service/message-service.go:57
+write-server/controller.(*msgController).SendMessage
+	/home/marin/projects/license-project/backend/write-server/controller/message-controller.go:46
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).routeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:444
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+commons/middleware.TokenMustNotBeRefresh.checkRefreshTokenClaims.func1
+	/home/marin/projects/license-project/backend/commons/middleware/token.go:19
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/jwtauth/v5.Authenticator.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/jwtauth/v5@v5.1.0/jwtauth.go:177
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+commons/utils.InitJwtToken.Verifier.Verify.func1.1
+	/home/marin/go/pkg/mod/github.com/go-chi/jwtauth/v5@v5.1.0/jwtauth.go:73
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).ServeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:73
+github.com/go-chi/chi/v5.(*Mux).Mount.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:316
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).routeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:444
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/cors.(*Cors).Handler-fm.(*Cors).Handler.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/cors@v1.2.1/cors.go:228
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/middleware.Recoverer.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/chi@v1.5.4/middleware/recoverer.go:37
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/middleware.init.0.RequestLogger.func1.1
+	/home/marin/go/pkg/mod/github.com/go-chi/chi@v1.5.4/middleware/logger.go:57
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).ServeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:90
+net/http.serverHandler.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:3137
+net/http.(*conn).serve
+	/home/marin/.go/src/net/http/server.go:2039
+2024-06-09T19:32:25.786+0300	info	streaming/stream-writer.go:33	entry written to stream	{"stream": "msg-stream", "entry": "{\"id\":\"6665d9194783e70cb00c558a\",\"created_at\":\"2024-06-09T16:32:25.662707665Z\",\"updated_at\":\"2024-06-09T16:32:25.662708898Z\",\"content\":\"Test message lorem ipsum\",\"from\":\"marin\",\"to\":\"Test Topic\",\"timestamp\":1717950745}"}
+2024-06-09T19:32:45.063+0300	info	streaming/stream-writer.go:33	entry written to stream	{"stream": "msg-stream", "entry": "{\"id\":\"6665d92c4783e70cb00c558b\",\"created_at\":\"2024-06-09T16:32:44.981279422Z\",\"updated_at\":\"2024-06-09T16:32:44.981279923Z\",\"content\":\"Test message lorem ipsum\",\"from\":\"marin\",\"to\":\"Test Topic\",\"timestamp\":1717950764}"}
+2024-06-09T19:34:34.884+0300	info	streaming/stream-writer.go:33	entry written to stream	{"stream": "msg-stream", "entry": "{\"id\":\"6665d99a4783e70cb00c558c\",\"created_at\":\"2024-06-09T16:34:34.799604622Z\",\"updated_at\":\"2024-06-09T16:34:34.799606195Z\",\"content\":\"Some test message\",\"from\":\"marin\",\"to\":\"Test Topic\",\"timestamp\":1717950874}"}
+2024-06-09T19:34:35.581+0300	info	streaming/stream-writer.go:33	entry written to stream	{"stream": "msg-stream", "entry": "{\"id\":\"6665d99b4783e70cb00c558d\",\"created_at\":\"2024-06-09T16:34:35.501133022Z\",\"updated_at\":\"2024-06-09T16:34:35.501133974Z\",\"content\":\"Some test message\",\"from\":\"marin\",\"to\":\"Test Topic\",\"timestamp\":1717950875}"}
+2024-06-09T19:34:35.895+0300	info	streaming/stream-writer.go:33	entry written to stream	{"stream": "msg-stream", "entry": "{\"id\":\"6665d99b4783e70cb00c558e\",\"created_at\":\"2024-06-09T16:34:35.815610128Z\",\"updated_at\":\"2024-06-09T16:34:35.815611851Z\",\"content\":\"Some test message\",\"from\":\"marin\",\"to\":\"Test Topic\",\"timestamp\":1717950875}"}
+2024-06-09T19:35:56.256+0300	info	streaming/stream-writer.go:33	entry written to stream	{"stream": "msg-stream", "entry": "{\"id\":\"6665d9ec4783e70cb00c5590\",\"created_at\":\"2024-06-09T16:35:56.176366069Z\",\"updated_at\":\"2024-06-09T16:35:56.176368013Z\",\"content\":\"Test message\",\"from\":\"marin\",\"to\":\"Test Topic 2\",\"timestamp\":1717950956}"}
+2024-06-09T19:41:20.603+0300	info	streaming/stream-writer.go:33	entry written to stream	{"stream": "msg-stream", "entry": "{\"id\":\"6665db304783e70cb00c5592\",\"created_at\":\"2024-06-09T16:41:20.52518798Z\",\"updated_at\":\"2024-06-09T16:41:20.525188672Z\",\"content\":\"Test message\",\"from\":\"marin\",\"to\":\"Test Topic 3\",\"timestamp\":1717951280}"}
+2024-06-09T19:49:55.340+0300	info	streaming/stream-writer.go:33	entry written to stream	{"stream": "msg-stream", "entry": "{\"id\":\"6665dd334783e70cb00c5594\",\"created_at\":\"2024-06-09T16:49:55.25726437Z\",\"updated_at\":\"2024-06-09T16:49:55.257265281Z\",\"content\":\"Test message\",\"from\":\"marin\",\"to\":\"Test Topic 4\",\"timestamp\":1717951795}"}
+2024-06-09T20:03:55.217+0300	info	streaming/stream-writer.go:33	entry written to stream	{"stream": "msg-stream", "entry": "{\"id\":\"6665e07b49a65a35c3dc45a6\",\"created_at\":\"2024-06-09T17:03:55.13641513Z\",\"updated_at\":\"2024-06-09T17:03:55.136416593Z\",\"content\":\"Test message 111\",\"from\":\"marin\",\"to\":\"Test Topic Again\",\"timestamp\":1717952635}"}
+2024-06-09T20:09:43.273+0300	info	streaming/stream-writer.go:33	entry written to stream	{"stream": "subs-stream", "entry": "{\"Username\":\"marin\",\"TopicTitle\":\"Test Topic 5\",\"Status\":0}"}
+2024-06-09T20:09:48.116+0300	info	streaming/stream-writer.go:33	entry written to stream	{"stream": "msg-stream", "entry": "{\"id\":\"6665e1dcdf00bd946fa50e2e\",\"created_at\":\"2024-06-09T17:09:48.035547535Z\",\"updated_at\":\"2024-06-09T17:09:48.035548877Z\",\"content\":\"Test Message\",\"from\":\"marin\",\"to\":\"Test Topic 5\",\"timestamp\":1717952988}"}

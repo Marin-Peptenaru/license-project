@@ -100,6 +100,8 @@ func (a *authService) Authenticate(username string, email string, password strin
 
 		authToken, err := createTokenForUser(user.ID(), user.Username, authTokenDuration, false)
 
+		fmt.Println("Auth token duration: ", authTokenDuration, authTokenDuration.Milliseconds())
+
 		if err != nil {
 			return "", "", fmt.Errorf("could not generate auth token: %s", err.Error())
 		}
@@ -116,6 +118,8 @@ func (a *authService) Authenticate(username string, email string, password strin
 
 		err = a.cache.SetWithExpire(user.ID(), string(marshalledToken), refreshTokenDuration)
 
+		fmt.Println("Refresh token duration: ", refreshTokenDuration, refreshTokenDuration.Milliseconds())
+
 		if err != nil {
 			return "", "", fmt.Errorf("could not update user session: %s", err.Error())
 		}
@@ -128,8 +132,8 @@ func (a *authService) Authenticate(username string, email string, password strin
 }
 
 func NewAuthService(users repo.UserRepository, cache cache.CacheMap, cfg *config.Config) AuthenticationService {
-	authTokenDuration = time.Duration(cfg.Security.AuthTokenDuration) * 60 * time.Second
-	refreshTokenDuration = time.Duration(cfg.Security.RefreshTokenDuration) * 60 * time.Second
+	authTokenDuration = time.Duration(cfg.Security.AuthTokenDuration) * time.Minute
+	refreshTokenDuration = time.Duration(cfg.Security.RefreshTokenDuration) * time.Minute
 
 	return &authService{users: users, cache: cache}
 }

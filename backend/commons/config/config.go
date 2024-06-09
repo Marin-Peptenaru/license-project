@@ -23,7 +23,7 @@ type Config struct {
 	Security struct {
 		TokenSecret          string `yaml:"tokensecret"`
 		AuthTokenDuration    int    `yaml:"authtokenduration"`
-		RefreshTokenDuration int    `yaml:"refershtokenduration"`
+		RefreshTokenDuration int    `yaml:"refreshtokenduration"`
 	} `yaml:"security"`
 
 	Logging struct {

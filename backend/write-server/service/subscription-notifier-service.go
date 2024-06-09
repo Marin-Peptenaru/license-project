@@ -23,7 +23,7 @@ func (s subscriptionNotifier) Notify(user domain.User, topicTitle string) {
 		TopicTitle: topicTitle,
 	}
 
-	if user.Topics[topicTitle] {
+	if user.Topics[topicTitle] || user.CreatedTopics[topicTitle] {
 		notification.Status = dto.Subscribed
 	} else {
 		notification.Status = dto.Unsubscirbed

@@ -91,7 +91,7 @@ func (u *userController) InitEndpoints(r chi.Router) {
 		usersApi.Use(middleware.TokenMustNotBeRefresh)
 
 		usersApi.Get("/", u.UserDetails)
-		usersApi.Get("/search/{username-search-key}", u.SearchUsers)
+		usersApi.Get("/search/", u.SearchUsers)
 
 	})
 

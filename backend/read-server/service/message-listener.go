@@ -6,9 +6,12 @@ import (
 	"commons/domain"
 	"commons/dto"
 	"commons/repo"
+	"commons/utils"
 	"context"
 	"read-server/streaming"
 	"read-server/subscription"
+
+	"go.uber.org/zap"
 )
 
 type MessageListener interface {
@@ -46,6 +49,7 @@ func (m msgListener) MessagesForUser(ctx context.Context, userId string) (<-chan
 				cancel()
 				cancelled = true
 			case message := <-messages:
+				utils.Logger.Info("Is message subscribed", zap.Any("message", message), zap.Any("user", user), zap.Any("subscribed", userSubsStatus.IsSubscribed(message.To)))
 				if userSubsStatus.IsSubscribed(message.To) {
 					messagesForUser <- message
 				}

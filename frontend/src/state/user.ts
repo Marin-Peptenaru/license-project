@@ -3,6 +3,7 @@ import { User } from "../domain/user";
 import { secureStorage } from "../utils/storage";
 import { UserApi } from "../network/user";
 import { getToken, token } from "./auth";
+import { UserFilter } from "../dtos/filters/user-filter";
 
 const _user = writable(new User(), (set) => {
     const userData = secureStorage.get("user-data")
@@ -23,12 +24,12 @@ const fetchUserDetails = async () => {
     })
 }
 
-const searchUsersByUsername = async (usernameSearchKey: string) => {
-    return UserApi.searchUsersByUsername(usernameSearchKey, await getToken())
+const searchUsers = async (filter: UserFilter) => {
+    return UserApi.searchUsers(filter, await getToken())
 }
 
 export {
     user,
     fetchUserDetails,
-    searchUsersByUsername,
+    searchUsers as searchUsersByUsername,
 }

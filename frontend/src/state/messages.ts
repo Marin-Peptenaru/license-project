@@ -7,6 +7,7 @@ import { viewedTopic } from "./topics";
 import { tokenExpired } from "./auth";
 import type { SendMessageDTO } from "../dtos/SendMessageDTO";
 import {getToken} from "../state/auth"
+import { MessageFilter } from "../dtos/filters/message-filter";
 
 const _messages = writable([] as Message[])
 
@@ -19,7 +20,7 @@ let messageWS: WebSocket
 
 
 const fetchMessages = async (topicTitle: string, after: Date = new Date(0)) => {
-    MessagesAPI.fetchMessages(topicTitle, after, await getToken()).then((fetchedMessages) => {
+    MessagesAPI.fetchMessages({to: topicTitle, after: after} as MessageFilter, await getToken()).then((fetchedMessages) => {
         _messages.set(fetchedMessages)
     })
 }

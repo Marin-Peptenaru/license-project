@@ -39,7 +39,7 @@ const login = async (username: string, password: string) => {
         secureStorage.set("token", tokens.auth)
         secureStorage.set("refresh", tokens.refresh)
         secureStorage.set("username", username)
-        listenForMessages()
+        //listenForMessages()
         listenForMessagesWS()
         navigate("/", {replace: true})
 

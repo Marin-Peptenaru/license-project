@@ -4,14 +4,17 @@ import type { NewTopicDTO } from "../dtos/NewTopicDTO";
 import type { SubscribeDTO } from "../dtos/SubscribeDTO";
 import { topics, subscribe, unsubscribe} from "../utils/endpoints";
 import { tokenAuthHeader } from "../utils/headers";
+import { TopicFilter } from "../dtos/filters/topic-filter";
+import { user } from "../state/auth";
 
 export namespace TopicsApi {
 
-    async function getTopics(url: string, token: string): Promise<Topic[]> {
-        return axios.get(url, {
+    async function getTopics(filter: TopicFilter, token: string): Promise<Topic[]> {
+        return axios.get(topics, {
             headers: {
                 ...tokenAuthHeader(token),
-            }
+            },
+            params: filter
         }).then((res) => {
             return res.data as Topic[]
         }).catch((err) => {
@@ -65,7 +68,7 @@ export namespace TopicsApi {
                 ...tokenAuthHeader(token),
             },
             params: {
-                search: searchKey
+                title: searchKey
             }
         }).then((res) => {
             return res.data as Topic[]
@@ -76,15 +79,26 @@ export namespace TopicsApi {
     }
 
     export async function getSubscribedTopics(token: string): Promise<Topic[]> {
-        return getTopics(topics + "/subscribed", token)
+        return axios.get(topics + '/subscribded/', {
+            headers: {
+                ...tokenAuthHeader(token),
+            },
+        }).then((res) => {
+            return res.data as Topic[]
+        }).catch((err) => {
+            console.log(err)
+            return []
+        }) 
     }
 
     export async function getCreatedTopics(token: string): Promise<Topic[]> {
-        return getTopics(topics, token)
+        return getTopics({} as TopicFilter, token)
     }
 
     export async function getTopicsCreatedBy(username: string, token: string): Promise<Topic[]> {
-        return getTopics(topics + `/of/${username}`, token)
+        return getTopics({
+            admin: username
+        } as TopicFilter, token)
     }
 
     export async function getTopicDetails(topicId: string, token: string): Promise<Topic> {

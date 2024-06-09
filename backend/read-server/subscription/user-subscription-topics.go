@@ -3,10 +3,13 @@ package subscription
 import (
 	"commons/domain"
 	"commons/dto"
+	"commons/utils"
 	"context"
 	"fmt"
 	"read-server/streaming"
 	"sync"
+
+	"go.uber.org/zap"
 )
 
 type UserSubscriptionsObserver interface {
@@ -78,6 +81,7 @@ func ObserveUserSubscriptions(user domain.User, subs streaming.StreamObserver[dt
 				cancel()
 				cancelled = true
 			case subscription := <-subscriptions:
+				utils.Logger.Info("Subscription and user being evaluated", zap.Any("user", user), zap.Any("subscription", subscription))
 				if subscription.ConcernsUser(user) {
 					topicsObserver.handleSubscription(subscription)
 				}

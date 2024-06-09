@@ -4,10 +4,10 @@ server:
 
 database:
   name: "mgm_db"
-  cluster: "licensecluster.skrknve.mongodb.net"
+  cluster: "licensecluster.o32k3cx.mongodb.net"
   username: "marin_mongo" 
   password: "NapocaMongo10"
-  options: "retryWrites=true&w=majority"
+  options: "retryWrites=true&w=majority&appName=LicenseCluster"
 
 security:
   authtokenduration: 15 # in minutes
@@ -30,7 +30,7 @@ redis:
   count: 100
   waittime: 200 # ms
 
-notificiations: 
+notifications: 
   protocol: "ws" # ws or sse
   ws:
     timeout: #all in ms

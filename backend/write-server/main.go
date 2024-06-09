@@ -68,6 +68,8 @@ func main() {
 	topicController.InitEndpoints(r)
 	msgController.InitEndpoints(r)
 
+	fmt.Println(utils.JwtToken)
+
 	utils.Logger.Fatal(http.ListenAndServe(":8082", r).Error())
 
 }

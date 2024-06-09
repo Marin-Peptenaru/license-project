@@ -34,7 +34,7 @@ func (m *msgController) SendMessage(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	senderId := claims["user_id"].(string)
+	sender := claims["user"].(string)
 
 	msg := dto.MessageDTO{}
 	err = json.NewDecoder(r.Body).Decode(&msg)
@@ -43,7 +43,7 @@ func (m *msgController) SendMessage(w http.ResponseWriter, r *http.Request) {
 		httputils.RespondWithError(w, err)
 	} else {
 
-		message, err := m.msgService.SaveMessage(senderId, msg.Topic, msg.Content)
+		message, err := m.msgService.SaveMessage(sender, msg.Topic, msg.Content)
 
 		if err != nil {
 			httputils.RespondWithError(w, err)

@@ -11,3 +11,278 @@ read-server/streaming.(*streamObserver[...]).checkForNewMessages
 read-server/streaming.streamObserver[...].StartObserving.func1
 	C:/Users/mpeptenaru/license/backend/read-server/streaming/stream-observer.go:41
 2023-06-05T19:58:51.518+0300	warn	streaming/stream-observer.go:142	could not read persisted latest event id for stream	{"stream": "subs-stream", "error": "open latestId-subs-stream.txt: The system cannot find the file specified."}
+2024-06-06T12:47:38.493+0300	warn	streaming/stream-observer.go:143	could not read persisted latest event id for stream	{"stream": "subs-stream", "error": "open latestId-subs-stream.txt: no such file or directory"}
+2024-06-06T13:04:19.419+0300	error	streaming/stream-observer.go:75	error reading from stream	{"error": "ERR Invalid stream ID specified as stream command argument"}
+read-server/streaming.(*streamObserver[...]).checkForNewMessages
+	/home/marin/projects/license-project/backend/read-server/streaming/stream-observer.go:75
+read-server/streaming.streamObserver[...].StartObserving.func1
+	/home/marin/projects/license-project/backend/read-server/streaming/stream-observer.go:44
+2024-06-08T17:23:30.041+0300	info	controller/message-notification-controller-sse.go:120	closing connection for user	{"userId": "6661a80e1784b2037bf7806d"}
+2024-06-08T17:29:23.496+0300	info	controller/message-notification-controller-sse.go:120	closing connection for user	{"userId": "6661a80e1784b2037bf7806d"}
+2024-06-08T17:29:27.477+0300	info	controller/message-notification-controller-sse.go:120	closing connection for user	{"userId": "6661a80e1784b2037bf7806d"}
+2024-06-08T17:30:27.316+0300	info	controller/message-notification-controller-sse.go:120	closing connection for user	{"userId": "6661a80e1784b2037bf7806d"}
+2024-06-08T17:31:13.317+0300	info	controller/message-notification-controller-sse.go:120	closing connection for user	{"userId": "6661a80e1784b2037bf7806d"}
+2024-06-08T17:32:00.319+0300	info	controller/message-notification-controller-sse.go:120	closing connection for user	{"userId": "6661a80e1784b2037bf7806d"}
+2024-06-08T17:32:49.320+0300	info	controller/message-notification-controller-sse.go:120	closing connection for user	{"userId": "6661a80e1784b2037bf7806d"}
+2024-06-08T17:33:44.399+0300	error	controller/message-notification-controller-ws.go:76	error parsing token 	{"error": "token is unauthorized"}
+read-server/controller.(*messageNotificationControllerWS).ListenForMessages
+	/home/marin/projects/license-project/backend/read-server/controller/message-notification-controller-ws.go:76
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).routeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:444
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/cors.(*Cors).Handler-fm.(*Cors).Handler.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/cors@v1.2.1/cors.go:228
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5/middleware.Recoverer.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/middleware/recoverer.go:43
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5/middleware.init.0.RequestLogger.func1.1
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/middleware/logger.go:54
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).ServeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:90
+net/http.serverHandler.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:3137
+net/http.(*conn).serve
+	/home/marin/.go/src/net/http/server.go:2039
+2024-06-08T17:51:32.234+0300	error	controller/message-notification-controller-ws.go:76	error parsing token 	{"error": "token is unauthorized"}
+read-server/controller.(*messageNotificationControllerWS).ListenForMessages
+	/home/marin/projects/license-project/backend/read-server/controller/message-notification-controller-ws.go:76
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).routeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:444
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/cors.(*Cors).Handler-fm.(*Cors).Handler.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/cors@v1.2.1/cors.go:228
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5/middleware.Recoverer.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/middleware/recoverer.go:43
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5/middleware.init.0.RequestLogger.func1.1
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/middleware/logger.go:54
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).ServeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:90
+net/http.serverHandler.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:3137
+net/http.(*conn).serve
+	/home/marin/.go/src/net/http/server.go:2039
+2024-06-08T17:52:18.650+0300	error	controller/message-notification-controller-ws.go:76	error parsing token 	{"error": "token is unauthorized"}
+read-server/controller.(*messageNotificationControllerWS).ListenForMessages
+	/home/marin/projects/license-project/backend/read-server/controller/message-notification-controller-ws.go:76
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).routeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:444
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/cors.(*Cors).Handler-fm.(*Cors).Handler.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/cors@v1.2.1/cors.go:228
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5/middleware.Recoverer.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/middleware/recoverer.go:43
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5/middleware.init.0.RequestLogger.func1.1
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/middleware/logger.go:54
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).ServeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:90
+net/http.serverHandler.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:3137
+net/http.(*conn).serve
+	/home/marin/.go/src/net/http/server.go:2039
+2024-06-09T00:11:29.153+0300	error	controller/message-notification-controller-ws.go:77	error parsing token 	{"error": "token is unauthorized"}
+read-server/controller.(*messageNotificationControllerWS).ListenForMessages
+	/home/marin/projects/license-project/backend/read-server/controller/message-notification-controller-ws.go:77
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).routeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:444
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/cors.(*Cors).Handler-fm.(*Cors).Handler.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/cors@v1.2.1/cors.go:228
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5/middleware.Recoverer.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/middleware/recoverer.go:43
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5/middleware.init.0.RequestLogger.func1.1
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/middleware/logger.go:54
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).ServeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:90
+net/http.serverHandler.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:3137
+net/http.(*conn).serve
+	/home/marin/.go/src/net/http/server.go:2039
+2024-06-09T00:13:37.868+0300	error	controller/message-notification-controller-ws.go:77	error parsing token 	{"error": "token is unauthorized"}
+read-server/controller.(*messageNotificationControllerWS).ListenForMessages
+	/home/marin/projects/license-project/backend/read-server/controller/message-notification-controller-ws.go:77
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).routeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:444
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/cors.(*Cors).Handler-fm.(*Cors).Handler.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/cors@v1.2.1/cors.go:228
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5/middleware.Recoverer.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/middleware/recoverer.go:43
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5/middleware.init.0.RequestLogger.func1.1
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/middleware/logger.go:54
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).ServeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:90
+net/http.serverHandler.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:3137
+net/http.(*conn).serve
+	/home/marin/.go/src/net/http/server.go:2039
+2024-06-09T00:14:00.285+0300	error	controller/message-notification-controller-ws.go:77	error parsing token 	{"error": "token is unauthorized"}
+read-server/controller.(*messageNotificationControllerWS).ListenForMessages
+	/home/marin/projects/license-project/backend/read-server/controller/message-notification-controller-ws.go:77
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).routeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:444
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/cors.(*Cors).Handler-fm.(*Cors).Handler.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/cors@v1.2.1/cors.go:228
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5/middleware.Recoverer.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/middleware/recoverer.go:43
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5/middleware.init.0.RequestLogger.func1.1
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/middleware/logger.go:54
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).ServeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:90
+net/http.serverHandler.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:3137
+net/http.(*conn).serve
+	/home/marin/.go/src/net/http/server.go:2039
+2024-06-09T02:21:01.000+0300	error	controller/message-notification-controller-ws.go:40	error while wainting for token: %s 
+	{"error": "websocket: close 1005 (no status)"}
+read-server/controller.(*messageNotificationControllerWS).waitForToken
+	/home/marin/projects/license-project/backend/read-server/controller/message-notification-controller-ws.go:40
+read-server/controller.(*messageNotificationControllerWS).ListenForMessages
+	/home/marin/projects/license-project/backend/read-server/controller/message-notification-controller-ws.go:118
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).routeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:444
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/cors.(*Cors).Handler-fm.(*Cors).Handler.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/cors@v1.2.1/cors.go:228
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5/middleware.Recoverer.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/middleware/recoverer.go:43
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5/middleware.init.0.RequestLogger.func1.1
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/middleware/logger.go:54
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).ServeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:90
+net/http.serverHandler.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:3137
+net/http.(*conn).serve
+	/home/marin/.go/src/net/http/server.go:2039
+2024-06-09T02:21:01.000+0300	error	controller/message-notification-controller-ws.go:122	error parsing token	{"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MTc4ODI1NjEsImlhdCI6MTcxNzg4MTY2MSwicmVmcmVzaCI6ZmFsc2UsInVzZXIiOiJtYXJpbiIsInVzZXJfaWQiOiI2NjYxYTgwZTE3ODRiMjAzN2JmNzgwNmQifQ.aO7VkMNU6hiKo__IoWcT79WPlKp-o0bNJwPDGSyXzNo", "user id": "6661a80e1784b2037bf7806d"}
+read-server/controller.(*messageNotificationControllerWS).ListenForMessages
+	/home/marin/projects/license-project/backend/read-server/controller/message-notification-controller-ws.go:122
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).routeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:444
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/cors.(*Cors).Handler-fm.(*Cors).Handler.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/cors@v1.2.1/cors.go:228
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5/middleware.Recoverer.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/middleware/recoverer.go:43
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5/middleware.init.0.RequestLogger.func1.1
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/middleware/logger.go:54
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).ServeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:90
+net/http.serverHandler.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:3137
+net/http.(*conn).serve
+	/home/marin/.go/src/net/http/server.go:2039
+2024-06-09T19:32:25.976+0300	info	streaming/stream-observer.go:108	event sent to observing channels	{"event id": "1717950745786-0", "event": {"id":"6665d9194783e70cb00c558a","created_at":"2024-06-09T16:32:25.662707665Z","updated_at":"2024-06-09T16:32:25.662708898Z","content":"Test message lorem ipsum","from":"marin","to":"Test Topic","timestamp":1717950745}}
+2024-06-09T19:32:45.089+0300	info	streaming/stream-observer.go:108	event sent to observing channels	{"event id": "1717950765063-0", "event": {"id":"6665d92c4783e70cb00c558b","created_at":"2024-06-09T16:32:44.981279422Z","updated_at":"2024-06-09T16:32:44.981279923Z","content":"Test message lorem ipsum","from":"marin","to":"Test Topic","timestamp":1717950764}}
+2024-06-09T19:34:34.921+0300	info	streaming/stream-observer.go:108	event sent to observing channels	{"event id": "1717950874884-0", "event": {"id":"6665d99a4783e70cb00c558c","created_at":"2024-06-09T16:34:34.799604622Z","updated_at":"2024-06-09T16:34:34.799606195Z","content":"Some test message","from":"marin","to":"Test Topic","timestamp":1717950874}}
+2024-06-09T19:34:35.727+0300	info	streaming/stream-observer.go:108	event sent to observing channels	{"event id": "1717950875581-0", "event": {"id":"6665d99b4783e70cb00c558d","created_at":"2024-06-09T16:34:35.501133022Z","updated_at":"2024-06-09T16:34:35.501133974Z","content":"Some test message","from":"marin","to":"Test Topic","timestamp":1717950875}}
+2024-06-09T19:34:35.928+0300	info	streaming/stream-observer.go:108	event sent to observing channels	{"event id": "1717950875894-0", "event": {"id":"6665d99b4783e70cb00c558e","created_at":"2024-06-09T16:34:35.815610128Z","updated_at":"2024-06-09T16:34:35.815611851Z","content":"Some test message","from":"marin","to":"Test Topic","timestamp":1717950875}}
+2024-06-09T19:35:56.364+0300	info	streaming/stream-observer.go:108	event sent to observing channels	{"event id": "1717950956255-0", "event": {"id":"6665d9ec4783e70cb00c5590","created_at":"2024-06-09T16:35:56.176366069Z","updated_at":"2024-06-09T16:35:56.176368013Z","content":"Test message","from":"marin","to":"Test Topic 2","timestamp":1717950956}}
+2024-06-09T19:41:20.798+0300	info	streaming/stream-observer.go:108	event sent to observing channels	{"event id": "1717951280603-0", "event": {"id":"6665db304783e70cb00c5592","created_at":"2024-06-09T16:41:20.52518798Z","updated_at":"2024-06-09T16:41:20.525188672Z","content":"Test message","from":"marin","to":"Test Topic 3","timestamp":1717951280}}
+2024-06-09T19:49:55.420+0300	info	service/message-listener.go:52	Is message subscribed	{"message": {"id":"6665dd334783e70cb00c5594","created_at":"2024-06-09T16:49:55.25726437Z","updated_at":"2024-06-09T16:49:55.257265281Z","content":"Test message","from":"marin","to":"Test Topic 4","timestamp":1717951795}, "user": {"id":"6661a80e1784b2037bf7806d","created_at":"2024-06-06T12:14:06.381Z","updated_at":"2024-06-09T16:41:06.158Z","username":"marin","email":"marin@mail.com","createdTopics":{"Test Topic":true,"Test Topic 2":true,"Test Topic 3":true}}, "subscribed": false}
+2024-06-09T19:49:55.420+0300	info	streaming/stream-observer.go:108	event sent to observing channels	{"event id": "1717951795340-0", "event": {"id":"6665dd334783e70cb00c5594","created_at":"2024-06-09T16:49:55.25726437Z","updated_at":"2024-06-09T16:49:55.257265281Z","content":"Test message","from":"marin","to":"Test Topic 4","timestamp":1717951795}}
+2024-06-09T20:03:55.398+0300	info	service/message-listener.go:52	Is message subscribed	{"message": {"id":"6665e07b49a65a35c3dc45a6","created_at":"2024-06-09T17:03:55.13641513Z","updated_at":"2024-06-09T17:03:55.136416593Z","content":"Test message 111","from":"marin","to":"Test Topic Again","timestamp":1717952635}, "user": {"id":"6661a80e1784b2037bf7806d","created_at":"2024-06-06T12:14:06.381Z","updated_at":"2024-06-09T16:49:42.613Z","username":"marin","email":"marin@mail.com","createdTopics":{"Test Topic":true,"Test Topic 2":true,"Test Topic 3":true,"Test Topic 4":true}}, "subscribed": false}
+2024-06-09T20:03:55.398+0300	info	streaming/stream-observer.go:108	event sent to observing channels	{"event id": "1717952635217-0", "event": {"id":"6665e07b49a65a35c3dc45a6","created_at":"2024-06-09T17:03:55.13641513Z","updated_at":"2024-06-09T17:03:55.136416593Z","content":"Test message 111","from":"marin","to":"Test Topic Again","timestamp":1717952635}}
+2024-06-09T20:09:43.305+0300	info	subscription/user-subscription-topics.go:84	Subscription and user being evaluated	{"user": {"id":"6661a80e1784b2037bf7806d","created_at":"2024-06-06T12:14:06.381Z","updated_at":"2024-06-09T16:49:42.613Z","username":"marin","email":"marin@mail.com","createdTopics":{"Test Topic":true,"Test Topic 2":true,"Test Topic 3":true,"Test Topic 4":true}}, "subscription": {"Username":"marin","TopicTitle":"Test Topic 5","Status":0}}
+2024-06-09T20:09:43.305+0300	info	streaming/stream-observer.go:108	event sent to observing channels	{"event id": "1717952983273-0", "event": {"Username":"marin","TopicTitle":"Test Topic 5","Status":0}}
+2024-06-09T20:09:48.132+0300	info	service/message-listener.go:52	Is message subscribed	{"message": {"id":"6665e1dcdf00bd946fa50e2e","created_at":"2024-06-09T17:09:48.035547535Z","updated_at":"2024-06-09T17:09:48.035548877Z","content":"Test Message","from":"marin","to":"Test Topic 5","timestamp":1717952988}, "user": {"id":"6661a80e1784b2037bf7806d","created_at":"2024-06-06T12:14:06.381Z","updated_at":"2024-06-09T16:49:42.613Z","username":"marin","email":"marin@mail.com","createdTopics":{"Test Topic":true,"Test Topic 2":true,"Test Topic 3":true,"Test Topic 4":true}}, "subscribed": true}
+2024-06-09T20:09:48.132+0300	info	controller/message-notification-controller-ws.go:131	Received message	{"message": {"id":"6665e1dcdf00bd946fa50e2e","created_at":"2024-06-09T17:09:48.035547535Z","updated_at":"2024-06-09T17:09:48.035548877Z","content":"Test Message","from":"marin","to":"Test Topic 5","timestamp":1717952988}}
+2024-06-09T20:09:48.132+0300	info	streaming/stream-observer.go:108	event sent to observing channels	{"event id": "1717952988115-0", "event": {"id":"6665e1dcdf00bd946fa50e2e","created_at":"2024-06-09T17:09:48.035547535Z","updated_at":"2024-06-09T17:09:48.035548877Z","content":"Test Message","from":"marin","to":"Test Topic 5","timestamp":1717952988}}
+2024-06-09T20:48:40.014+0300	error	controller/message-notification-controller-ws.go:119	error parsing token	{"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MTc5NTM1MjAsImlhdCI6MTcxNzk1MjYyMCwicmVmcmVzaCI6ZmFsc2UsInVzZXIiOiJtYXJpbiIsInVzZXJfaWQiOiI2NjYxYTgwZTE3ODRiMjAzN2JmNzgwNmQifQ.2KvK6hGVWDu8KkUc1niO5D3Nzh6ba7qguF5tb5jcnIs", "user id": "6661a80e1784b2037bf7806d"}
+read-server/controller.(*messageNotificationControllerWS).ListenForMessages
+	/home/marin/projects/license-project/backend/read-server/controller/message-notification-controller-ws.go:119
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).routeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:444
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/cors.(*Cors).Handler-fm.(*Cors).Handler.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/cors@v1.2.1/cors.go:228
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5/middleware.Recoverer.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/middleware/recoverer.go:43
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5/middleware.init.0.RequestLogger.func1.1
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/middleware/logger.go:54
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).ServeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:90
+net/http.serverHandler.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:3137
+net/http.(*conn).serve
+	/home/marin/.go/src/net/http/server.go:2039
