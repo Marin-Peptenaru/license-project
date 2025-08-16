@@ -21,7 +21,16 @@ func InitDB(cfg *config.Config) {
 		cfg.Database.Options,
 	)
 
-	err := mgm.SetDefaultConfig(nil, cfg.Database.Name, options.Client().ApplyURI(uri))
+	utils.Logger.Debug("initialising db with config", zap.String("db uri", uri))
+
+	serverAPI := options.ServerAPI(options.ServerAPIVersion1)
+
+	err := mgm.SetDefaultConfig(
+		nil,
+		cfg.Database.Name,
+		options.Client().
+			ApplyURI(uri).
+			SetServerAPIOptions(serverAPI))
 
 	if err != nil {
 		utils.Logger.Panic("could not init database", zap.Error(err))

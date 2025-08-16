@@ -1,0 +1,636 @@
+2025-07-31T22:12:05.130+0300	info	write-server/main.go:75	Starting server at port 8080
+2025-08-03T18:46:52.069+0300	info	write-server/main.go:75	Starting server at port 8080
+2025-08-03T18:48:36.278+0300	info	write-server/main.go:75	Starting server at port 8080
+2025-08-03T18:52:43.324+0300	info	write-server/main.go:75	Starting server at port 8080
+2025-08-03T18:53:53.562+0300	debug	mongo/uri.go:24	initialising db with config	{"db uri": "mongodb+srv://marin:RE3SjwfJQd08NlVg@testcluster.ldnpdl3.mongodb.net/??retryWrites=true&w=majority&appName=TestCluster"}
+2025-08-03T18:53:53.616+0300	info	write-server/main.go:75	Starting server at port 8080
+2025-08-03T19:41:38.397+0300	debug	mongo/uri.go:24	initialising db with config	{"db uri": "mongodb+srv://marin:RE3SjwfJQd08NlVg@testcluster.ldnpdl3.mongodb.net/?retryWrites=true&w=majority&appName=TestCluster"}
+2025-08-03T19:41:38.458+0300	info	write-server/main.go:75	Starting server at port 8080
+2025-08-03T19:45:51.495+0300	debug	mongo/uri.go:24	initialising db with config	{"db uri": "mongodb+srv://marin:RE3SjwfJQd08NlVg@testcluster.ldnpdl3.mongodb.net/?retryWrites=true&w=majority&appName=TestCluster&?authSource=admin"}
+2025-08-03T19:45:51.544+0300	info	write-server/main.go:75	Starting server at port 8080
+2025-08-03T19:46:44.950+0300	debug	mongo/uri.go:24	initialising db with config	{"db uri": "mongodb+srv://marin:RE3SjwfJQd08NlVg@testcluster.ldnpdl3.mongodb.net/?retryWrites=true&w=majority&appName=TestCluster&authSource=admin"}
+2025-08-03T19:46:44.950+0300	info	write-server/main.go:75	Starting server at port 8080
+2025-08-03T19:47:36.220+0300	debug	mongo/uri.go:24	initialising db with config	{"db uri": "mongodb+srv://marin:RE3SjwfJQd08NlVg@testcluster.ldnpdl3.mongodb.net/?retryWrites=true&w=majority&appName=TestCluster&authMechanism=SCRAM-SHA-256"}
+2025-08-03T19:47:36.266+0300	info	write-server/main.go:75	Starting server at port 8080
+2025-08-03T19:49:12.711+0300	debug	mongo/uri.go:24	initialising db with config	{"db uri": "mongodb+srv://marin:RE3SjwfJQd08NlVg@testcluster.ldnpdl3.mongodb.net/?retryWrites=true&w=majority&appName=TestCluster&authSource=admin&authMechanism=SCRAM-SHA-256"}
+2025-08-03T19:49:12.769+0300	info	write-server/main.go:75	Starting server at port 8080
+2025-08-03T19:53:20.060+0300	debug	mongo/uri.go:24	initialising db with config	{"db uri": "mongodb+srv://marin:RE3SjwfJQd08NlVg@testcluster.ldnpdl3.mongodb.net/?retryWrites=true&w=majority&appName=TestCluster"}
+2025-08-03T19:53:20.121+0300	info	write-server/main.go:75	Starting server at port 8080
+2025-08-03T19:55:08.073+0300	debug	mongo/uri.go:24	initialising db with config	{"db uri": "mongodb+srv://marin:Password10@testcluster.ldnpdl3.mongodb.net/?retryWrites=true&w=majority&appName=TestCluster"}
+2025-08-03T19:55:08.110+0300	info	write-server/main.go:75	Starting server at port 8080
+2025-08-10T20:02:43.889+0300	debug	mongo/uri.go:24	initialising db with config	{"db uri": "mongodb+srv://marin:Password10@testcluster.ldnpdl3.mongodb.net/?retryWrites=true&w=majority&appName=TestCluster"}
+2025-08-10T20:02:43.948+0300	info	write-server/main.go:75	Starting server at port 8080
+2025-08-13T18:02:34.004+0300	debug	mongo/uri.go:24	initialising db with config	{"db uri": "mongodb+srv://marin:Password10@testcluster.ldnpdl3.mongodb.net/?retryWrites=true&w=majority&appName=TestCluster"}
+2025-08-13T18:02:34.055+0300	info	write-server/main.go:75	Starting server at port 8080
+2025-08-13T18:06:36.667+0300	error	apperrors/invalid-credentials.go:23	invalid credentials: username/email or password are incorrect
+commons/apperrors.InvalidCredentials
+	/home/marin/projects/license-project/backend/commons/apperrors/invalid-credentials.go:23
+write-server/service.(*authService).Authenticate
+	/home/marin/projects/license-project/backend/write-server/service/auth-service.go:96
+write-server/controller.(*authController).Login
+	/home/marin/projects/license-project/backend/write-server/controller/auth-controller.go:77
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).routeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:444
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).ServeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:73
+github.com/go-chi/chi/v5.(*Mux).Mount.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:316
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).routeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:444
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/cors.(*Cors).Handler-fm.(*Cors).Handler.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/cors@v1.2.1/cors.go:228
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/middleware.Recoverer.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/chi@v1.5.4/middleware/recoverer.go:37
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/middleware.init.0.RequestLogger.func1.1
+	/home/marin/go/pkg/mod/github.com/go-chi/chi@v1.5.4/middleware/logger.go:57
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).ServeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:90
+net/http.serverHandler.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:3137
+net/http.(*conn).serve
+	/home/marin/.go/src/net/http/server.go:2039
+2025-08-13T18:07:00.066+0300	error	apperrors/invalid-credentials.go:23	invalid credentials: username/email or password are incorrect
+commons/apperrors.InvalidCredentials
+	/home/marin/projects/license-project/backend/commons/apperrors/invalid-credentials.go:23
+write-server/service.(*authService).Authenticate
+	/home/marin/projects/license-project/backend/write-server/service/auth-service.go:96
+write-server/controller.(*authController).Login
+	/home/marin/projects/license-project/backend/write-server/controller/auth-controller.go:77
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).routeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:444
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).ServeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:73
+github.com/go-chi/chi/v5.(*Mux).Mount.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:316
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).routeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:444
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/cors.(*Cors).Handler-fm.(*Cors).Handler.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/cors@v1.2.1/cors.go:228
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/middleware.Recoverer.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/chi@v1.5.4/middleware/recoverer.go:37
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/middleware.init.0.RequestLogger.func1.1
+	/home/marin/go/pkg/mod/github.com/go-chi/chi@v1.5.4/middleware/logger.go:57
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).ServeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:90
+net/http.serverHandler.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:3137
+net/http.(*conn).serve
+	/home/marin/.go/src/net/http/server.go:2039
+2025-08-13T18:10:35.044+0300	debug	mongo/uri.go:24	initialising db with config	{"db uri": "mongodb+srv://marin:Password10@testcluster.ldnpdl3.mongodb.net/?retryWrites=true&w=majority&appName=TestCluster"}
+2025-08-13T18:10:35.079+0300	info	write-server/main.go:75	Starting server at port 8080
+2025-08-13T18:11:06.301+0300	error	apperrors/invalid-credentials.go:23	invalid credentials: username/email or password are incorrect
+commons/apperrors.InvalidCredentials
+	/home/marin/projects/license-project/backend/commons/apperrors/invalid-credentials.go:23
+write-server/service.(*authService).Authenticate
+	/home/marin/projects/license-project/backend/write-server/service/auth-service.go:96
+write-server/controller.(*authController).Login
+	/home/marin/projects/license-project/backend/write-server/controller/auth-controller.go:77
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).routeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:444
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).ServeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:73
+github.com/go-chi/chi/v5.(*Mux).Mount.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:316
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).routeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:444
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/cors.(*Cors).Handler-fm.(*Cors).Handler.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/cors@v1.2.1/cors.go:228
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/middleware.Recoverer.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/chi@v1.5.4/middleware/recoverer.go:37
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/middleware.init.0.RequestLogger.func1.1
+	/home/marin/go/pkg/mod/github.com/go-chi/chi@v1.5.4/middleware/logger.go:57
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).ServeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:90
+net/http.serverHandler.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:3137
+net/http.(*conn).serve
+	/home/marin/.go/src/net/http/server.go:2039
+2025-08-13T18:11:37.003+0300	error	apperrors/invalid-credentials.go:23	invalid credentials: username/email or password are incorrect
+commons/apperrors.InvalidCredentials
+	/home/marin/projects/license-project/backend/commons/apperrors/invalid-credentials.go:23
+write-server/service.(*authService).Authenticate
+	/home/marin/projects/license-project/backend/write-server/service/auth-service.go:96
+write-server/controller.(*authController).Login
+	/home/marin/projects/license-project/backend/write-server/controller/auth-controller.go:77
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).routeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:444
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).ServeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:73
+github.com/go-chi/chi/v5.(*Mux).Mount.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:316
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).routeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:444
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/cors.(*Cors).Handler-fm.(*Cors).Handler.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/cors@v1.2.1/cors.go:228
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/middleware.Recoverer.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/chi@v1.5.4/middleware/recoverer.go:37
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/middleware.init.0.RequestLogger.func1.1
+	/home/marin/go/pkg/mod/github.com/go-chi/chi@v1.5.4/middleware/logger.go:57
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).ServeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:90
+net/http.serverHandler.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:3137
+net/http.(*conn).serve
+	/home/marin/.go/src/net/http/server.go:2039
+2025-08-13T18:14:12.080+0300	debug	mongo/uri.go:24	initialising db with config	{"db uri": "mongodb+srv://marin:Password10@testcluster.ldnpdl3.mongodb.net/?retryWrites=true&w=majority&appName=TestCluster"}
+2025-08-13T18:14:12.135+0300	info	write-server/main.go:75	Starting server at port 8080
+2025-08-13T18:14:53.451+0300	debug	service/auth-service.go:97	error fetching user date	{"error": "server selection error: context deadline exceeded, current topology: { Type: ReplicaSetNoPrimary, Servers: [{ Addr: ac-fs7uvme-shard-00-02.ldnpdl3.mongodb.net:27017, Type: Unknown, Last error: remote error: tls: internal error }, { Addr: ac-fs7uvme-shard-00-01.ldnpdl3.mongodb.net:27017, Type: Unknown, Last error: remote error: tls: internal error }, { Addr: ac-fs7uvme-shard-00-00.ldnpdl3.mongodb.net:27017, Type: Unknown, Last error: remote error: tls: internal error }, ] }"}
+2025-08-13T18:14:53.451+0300	error	apperrors/invalid-credentials.go:23	invalid credentials: username/email or password are incorrect
+commons/apperrors.InvalidCredentials
+	/home/marin/projects/license-project/backend/commons/apperrors/invalid-credentials.go:23
+write-server/service.(*authService).Authenticate
+	/home/marin/projects/license-project/backend/write-server/service/auth-service.go:98
+write-server/controller.(*authController).Login
+	/home/marin/projects/license-project/backend/write-server/controller/auth-controller.go:77
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).routeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:444
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).ServeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:73
+github.com/go-chi/chi/v5.(*Mux).Mount.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:316
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).routeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:444
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/cors.(*Cors).Handler-fm.(*Cors).Handler.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/cors@v1.2.1/cors.go:228
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/middleware.Recoverer.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/chi@v1.5.4/middleware/recoverer.go:37
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/middleware.init.0.RequestLogger.func1.1
+	/home/marin/go/pkg/mod/github.com/go-chi/chi@v1.5.4/middleware/logger.go:57
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).ServeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:90
+net/http.serverHandler.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:3137
+net/http.(*conn).serve
+	/home/marin/.go/src/net/http/server.go:2039
+2025-08-13T18:48:24.348+0300	info	streaming/stream-writer.go:33	entry written to stream	{"stream": "subs-stream", "entry": "{\"Username\":\"marin\",\"TopicTitle\":\"test topic 1\",\"Status\":0}"}
+2025-08-15T18:22:47.853+0300	debug	mongo/uri.go:24	initialising db with config	{"db uri": "mongodb+srv://marin:Password10@testcluster.ldnpdl3.mongodb.net/?retryWrites=true&w=majority&appName=TestCluster"}
+2025-08-15T18:22:47.883+0300	info	write-server/main.go:75	Starting server at port 8080
+2025-08-15T18:32:15.986+0300	debug	mongo/uri.go:24	initialising db with config	{"db uri": "mongodb+srv://marin:Password10@testcluster.ldnpdl3.mongodb.net/?retryWrites=true&w=majority&appName=TestCluster"}
+2025-08-15T18:32:16.032+0300	info	write-server/main.go:75	Starting server at port 8080
+2025-08-15T18:38:04.380+0300	debug	mongo/uri.go:24	initialising db with config	{"db uri": "mongodb+srv://marin:Password10@testcluster.ldnpdl3.mongodb.net/?retryWrites=true&w=majority&appName=TestCluster"}
+2025-08-15T18:38:04.415+0300	info	write-server/main.go:75	Starting server at port 8080
+2025-08-15T18:38:43.900+0300	debug	http-filter/extract-topic-filter.go:28	admin title filter	{"admin": "\"va\""}
+2025-08-15T18:39:30.053+0300	debug	http-filter/extract-topic-filter.go:28	admin title filter	{"admin": "va"}
+2025-08-15T18:40:29.881+0300	debug	http-filter/extract-topic-filter.go:28	admin title filter	{"admin": "va"}
+2025-08-15T18:40:31.015+0300	debug	http-filter/extract-topic-filter.go:28	admin title filter	{"admin": "va"}
+2025-08-15T18:40:36.156+0300	debug	mongo/uri.go:24	initialising db with config	{"db uri": "mongodb+srv://marin:Password10@testcluster.ldnpdl3.mongodb.net/?retryWrites=true&w=majority&appName=TestCluster"}
+2025-08-15T18:40:36.197+0300	info	write-server/main.go:75	Starting server at port 8080
+2025-08-15T18:40:50.001+0300	debug	http-filter/extract-topic-filter.go:28	topic admin filter	{"admin": "va"}
+2025-08-15T18:40:55.023+0300	debug	http-filter/extract-topic-filter.go:28	topic admin filter	{"admin": "ma"}
+2025-08-15T18:40:59.999+0300	debug	http-filter/extract-topic-filter.go:28	topic admin filter	{"admin": "arin"}
+2025-08-15T18:41:05.088+0300	debug	http-filter/extract-topic-filter.go:28	topic admin filter	{"admin": "ar"}
+2025-08-15T18:41:52.986+0300	debug	http-filter/extract-topic-filter.go:28	topic admin filter	{"admin": "ar"}
+2025-08-15T18:41:57.049+0300	debug	http-filter/extract-topic-filter.go:28	topic admin filter	{"admin": "ar"}
+2025-08-15T18:42:01.020+0300	debug	http-filter/extract-topic-filter.go:28	topic admin filter	{"admin": "ar"}
+2025-08-15T18:46:05.335+0300	debug	http-filter/extract-topic-filter.go:28	topic admin filter	{"admin": "ar"}
+2025-08-15T18:47:54.036+0300	debug	http-filter/extract-topic-filter.go:28	topic admin filter	{"admin": "ar"}
+2025-08-15T18:49:28.857+0300	info	streaming/stream-writer.go:33	entry written to stream	{"stream": "subs-stream", "entry": "{\"Username\":\"subscriber\",\"TopicTitle\":\"test topic 1\",\"Status\":0}"}
+2025-08-15T18:50:53.381+0300	error	apperrors/invalid-entity.go:23	invalid entity: topic  is not among user subscriptions
+commons/apperrors.InvalidEntity
+	/home/marin/projects/license-project/backend/commons/apperrors/invalid-entity.go:23
+commons/service.(*topicService).UnsubscribeToTopic
+	/home/marin/projects/license-project/backend/commons/service/topic-service.go:86
+write-server/controller.(*topicController).UnsubscribeToTopic
+	/home/marin/projects/license-project/backend/write-server/controller/topic-controller.go:116
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).routeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:444
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+commons/middleware.TokenMustNotBeRefresh.checkRefreshTokenClaims.func1
+	/home/marin/projects/license-project/backend/commons/middleware/token.go:19
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/jwtauth/v5.Authenticator.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/jwtauth/v5@v5.1.0/jwtauth.go:177
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+commons/utils.InitJwtToken.Verifier.Verify.func1.1
+	/home/marin/go/pkg/mod/github.com/go-chi/jwtauth/v5@v5.1.0/jwtauth.go:73
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).ServeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:73
+github.com/go-chi/chi/v5.(*Mux).Mount.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:316
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).routeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:444
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/cors.(*Cors).Handler-fm.(*Cors).Handler.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/cors@v1.2.1/cors.go:228
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/middleware.Recoverer.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/chi@v1.5.4/middleware/recoverer.go:37
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/middleware.init.0.RequestLogger.func1.1
+	/home/marin/go/pkg/mod/github.com/go-chi/chi@v1.5.4/middleware/logger.go:57
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).ServeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:90
+net/http.serverHandler.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:3137
+net/http.(*conn).serve
+	/home/marin/.go/src/net/http/server.go:2039
+2025-08-15T18:51:14.908+0300	error	apperrors/invalid-entity.go:23	invalid entity: topic  is not among user subscriptions
+commons/apperrors.InvalidEntity
+	/home/marin/projects/license-project/backend/commons/apperrors/invalid-entity.go:23
+commons/service.(*topicService).UnsubscribeToTopic
+	/home/marin/projects/license-project/backend/commons/service/topic-service.go:86
+write-server/controller.(*topicController).UnsubscribeToTopic
+	/home/marin/projects/license-project/backend/write-server/controller/topic-controller.go:116
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).routeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:444
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+commons/middleware.TokenMustNotBeRefresh.checkRefreshTokenClaims.func1
+	/home/marin/projects/license-project/backend/commons/middleware/token.go:19
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/jwtauth/v5.Authenticator.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/jwtauth/v5@v5.1.0/jwtauth.go:177
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+commons/utils.InitJwtToken.Verifier.Verify.func1.1
+	/home/marin/go/pkg/mod/github.com/go-chi/jwtauth/v5@v5.1.0/jwtauth.go:73
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).ServeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:73
+github.com/go-chi/chi/v5.(*Mux).Mount.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:316
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).routeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:444
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/cors.(*Cors).Handler-fm.(*Cors).Handler.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/cors@v1.2.1/cors.go:228
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/middleware.Recoverer.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/chi@v1.5.4/middleware/recoverer.go:37
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/middleware.init.0.RequestLogger.func1.1
+	/home/marin/go/pkg/mod/github.com/go-chi/chi@v1.5.4/middleware/logger.go:57
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).ServeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:90
+net/http.serverHandler.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:3137
+net/http.(*conn).serve
+	/home/marin/.go/src/net/http/server.go:2039
+2025-08-15T18:51:16.506+0300	error	apperrors/invalid-entity.go:23	invalid entity: topic  is not among user subscriptions
+commons/apperrors.InvalidEntity
+	/home/marin/projects/license-project/backend/commons/apperrors/invalid-entity.go:23
+commons/service.(*topicService).UnsubscribeToTopic
+	/home/marin/projects/license-project/backend/commons/service/topic-service.go:86
+write-server/controller.(*topicController).UnsubscribeToTopic
+	/home/marin/projects/license-project/backend/write-server/controller/topic-controller.go:116
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).routeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:444
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+commons/middleware.TokenMustNotBeRefresh.checkRefreshTokenClaims.func1
+	/home/marin/projects/license-project/backend/commons/middleware/token.go:19
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/jwtauth/v5.Authenticator.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/jwtauth/v5@v5.1.0/jwtauth.go:177
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+commons/utils.InitJwtToken.Verifier.Verify.func1.1
+	/home/marin/go/pkg/mod/github.com/go-chi/jwtauth/v5@v5.1.0/jwtauth.go:73
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).ServeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:73
+github.com/go-chi/chi/v5.(*Mux).Mount.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:316
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).routeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:444
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/cors.(*Cors).Handler-fm.(*Cors).Handler.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/cors@v1.2.1/cors.go:228
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/middleware.Recoverer.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/chi@v1.5.4/middleware/recoverer.go:37
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/middleware.init.0.RequestLogger.func1.1
+	/home/marin/go/pkg/mod/github.com/go-chi/chi@v1.5.4/middleware/logger.go:57
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).ServeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:90
+net/http.serverHandler.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:3137
+net/http.(*conn).serve
+	/home/marin/.go/src/net/http/server.go:2039
+2025-08-15T18:51:17.272+0300	error	apperrors/invalid-entity.go:23	invalid entity: topic  is not among user subscriptions
+commons/apperrors.InvalidEntity
+	/home/marin/projects/license-project/backend/commons/apperrors/invalid-entity.go:23
+commons/service.(*topicService).UnsubscribeToTopic
+	/home/marin/projects/license-project/backend/commons/service/topic-service.go:86
+write-server/controller.(*topicController).UnsubscribeToTopic
+	/home/marin/projects/license-project/backend/write-server/controller/topic-controller.go:116
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).routeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:444
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+commons/middleware.TokenMustNotBeRefresh.checkRefreshTokenClaims.func1
+	/home/marin/projects/license-project/backend/commons/middleware/token.go:19
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/jwtauth/v5.Authenticator.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/jwtauth/v5@v5.1.0/jwtauth.go:177
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+commons/utils.InitJwtToken.Verifier.Verify.func1.1
+	/home/marin/go/pkg/mod/github.com/go-chi/jwtauth/v5@v5.1.0/jwtauth.go:73
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).ServeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:73
+github.com/go-chi/chi/v5.(*Mux).Mount.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:316
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).routeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:444
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/cors.(*Cors).Handler-fm.(*Cors).Handler.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/cors@v1.2.1/cors.go:228
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/middleware.Recoverer.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/chi@v1.5.4/middleware/recoverer.go:37
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/middleware.init.0.RequestLogger.func1.1
+	/home/marin/go/pkg/mod/github.com/go-chi/chi@v1.5.4/middleware/logger.go:57
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).ServeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:90
+net/http.serverHandler.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:3137
+net/http.(*conn).serve
+	/home/marin/.go/src/net/http/server.go:2039
+2025-08-15T18:51:30.764+0300	error	apperrors/invalid-entity.go:23	invalid entity: topic  is not among user subscriptions
+commons/apperrors.InvalidEntity
+	/home/marin/projects/license-project/backend/commons/apperrors/invalid-entity.go:23
+commons/service.(*topicService).UnsubscribeToTopic
+	/home/marin/projects/license-project/backend/commons/service/topic-service.go:86
+write-server/controller.(*topicController).UnsubscribeToTopic
+	/home/marin/projects/license-project/backend/write-server/controller/topic-controller.go:116
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).routeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:444
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+commons/middleware.TokenMustNotBeRefresh.checkRefreshTokenClaims.func1
+	/home/marin/projects/license-project/backend/commons/middleware/token.go:19
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/jwtauth/v5.Authenticator.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/jwtauth/v5@v5.1.0/jwtauth.go:177
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+commons/utils.InitJwtToken.Verifier.Verify.func1.1
+	/home/marin/go/pkg/mod/github.com/go-chi/jwtauth/v5@v5.1.0/jwtauth.go:73
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).ServeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:73
+github.com/go-chi/chi/v5.(*Mux).Mount.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:316
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).routeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:444
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/cors.(*Cors).Handler-fm.(*Cors).Handler.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/cors@v1.2.1/cors.go:228
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/middleware.Recoverer.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/chi@v1.5.4/middleware/recoverer.go:37
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/middleware.init.0.RequestLogger.func1.1
+	/home/marin/go/pkg/mod/github.com/go-chi/chi@v1.5.4/middleware/logger.go:57
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).ServeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:90
+net/http.serverHandler.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:3137
+net/http.(*conn).serve
+	/home/marin/.go/src/net/http/server.go:2039
+2025-08-15T18:51:49.688+0300	error	apperrors/invalid-entity.go:23	invalid entity: topic  is not among user subscriptions
+commons/apperrors.InvalidEntity
+	/home/marin/projects/license-project/backend/commons/apperrors/invalid-entity.go:23
+commons/service.(*topicService).UnsubscribeToTopic
+	/home/marin/projects/license-project/backend/commons/service/topic-service.go:86
+write-server/controller.(*topicController).UnsubscribeToTopic
+	/home/marin/projects/license-project/backend/write-server/controller/topic-controller.go:116
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).routeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:444
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+commons/middleware.TokenMustNotBeRefresh.checkRefreshTokenClaims.func1
+	/home/marin/projects/license-project/backend/commons/middleware/token.go:19
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/jwtauth/v5.Authenticator.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/jwtauth/v5@v5.1.0/jwtauth.go:177
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+commons/utils.InitJwtToken.Verifier.Verify.func1.1
+	/home/marin/go/pkg/mod/github.com/go-chi/jwtauth/v5@v5.1.0/jwtauth.go:73
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).ServeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:73
+github.com/go-chi/chi/v5.(*Mux).Mount.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:316
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).routeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:444
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/cors.(*Cors).Handler-fm.(*Cors).Handler.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/cors@v1.2.1/cors.go:228
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/middleware.Recoverer.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/chi@v1.5.4/middleware/recoverer.go:37
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/middleware.init.0.RequestLogger.func1.1
+	/home/marin/go/pkg/mod/github.com/go-chi/chi@v1.5.4/middleware/logger.go:57
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).ServeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:90
+net/http.serverHandler.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:3137
+net/http.(*conn).serve
+	/home/marin/.go/src/net/http/server.go:2039
+2025-08-15T18:52:17.538+0300	error	apperrors/invalid-entity.go:23	invalid entity: topic  is not among user subscriptions
+commons/apperrors.InvalidEntity
+	/home/marin/projects/license-project/backend/commons/apperrors/invalid-entity.go:23
+commons/service.(*topicService).UnsubscribeToTopic
+	/home/marin/projects/license-project/backend/commons/service/topic-service.go:86
+write-server/controller.(*topicController).UnsubscribeToTopic
+	/home/marin/projects/license-project/backend/write-server/controller/topic-controller.go:116
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).routeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:444
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+commons/middleware.TokenMustNotBeRefresh.checkRefreshTokenClaims.func1
+	/home/marin/projects/license-project/backend/commons/middleware/token.go:19
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/jwtauth/v5.Authenticator.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/jwtauth/v5@v5.1.0/jwtauth.go:177
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+commons/utils.InitJwtToken.Verifier.Verify.func1.1
+	/home/marin/go/pkg/mod/github.com/go-chi/jwtauth/v5@v5.1.0/jwtauth.go:73
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).ServeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:73
+github.com/go-chi/chi/v5.(*Mux).Mount.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:316
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).routeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:444
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/cors.(*Cors).Handler-fm.(*Cors).Handler.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/cors@v1.2.1/cors.go:228
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/middleware.Recoverer.func1
+	/home/marin/go/pkg/mod/github.com/go-chi/chi@v1.5.4/middleware/recoverer.go:37
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/middleware.init.0.RequestLogger.func1.1
+	/home/marin/go/pkg/mod/github.com/go-chi/chi@v1.5.4/middleware/logger.go:57
+net/http.HandlerFunc.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:2166
+github.com/go-chi/chi/v5.(*Mux).ServeHTTP
+	/home/marin/go/pkg/mod/github.com/go-chi/chi/v5@v5.0.8/mux.go:90
+net/http.serverHandler.ServeHTTP
+	/home/marin/.go/src/net/http/server.go:3137
+net/http.(*conn).serve
+	/home/marin/.go/src/net/http/server.go:2039
+2025-08-15T19:26:20.659+0300	info	streaming/stream-writer.go:33	entry written to stream	{"stream": "subs-stream", "entry": "{\"Username\":\"subscriber\",\"TopicTitle\":\"test topic 1\",\"Status\":1}"}
+2025-08-15T19:27:17.152+0300	info	streaming/stream-writer.go:33	entry written to stream	{"stream": "subs-stream", "entry": "{\"Username\":\"subscriber\",\"TopicTitle\":\"test topic 1\",\"Status\":0}"}
+2025-08-15T19:37:13.084+0300	debug	http-filter/extract-topic-filter.go:28	topic admin filter	{"admin": "ar"}
+2025-08-15T19:37:53.866+0300	info	streaming/stream-writer.go:33	entry written to stream	{"stream": "msg-stream", "entry": "{\"id\":\"689f62617fa5d1a8676cbae2\",\"created_at\":\"2025-08-15T16:37:53.7844441Z\",\"updated_at\":\"2025-08-15T16:37:53.784445392Z\",\"content\":\"Test Message 1\",\"from\":\"marin\",\"to\":\"test topic 1\",\"timestamp\":1755275873}"}
+2025-08-15T19:38:02.116+0300	info	streaming/stream-writer.go:33	entry written to stream	{"stream": "msg-stream", "entry": "{\"id\":\"689f626a7fa5d1a8676cbae3\",\"created_at\":\"2025-08-15T16:38:02.060443842Z\",\"updated_at\":\"2025-08-15T16:38:02.060444413Z\",\"content\":\"Test Message 2\",\"from\":\"marin\",\"to\":\"test topic 1\",\"timestamp\":1755275882}"}
+2025-08-15T19:38:06.274+0300	info	streaming/stream-writer.go:33	entry written to stream	{"stream": "msg-stream", "entry": "{\"id\":\"689f626e7fa5d1a8676cbae4\",\"created_at\":\"2025-08-15T16:38:06.21878141Z\",\"updated_at\":\"2025-08-15T16:38:06.218781931Z\",\"content\":\"Test Message 3\",\"from\":\"marin\",\"to\":\"test topic 1\",\"timestamp\":1755275886}"}
+2025-08-16T16:25:57.155+0300	debug	mongo/uri.go:24	initialising db with config	{"db uri": "mongodb+srv://marin:Password10@testcluster.ldnpdl3.mongodb.net/?retryWrites=true&w=majority&appName=TestCluster"}
+2025-08-16T16:25:57.198+0300	info	write-server/main.go:75	Starting server at port 8080

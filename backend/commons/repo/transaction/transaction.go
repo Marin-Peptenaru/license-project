@@ -2,6 +2,7 @@ package transaction
 
 import (
 	"context"
+
 	"github.com/kamva/mgm/v3"
 	"go.mongodb.org/mongo-driver/mongo"
 )
@@ -39,5 +40,4 @@ func Do(operations func(s Scope) error) error {
 
 		return operations(mgmTxScope)
 	})
-
 }

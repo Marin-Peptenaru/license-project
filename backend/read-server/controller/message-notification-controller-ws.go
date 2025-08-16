@@ -66,15 +66,6 @@ func (m *messageNotificationControllerWS) writeToWs(conn *websocket.Conn, msg an
 }
 
 func (m *messageNotificationControllerWS) ListenForMessages(w http.ResponseWriter, r *http.Request) {
-	token := r.URL.Query().Get("auth")
-
-	parsedToken, err := jwtauth.VerifyToken(utils.JwtToken, token)
-
-	if err != nil {
-		utils.Logger.Error("error parsing token ", zap.Error(err))
-		http.Error(w, "invalid token", http.StatusUnauthorized)
-		return
-	}
 
 	conn, err := m.upgrader.Upgrade(w, r, nil)
 
@@ -89,6 +80,15 @@ func (m *messageNotificationControllerWS) ListenForMessages(w http.ResponseWrite
 		}
 	}(conn)
 
+	m.writeToWs(conn, "token req")
+	tokenString := m.waitForToken(conn)
+	parsedToken, err := jwtauth.VerifyToken(utils.JwtToken, tokenString)
+
+	if err != nil {
+		utils.Logger.Error("error parsing token", zap.String("token", tokenString))
+		return
+	}
+
 	userId, ok := parsedToken.Get("user_id")
 
 	if !ok {
@@ -102,7 +102,7 @@ func (m *messageNotificationControllerWS) ListenForMessages(w http.ResponseWrite
 	tokenExpired, cancel := context.WithDeadline(context.Background(), parsedToken.Expiration())
 	defer cancel()
 
-	messagesForUser, _ := m.msgListener.MessagesForUser(r.Context(), userId.(string))
+	messagesForUser, _ := m.msgListener.MessagesForUser(context.Background(), userId.(string))
 
 	cancelled := false
 
@@ -116,7 +116,7 @@ func (m *messageNotificationControllerWS) ListenForMessages(w http.ResponseWrite
 			parsedToken, err := jwtauth.VerifyToken(utils.JwtToken, newToken)
 
 			if err != nil {
-				utils.Logger.Error("error parsing token", zap.String("token", token), zap.Any("user id", userId))
+				utils.Logger.Error("error parsing token", zap.String("token", newToken), zap.Any("user id", userId))
 				cancelled = true
 			}
 

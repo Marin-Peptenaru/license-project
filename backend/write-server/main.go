@@ -8,6 +8,7 @@ import (
 	"commons/utils"
 	"commons/utils/mongo"
 	"fmt"
+	"log"
 	"net/http"
 	"os"
 	"write-server/controller"
@@ -19,9 +20,12 @@ import (
 )
 
 func main() {
+	if len(os.Args) < 2 {
+		log.Fatal("missing configuration file path")
+		return
+	}
 
 	configFilePath := os.Args[1]
-	fmt.Println(configFilePath)
 
 	cfg := config.Load(configFilePath)
 
@@ -68,8 +72,8 @@ func main() {
 	topicController.InitEndpoints(r)
 	msgController.InitEndpoints(r)
 
-	fmt.Println(utils.JwtToken)
+	utils.Logger.Info(fmt.Sprintf("Starting server at port %s", cfg.Server.Port))
 
-	utils.Logger.Fatal(http.ListenAndServe(":8082", r).Error())
+	utils.Logger.Fatal(http.ListenAndServe(fmt.Sprintf(":%s", cfg.Server.Port), r).Error())
 
 }

@@ -1,0 +1,21 @@
+FROM golang:1.22-alpine
+
+WORKDIR /app
+
+COPY ./commons ./commons
+WORKDIR /app/commons
+RUN pwd
+RUN go mod tidy
+
+WORKDIR /app
+
+COPY ./read-server ./read-server
+WORKDIR /app/read-server
+RUN go mod tidy
+
+RUN CGO_ENABLED=0 go build -o /read-server-go 
+
+EXPOSE 8080
+
+CMD ["./read-server-go ./commons/config.yaml"]
+

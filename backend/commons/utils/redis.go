@@ -2,7 +2,6 @@ package utils
 
 import (
 	"commons/config"
-	"fmt"
 
 	"github.com/gomodule/redigo/redis"
 )
@@ -10,7 +9,6 @@ import (
 var pool *redis.Pool
 
 func InitRedisPool(cfg *config.Config) {
-	fmt.Println(cfg.Redis.Url)
 
 	pool = &redis.Pool{
 		MaxIdle:   cfg.Redis.MaxIdle,

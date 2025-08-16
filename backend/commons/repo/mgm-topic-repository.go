@@ -21,7 +21,11 @@ func (m *mgmTopicRepository) FilterTopics(ctx context.Context, filter *filter.To
 	opts := pageInfoToFindOptions(page)
 
 	err := mgm.Coll(&domain.Topic{}).SimpleFindWithCtx(ctx, topics, bson.M{
-		"admin": filter.Admin,
+		"admin": bson.M{
+			operator.Regex: primitive.Regex{
+				Pattern: filter.Admin, Options: "i",
+			},
+		},
 		"title": bson.M{
 			operator.Regex: primitive.Regex{
 				Pattern: filter.Title, Options: "i",

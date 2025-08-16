@@ -7,6 +7,8 @@ import (
 	"commons/utils"
 	mongoutils "commons/utils/mongo"
 	"context"
+	"fmt"
+	"log"
 	"net/http"
 	"os"
 	"read-server/controller"
@@ -18,6 +20,12 @@ import (
 )
 
 func main() {
+
+	if len(os.Args) < 2 {
+		log.Fatal("missing configuration file path")
+		return
+	}
+
 	configFilePath := os.Args[1]
 	cfg := config.Load(configFilePath)
 
@@ -64,6 +72,8 @@ func main() {
 
 	messageNotificationController.InitEndpoints(r)
 
-	utils.Logger.Fatal(http.ListenAndServe(":8081", r).Error())
+	utils.Logger.Info(fmt.Sprintf("Starting server at port %s", cfg.Server.Port))
+
+	utils.Logger.Fatal(http.ListenAndServe(fmt.Sprintf(":%s", cfg.Server.Port), r).Error())
 
 }

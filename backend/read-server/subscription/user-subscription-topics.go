@@ -68,8 +68,6 @@ func ObserveUserSubscriptions(user domain.User, subs streaming.StreamObserver[dt
 		topicsObserver.topics[topic] = true
 	}
 
-	fmt.Println(topicsObserver.topics)
-
 	subscriptions, cancel := subs.Subscribe()
 
 	go func() {

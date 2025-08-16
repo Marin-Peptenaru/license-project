@@ -4,13 +4,12 @@ import (
 	"commons/domain/filter"
 	"net/http"
 	"strconv"
-	"time"
 )
 
 func ExtractMessageFilter(r *http.Request) *filter.MessageFilter {
 	f := &filter.MessageFilter{
 		To:    "",
-		After: time.Now().Unix(),
+		After: 0,
 	}
 
 	query := r.URL.Query()
@@ -23,7 +22,7 @@ func ExtractMessageFilter(r *http.Request) *filter.MessageFilter {
 		after, err := strconv.Atoi(query.Get(filter.AfterFilterKey))
 
 		if err != nil {
-			f.After = time.Now().Unix()
+			f.After = 0
 		} else {
 			f.After = int64(after)
 		}

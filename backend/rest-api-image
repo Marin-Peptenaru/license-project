@@ -1,0 +1,20 @@
+FROM golang:1.22-alpine
+
+WORKDIR /app
+
+COPY ./commons ./commons
+WORKDIR /app/commons
+RUN pwd
+RUN go mod tidy
+
+WORKDIR /app
+
+COPY ./write-server ./write-server
+WORKDIR /app/write-server
+RUN go mod tidy
+
+RUN CGO_ENABLED=0 go build -o /write-server-go 
+
+EXPOSE 8080
+
+CMD ["./write-server-go ./commons/config.yaml"]

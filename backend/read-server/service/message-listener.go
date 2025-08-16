@@ -43,6 +43,8 @@ func (m msgListener) MessagesForUser(ctx context.Context, userId string) (<-chan
 	go func() {
 		cancelled := false
 
+		defer close(messagesForUser)
+
 		for !cancelled {
 			select {
 			case <-ctx.Done():

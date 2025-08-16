@@ -14,6 +14,7 @@ import (
 
 	"github.com/go-chi/jwtauth/v5"
 	"github.com/lestrrat-go/jwx/v2/jwt"
+	"go.uber.org/zap"
 )
 
 var authTokenDuration = 15 * 60 * time.Second
@@ -93,6 +94,7 @@ func (a *authService) Authenticate(username string, email string, password strin
 	err := a.users.FindByUsernameOrEmail(a.users.Ctx(), username, email, user)
 
 	if err != nil {
+		utils.Logger.Debug("error fetching user date", zap.Error(err))
 		return "", "", apperrors.InvalidCredentials("username/email or password are incorrect")
 	}
 
