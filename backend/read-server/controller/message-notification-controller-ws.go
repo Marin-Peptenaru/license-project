@@ -137,12 +137,12 @@ func (m *messageNotificationControllerWS) ListenForMessages(w http.ResponseWrite
 	cancel()
 }
 
-func (m messageNotificationControllerWS) InitEndpoints(r chi.Router) {
+func (m *messageNotificationControllerWS) InitEndpoints(r chi.Router) {
 	r.Get("/api/messages/stream/", m.ListenForMessages)
 }
 
 func WSMessageNotificationsController(listener service.MessageListener, msgService commonservices.MessageService, cfg *config.Config) MessageNotificationsController {
-
+	utils.Logger.Debug("WS constructor run")
 	return &messageNotificationControllerWS{
 		writeTimeout: time.Duration(cfg.Notifications.WS.Timeout.Write) * time.Millisecond,
 		tokenTimeout: time.Duration(cfg.Notifications.WS.Timeout.Token) * time.Millisecond,

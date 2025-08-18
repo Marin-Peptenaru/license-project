@@ -72,6 +72,8 @@ func main() {
 
 	messageNotificationController.InitEndpoints(r)
 
+	utils.Logger.Info(fmt.Sprintf("Starting notifications server using %s as streaming protocol", cfg.Notifications.Protocol))
+
 	utils.Logger.Info(fmt.Sprintf("Starting server at port %s", cfg.Server.Port))
 
 	utils.Logger.Fatal(http.ListenAndServe(fmt.Sprintf(":%s", cfg.Server.Port), r).Error())

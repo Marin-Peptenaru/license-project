@@ -1,6 +1,6 @@
 server:
   host: "localhost"
-  port: 8080
+  port: 8081
 
 database:
   name: "mgm_db"
@@ -31,7 +31,7 @@ redis:
   waittime: 200 # ms
 
 notifications: 
-  protocol: "sse" # ws or sse
+  protocol: "ws" # ws or sse
   ws:
     timeout: #all in ms
       handshake: 1000

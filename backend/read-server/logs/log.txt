@@ -7,3 +7,114 @@
 2025-08-15T19:37:54.024+0300	info	streaming/stream-observer.go:108	event sent to observing channels	{"event id": "1755275873865-0", "event": {"id":"689f62617fa5d1a8676cbae2","created_at":"2025-08-15T16:37:53.7844441Z","updated_at":"2025-08-15T16:37:53.784445392Z","content":"Test Message 1","from":"marin","to":"test topic 1","timestamp":1755275873}}
 2025-08-15T19:38:02.253+0300	info	streaming/stream-observer.go:108	event sent to observing channels	{"event id": "1755275882116-0", "event": {"id":"689f626a7fa5d1a8676cbae3","created_at":"2025-08-15T16:38:02.060443842Z","updated_at":"2025-08-15T16:38:02.060444413Z","content":"Test Message 2","from":"marin","to":"test topic 1","timestamp":1755275882}}
 2025-08-15T19:38:06.467+0300	info	streaming/stream-observer.go:108	event sent to observing channels	{"event id": "1755275886274-0", "event": {"id":"689f626e7fa5d1a8676cbae4","created_at":"2025-08-15T16:38:06.21878141Z","updated_at":"2025-08-15T16:38:06.218781931Z","content":"Test Message 3","from":"marin","to":"test topic 1","timestamp":1755275886}}
+2025-08-16T16:57:44.155+0300	debug	mongo/uri.go:24	initialising db with config	{"db uri": "mongodb+srv://marin:Password10@testcluster.ldnpdl3.mongodb.net/?retryWrites=true&w=majority&appName=TestCluster"}
+2025-08-16T16:57:44.211+0300	info	read-server/main.go:75	Starting server at port 8080
+2025-08-16T16:57:44.211+0300	fatal	read-server/main.go:77	listen tcp :8080: bind: address already in use
+main.main
+	/home/marin/projects/license-project/backend/read-server/main.go:77
+runtime.main
+	/home/marin/.go/src/runtime/proc.go:271
+2025-08-16T16:57:57.095+0300	debug	mongo/uri.go:24	initialising db with config	{"db uri": "mongodb+srv://marin:Password10@testcluster.ldnpdl3.mongodb.net/?retryWrites=true&w=majority&appName=TestCluster"}
+2025-08-16T16:57:57.097+0300	info	read-server/main.go:75	Starting server at port 8081
+2025-08-18T03:48:18.429+0300	debug	mongo/uri.go:24	initialising db with config	{"db uri": "mongodb+srv://marin:Password10@testcluster.ldnpdl3.mongodb.net/?retryWrites=true&w=majority&appName=TestCluster"}
+2025-08-18T03:49:56.370+0300	debug	mongo/uri.go:24	initialising db with config	{"db uri": "mongodb+srv://marin:Password10@testcluster.ldnpdl3.mongodb.net/?retryWrites=true&w=majority&appName=TestCluster"}
+2025-08-18T03:49:56.374+0300	info	read-server/main.go:75	Starting server at port 8081
+2025-08-18T17:51:12.261+0300	info	controller/message-notification-controller-sse.go:57	ping sent to user	{"userId": "689f568e7fa5d1a8676cbae1"}
+2025-08-18T17:51:27.262+0300	info	controller/message-notification-controller-sse.go:57	ping sent to user	{"userId": "689f568e7fa5d1a8676cbae1"}
+2025-08-18T17:51:42.262+0300	info	controller/message-notification-controller-sse.go:57	ping sent to user	{"userId": "689f568e7fa5d1a8676cbae1"}
+2025-08-18T17:51:57.264+0300	info	controller/message-notification-controller-sse.go:57	ping sent to user	{"userId": "689f568e7fa5d1a8676cbae1"}
+2025-08-18T17:52:12.264+0300	info	controller/message-notification-controller-sse.go:57	ping sent to user	{"userId": "689f568e7fa5d1a8676cbae1"}
+2025-08-18T17:52:27.266+0300	info	controller/message-notification-controller-sse.go:57	ping sent to user	{"userId": "689f568e7fa5d1a8676cbae1"}
+2025-08-18T17:52:42.266+0300	info	controller/message-notification-controller-sse.go:57	ping sent to user	{"userId": "689f568e7fa5d1a8676cbae1"}
+2025-08-18T17:52:57.267+0300	info	controller/message-notification-controller-sse.go:57	ping sent to user	{"userId": "689f568e7fa5d1a8676cbae1"}
+2025-08-18T17:53:12.269+0300	info	controller/message-notification-controller-sse.go:57	ping sent to user	{"userId": "689f568e7fa5d1a8676cbae1"}
+2025-08-18T17:53:27.270+0300	info	controller/message-notification-controller-sse.go:57	ping sent to user	{"userId": "689f568e7fa5d1a8676cbae1"}
+2025-08-18T17:53:42.271+0300	info	controller/message-notification-controller-sse.go:57	ping sent to user	{"userId": "689f568e7fa5d1a8676cbae1"}
+2025-08-18T17:53:57.272+0300	info	controller/message-notification-controller-sse.go:57	ping sent to user	{"userId": "689f568e7fa5d1a8676cbae1"}
+2025-08-18T17:54:12.273+0300	info	controller/message-notification-controller-sse.go:57	ping sent to user	{"userId": "689f568e7fa5d1a8676cbae1"}
+2025-08-18T17:54:20.872+0300	info	controller/message-notification-controller-sse.go:120	closing connection for user	{"userId": "689f568e7fa5d1a8676cbae1"}
+2025-08-18T17:54:42.841+0300	info	controller/message-notification-controller-sse.go:57	ping sent to user	{"userId": "689f568e7fa5d1a8676cbae1"}
+2025-08-18T17:54:57.843+0300	info	controller/message-notification-controller-sse.go:57	ping sent to user	{"userId": "689f568e7fa5d1a8676cbae1"}
+2025-08-18T17:55:12.843+0300	info	controller/message-notification-controller-sse.go:57	ping sent to user	{"userId": "689f568e7fa5d1a8676cbae1"}
+2025-08-18T17:55:27.843+0300	info	controller/message-notification-controller-sse.go:57	ping sent to user	{"userId": "689f568e7fa5d1a8676cbae1"}
+2025-08-18T17:55:39.727+0300	info	service/message-listener.go:54	Is message subscribed	{"message": {"id":"68a33eebebefb611ff9fddd6","created_at":"2025-08-18T14:55:39.494122962Z","updated_at":"2025-08-18T14:55:39.494124284Z","content":"Bla bla bla","from":"marin","to":"test topic 1","timestamp":1755528939}, "user": {"id":"689f568e7fa5d1a8676cbae1","created_at":"2025-08-15T15:47:26.461Z","updated_at":"2025-08-15T16:27:17.112Z","username":"subscriber","email":"sub@mail.com","topics":{"test topic 1":true}}, "subscribed": true}
+2025-08-18T17:55:39.727+0300	info	streaming/stream-observer.go:108	event sent to observing channels	{"event id": "1755528939570-0", "event": {"id":"68a33eebebefb611ff9fddd6","created_at":"2025-08-18T14:55:39.494122962Z","updated_at":"2025-08-18T14:55:39.494124284Z","content":"Bla bla bla","from":"marin","to":"test topic 1","timestamp":1755528939}}
+2025-08-18T17:55:39.727+0300	info	controller/message-notification-controller-sse.go:46	message sse sent to user	{"userId": "689f568e7fa5d1a8676cbae1", "event": {}}
+2025-08-18T17:55:42.845+0300	info	controller/message-notification-controller-sse.go:57	ping sent to user	{"userId": "689f568e7fa5d1a8676cbae1"}
+2025-08-18T17:55:57.845+0300	info	controller/message-notification-controller-sse.go:57	ping sent to user	{"userId": "689f568e7fa5d1a8676cbae1"}
+2025-08-18T17:56:12.846+0300	info	controller/message-notification-controller-sse.go:57	ping sent to user	{"userId": "689f568e7fa5d1a8676cbae1"}
+2025-08-18T17:56:27.847+0300	info	controller/message-notification-controller-sse.go:57	ping sent to user	{"userId": "689f568e7fa5d1a8676cbae1"}
+2025-08-18T17:56:42.847+0300	info	controller/message-notification-controller-sse.go:57	ping sent to user	{"userId": "689f568e7fa5d1a8676cbae1"}
+2025-08-18T17:56:57.848+0300	info	controller/message-notification-controller-sse.go:57	ping sent to user	{"userId": "689f568e7fa5d1a8676cbae1"}
+2025-08-18T17:57:12.849+0300	info	controller/message-notification-controller-sse.go:57	ping sent to user	{"userId": "689f568e7fa5d1a8676cbae1"}
+2025-08-18T17:57:27.850+0300	info	controller/message-notification-controller-sse.go:57	ping sent to user	{"userId": "689f568e7fa5d1a8676cbae1"}
+2025-08-18T17:57:38.730+0300	info	service/message-listener.go:54	Is message subscribed	{"message": {"id":"68a33f62ebefb611ff9fddd7","created_at":"2025-08-18T14:57:38.515750808Z","updated_at":"2025-08-18T14:57:38.515751389Z","content":"One more just to be sure","from":"marin","to":"test topic 1","timestamp":1755529058}, "user": {"id":"689f568e7fa5d1a8676cbae1","created_at":"2025-08-15T15:47:26.461Z","updated_at":"2025-08-15T16:27:17.112Z","username":"subscriber","email":"sub@mail.com","topics":{"test topic 1":true}}, "subscribed": true}
+2025-08-18T17:57:38.730+0300	info	streaming/stream-observer.go:108	event sent to observing channels	{"event id": "1755529058577-0", "event": {"id":"68a33f62ebefb611ff9fddd7","created_at":"2025-08-18T14:57:38.515750808Z","updated_at":"2025-08-18T14:57:38.515751389Z","content":"One more just to be sure","from":"marin","to":"test topic 1","timestamp":1755529058}}
+2025-08-18T17:57:38.730+0300	info	controller/message-notification-controller-sse.go:46	message sse sent to user	{"userId": "689f568e7fa5d1a8676cbae1", "event": {}}
+2025-08-18T17:57:42.850+0300	info	controller/message-notification-controller-sse.go:57	ping sent to user	{"userId": "689f568e7fa5d1a8676cbae1"}
+2025-08-18T17:57:57.850+0300	info	controller/message-notification-controller-sse.go:57	ping sent to user	{"userId": "689f568e7fa5d1a8676cbae1"}
+2025-08-18T17:58:02.005+0300	info	service/message-listener.go:54	Is message subscribed	{"message": {"id":"68a33f79ebefb611ff9fddd8","created_at":"2025-08-18T14:58:01.912870367Z","updated_at":"2025-08-18T14:58:01.912870878Z","content":"Hello again","from":"marin","to":"test topic 1","timestamp":1755529081}, "user": {"id":"689f568e7fa5d1a8676cbae1","created_at":"2025-08-15T15:47:26.461Z","updated_at":"2025-08-15T16:27:17.112Z","username":"subscriber","email":"sub@mail.com","topics":{"test topic 1":true}}, "subscribed": true}
+2025-08-18T17:58:02.005+0300	info	controller/message-notification-controller-sse.go:46	message sse sent to user	{"userId": "689f568e7fa5d1a8676cbae1", "event": {}}
+2025-08-18T17:58:02.005+0300	info	streaming/stream-observer.go:108	event sent to observing channels	{"event id": "1755529081983-0", "event": {"id":"68a33f79ebefb611ff9fddd8","created_at":"2025-08-18T14:58:01.912870367Z","updated_at":"2025-08-18T14:58:01.912870878Z","content":"Hello again","from":"marin","to":"test topic 1","timestamp":1755529081}}
+2025-08-18T17:58:12.851+0300	info	controller/message-notification-controller-sse.go:57	ping sent to user	{"userId": "689f568e7fa5d1a8676cbae1"}
+2025-08-18T17:58:27.851+0300	info	controller/message-notification-controller-sse.go:57	ping sent to user	{"userId": "689f568e7fa5d1a8676cbae1"}
+2025-08-18T17:58:32.303+0300	info	service/message-listener.go:54	Is message subscribed	{"message": {"id":"68a33f98ebefb611ff9fddd9","created_at":"2025-08-18T14:58:32.063143696Z","updated_at":"2025-08-18T14:58:32.063144417Z","content":"Just to be sure","from":"marin","to":"test topic 1","timestamp":1755529112}, "user": {"id":"689f568e7fa5d1a8676cbae1","created_at":"2025-08-15T15:47:26.461Z","updated_at":"2025-08-15T16:27:17.112Z","username":"subscriber","email":"sub@mail.com","topics":{"test topic 1":true}}, "subscribed": true}
+2025-08-18T17:58:32.303+0300	info	controller/message-notification-controller-sse.go:46	message sse sent to user	{"userId": "689f568e7fa5d1a8676cbae1", "event": {}}
+2025-08-18T17:58:32.303+0300	info	streaming/stream-observer.go:108	event sent to observing channels	{"event id": "1755529112124-0", "event": {"id":"68a33f98ebefb611ff9fddd9","created_at":"2025-08-18T14:58:32.063143696Z","updated_at":"2025-08-18T14:58:32.063144417Z","content":"Just to be sure","from":"marin","to":"test topic 1","timestamp":1755529112}}
+2025-08-18T17:58:42.852+0300	info	controller/message-notification-controller-sse.go:57	ping sent to user	{"userId": "689f568e7fa5d1a8676cbae1"}
+2025-08-18T17:58:57.853+0300	info	controller/message-notification-controller-sse.go:57	ping sent to user	{"userId": "689f568e7fa5d1a8676cbae1"}
+2025-08-18T17:59:12.854+0300	info	controller/message-notification-controller-sse.go:57	ping sent to user	{"userId": "689f568e7fa5d1a8676cbae1"}
+2025-08-18T17:59:23.110+0300	info	controller/message-notification-controller-sse.go:120	closing connection for user	{"userId": "689f568e7fa5d1a8676cbae1"}
+2025-08-18T18:14:47.685+0300	info	controller/message-notification-controller-sse.go:57	ping sent to user	{"userId": "689f568e7fa5d1a8676cbae1"}
+2025-08-18T18:15:02.240+0300	info	service/message-listener.go:54	Is message subscribed	{"message": {"id":"68a34376ebefb611ff9fddda","created_at":"2025-08-18T15:15:02.107880496Z","updated_at":"2025-08-18T15:15:02.107881478Z","content":"Just to be sure","from":"marin","to":"test topic 1","timestamp":1755530102}, "user": {"id":"689f568e7fa5d1a8676cbae1","created_at":"2025-08-15T15:47:26.461Z","updated_at":"2025-08-15T16:27:17.112Z","username":"subscriber","email":"sub@mail.com","topics":{"test topic 1":true}}, "subscribed": true}
+2025-08-18T18:15:02.240+0300	info	controller/message-notification-controller-sse.go:46	message sse sent to user	{"userId": "689f568e7fa5d1a8676cbae1", "event": {}}
+2025-08-18T18:15:02.240+0300	info	streaming/stream-observer.go:108	event sent to observing channels	{"event id": "1755530102204-0", "event": {"id":"68a34376ebefb611ff9fddda","created_at":"2025-08-18T15:15:02.107880496Z","updated_at":"2025-08-18T15:15:02.107881478Z","content":"Just to be sure","from":"marin","to":"test topic 1","timestamp":1755530102}}
+2025-08-18T18:15:02.686+0300	info	controller/message-notification-controller-sse.go:57	ping sent to user	{"userId": "689f568e7fa5d1a8676cbae1"}
+2025-08-18T18:15:17.687+0300	info	controller/message-notification-controller-sse.go:57	ping sent to user	{"userId": "689f568e7fa5d1a8676cbae1"}
+2025-08-18T18:15:24.718+0300	info	service/message-listener.go:54	Is message subscribed	{"message": {"id":"68a3438cebefb611ff9fdddb","created_at":"2025-08-18T15:15:24.610924409Z","updated_at":"2025-08-18T15:15:24.610925401Z","content":"This one should be parsed","from":"marin","to":"test topic 1","timestamp":1755530124}, "user": {"id":"689f568e7fa5d1a8676cbae1","created_at":"2025-08-15T15:47:26.461Z","updated_at":"2025-08-15T16:27:17.112Z","username":"subscriber","email":"sub@mail.com","topics":{"test topic 1":true}}, "subscribed": true}
+2025-08-18T18:15:24.719+0300	info	controller/message-notification-controller-sse.go:46	message sse sent to user	{"userId": "689f568e7fa5d1a8676cbae1", "event": {}}
+2025-08-18T18:15:24.719+0300	info	streaming/stream-observer.go:108	event sent to observing channels	{"event id": "1755530124690-0", "event": {"id":"68a3438cebefb611ff9fdddb","created_at":"2025-08-18T15:15:24.610924409Z","updated_at":"2025-08-18T15:15:24.610925401Z","content":"This one should be parsed","from":"marin","to":"test topic 1","timestamp":1755530124}}
+2025-08-18T18:15:32.688+0300	info	controller/message-notification-controller-sse.go:57	ping sent to user	{"userId": "689f568e7fa5d1a8676cbae1"}
+2025-08-18T18:15:47.688+0300	info	controller/message-notification-controller-sse.go:57	ping sent to user	{"userId": "689f568e7fa5d1a8676cbae1"}
+2025-08-18T18:16:02.689+0300	info	controller/message-notification-controller-sse.go:57	ping sent to user	{"userId": "689f568e7fa5d1a8676cbae1"}
+2025-08-18T18:16:17.690+0300	info	controller/message-notification-controller-sse.go:57	ping sent to user	{"userId": "689f568e7fa5d1a8676cbae1"}
+2025-08-18T18:16:32.691+0300	info	controller/message-notification-controller-sse.go:57	ping sent to user	{"userId": "689f568e7fa5d1a8676cbae1"}
+2025-08-18T18:16:47.692+0300	info	controller/message-notification-controller-sse.go:57	ping sent to user	{"userId": "689f568e7fa5d1a8676cbae1"}
+2025-08-18T18:17:02.692+0300	info	controller/message-notification-controller-sse.go:57	ping sent to user	{"userId": "689f568e7fa5d1a8676cbae1"}
+2025-08-18T18:17:17.693+0300	info	controller/message-notification-controller-sse.go:57	ping sent to user	{"userId": "689f568e7fa5d1a8676cbae1"}
+2025-08-18T18:17:32.694+0300	info	controller/message-notification-controller-sse.go:57	ping sent to user	{"userId": "689f568e7fa5d1a8676cbae1"}
+2025-08-18T18:17:47.694+0300	info	controller/message-notification-controller-sse.go:57	ping sent to user	{"userId": "689f568e7fa5d1a8676cbae1"}
+2025-08-18T18:18:02.695+0300	info	controller/message-notification-controller-sse.go:57	ping sent to user	{"userId": "689f568e7fa5d1a8676cbae1"}
+2025-08-18T18:18:17.695+0300	info	controller/message-notification-controller-sse.go:57	ping sent to user	{"userId": "689f568e7fa5d1a8676cbae1"}
+2025-08-18T18:18:32.696+0300	info	controller/message-notification-controller-sse.go:57	ping sent to user	{"userId": "689f568e7fa5d1a8676cbae1"}
+2025-08-18T18:18:47.696+0300	info	controller/message-notification-controller-sse.go:57	ping sent to user	{"userId": "689f568e7fa5d1a8676cbae1"}
+2025-08-18T18:19:02.696+0300	info	controller/message-notification-controller-sse.go:57	ping sent to user	{"userId": "689f568e7fa5d1a8676cbae1"}
+2025-08-18T18:19:17.697+0300	info	controller/message-notification-controller-sse.go:57	ping sent to user	{"userId": "689f568e7fa5d1a8676cbae1"}
+2025-08-18T18:19:32.698+0300	info	controller/message-notification-controller-sse.go:57	ping sent to user	{"userId": "689f568e7fa5d1a8676cbae1"}
+2025-08-18T18:19:47.699+0300	info	controller/message-notification-controller-sse.go:57	ping sent to user	{"userId": "689f568e7fa5d1a8676cbae1"}
+2025-08-18T18:20:02.700+0300	info	controller/message-notification-controller-sse.go:57	ping sent to user	{"userId": "689f568e7fa5d1a8676cbae1"}
+2025-08-18T18:20:17.700+0300	info	controller/message-notification-controller-sse.go:57	ping sent to user	{"userId": "689f568e7fa5d1a8676cbae1"}
+2025-08-18T18:20:32.701+0300	info	controller/message-notification-controller-sse.go:57	ping sent to user	{"userId": "689f568e7fa5d1a8676cbae1"}
+2025-08-18T18:20:47.702+0300	info	controller/message-notification-controller-sse.go:57	ping sent to user	{"userId": "689f568e7fa5d1a8676cbae1"}
+2025-08-18T18:20:50.067+0300	info	controller/message-notification-controller-sse.go:120	closing connection for user	{"userId": "689f568e7fa5d1a8676cbae1"}
+2025-08-18T19:06:25.146+0300	debug	mongo/uri.go:24	initialising db with config	{"db uri": "mongodb+srv://marin:Password10@testcluster.ldnpdl3.mongodb.net/?retryWrites=true&w=majority&appName=TestCluster"}
+2025-08-18T19:06:25.386+0300	info	read-server/main.go:75	Starting notifications server using ws as streaming protocol
+2025-08-18T19:06:25.386+0300	info	read-server/main.go:77	Starting server at port 8081
+2025-08-18T19:31:08.818+0300	info	streaming/stream-observer.go:108	event sent to observing channels	{"event id": "1755534668778-0", "event": {"id":"68a3554cebefb611ff9fdddc","created_at":"2025-08-18T16:31:08.649188891Z","updated_at":"2025-08-18T16:31:08.649189812Z","content":"This one should be parsed","from":"marin","to":"test topic 1","timestamp":1755534668}}
+2025-08-18T19:31:20.036+0300	info	streaming/stream-observer.go:108	event sent to observing channels	{"event id": "1755534680034-0", "event": {"id":"68a35557ebefb611ff9fdddd","created_at":"2025-08-18T16:31:19.915960402Z","updated_at":"2025-08-18T16:31:19.915961494Z","content":"This one should be parsed","from":"marin","to":"test topic 1","timestamp":1755534679}}
+2025-08-18T19:31:21.039+0300	info	streaming/stream-observer.go:108	event sent to observing channels	{"event id": "1755534680840-0", "event": {"id":"68a35558ebefb611ff9fddde","created_at":"2025-08-18T16:31:20.72513847Z","updated_at":"2025-08-18T16:31:20.725139202Z","content":"This one should be parsed","from":"marin","to":"test topic 1","timestamp":1755534680}}
+2025-08-18T19:31:21.640+0300	info	streaming/stream-observer.go:108	event sent to observing channels	{"event id": "1755534681611-0", "event": {"id":"68a35559ebefb611ff9fdddf","created_at":"2025-08-18T16:31:21.495078879Z","updated_at":"2025-08-18T16:31:21.495080081Z","content":"This one should be parsed","from":"marin","to":"test topic 1","timestamp":1755534681}}
+2025-08-18T19:31:22.843+0300	info	streaming/stream-observer.go:108	event sent to observing channels	{"event id": "1755534682794-0", "event": {"id":"68a3555aebefb611ff9fdde0","created_at":"2025-08-18T16:31:22.67819512Z","updated_at":"2025-08-18T16:31:22.678195862Z","content":"This one should be parsed","from":"marin","to":"test topic 1","timestamp":1755534682}}
+2025-08-18T19:35:36.604+0300	debug	mongo/uri.go:24	initialising db with config	{"db uri": "mongodb+srv://marin:Password10@testcluster.ldnpdl3.mongodb.net/?retryWrites=true&w=majority&appName=TestCluster"}
+2025-08-18T19:35:36.662+0300	info	read-server/main.go:75	Starting notifications server using ws as streaming protocol
+2025-08-18T19:35:36.662+0300	info	read-server/main.go:77	Starting server at port 8081
+2025-08-18T20:05:49.478+0300	debug	mongo/uri.go:24	initialising db with config	{"db uri": "mongodb+srv://marin:Password10@testcluster.ldnpdl3.mongodb.net/?retryWrites=true&w=majority&appName=TestCluster"}
+2025-08-18T20:05:49.506+0300	info	read-server/main.go:75	Starting notifications server using ws as streaming protocol
+2025-08-18T20:05:49.506+0300	info	read-server/main.go:77	Starting server at port 8081
+2025-08-18T20:17:51.502+0300	debug	mongo/uri.go:24	initialising db with config	{"db uri": "mongodb+srv://marin:Password10@testcluster.ldnpdl3.mongodb.net/?retryWrites=true&w=majority&appName=TestCluster"}
+2025-08-18T20:17:51.546+0300	info	read-server/main.go:75	Starting notifications server using ws as streaming protocol
+2025-08-18T20:17:51.546+0300	info	read-server/main.go:77	Starting server at port 8081
+2025-08-18T20:20:00.978+0300	debug	mongo/uri.go:24	initialising db with config	{"db uri": "mongodb+srv://marin:Password10@testcluster.ldnpdl3.mongodb.net/?retryWrites=true&w=majority&appName=TestCluster"}
+2025-08-18T20:20:01.055+0300	debug	controller/message-notification-controller-ws.go:145	WS constructor run
+2025-08-18T20:20:01.055+0300	info	read-server/main.go:75	Starting notifications server using ws as streaming protocol
+2025-08-18T20:20:01.055+0300	info	read-server/main.go:77	Starting server at port 8081
