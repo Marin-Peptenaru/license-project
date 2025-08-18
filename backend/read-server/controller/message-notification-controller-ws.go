@@ -2,7 +2,6 @@ package controller
 
 import (
 	"commons/config"
-	commonservices "commons/service"
 	"commons/utils"
 	"context"
 	"encoding/json"
@@ -21,7 +20,6 @@ type messageNotificationControllerWS struct {
 	tokenTimeout time.Duration
 	upgrader     websocket.Upgrader
 	msgListener  service.MessageListener
-	msgService   commonservices.MessageService
 }
 
 func (m *messageNotificationControllerWS) waitForToken(conn *websocket.Conn) string {
@@ -67,8 +65,9 @@ func (m *messageNotificationControllerWS) writeToWs(conn *websocket.Conn, msg an
 
 func (m *messageNotificationControllerWS) ListenForMessages(w http.ResponseWriter, r *http.Request) {
 
+	utils.Logger.Debug("Before ws upgrade")
 	conn, err := m.upgrader.Upgrade(w, r, nil)
-
+	utils.Logger.Debug("After ws upgrade")
 	if err != nil {
 		utils.Logger.Error("error doing ws upgrade", zap.Error(err))
 	}
@@ -80,7 +79,7 @@ func (m *messageNotificationControllerWS) ListenForMessages(w http.ResponseWrite
 		}
 	}(conn)
 
-	m.writeToWs(conn, "token req")
+	m.writeToWs(conn, "authenticate")
 	tokenString := m.waitForToken(conn)
 	parsedToken, err := jwtauth.VerifyToken(utils.JwtToken, tokenString)
 
@@ -111,7 +110,7 @@ func (m *messageNotificationControllerWS) ListenForMessages(w http.ResponseWrite
 		case <-r.Context().Done():
 			cancelled = true
 		case <-tokenExpired.Done():
-			m.writeToWs(conn, "token exp")
+			m.writeToWs(conn, "authenticate")
 			newToken := m.waitForToken(conn)
 			parsedToken, err := jwtauth.VerifyToken(utils.JwtToken, newToken)
 
@@ -141,13 +140,12 @@ func (m *messageNotificationControllerWS) InitEndpoints(r chi.Router) {
 	r.Get("/api/messages/stream/", m.ListenForMessages)
 }
 
-func WSMessageNotificationsController(listener service.MessageListener, msgService commonservices.MessageService, cfg *config.Config) MessageNotificationsController {
+func WSMessageNotificationsController(listener service.MessageListener, cfg *config.Config) MessageNotificationsController {
 	utils.Logger.Debug("WS constructor run")
 	return &messageNotificationControllerWS{
 		writeTimeout: time.Duration(cfg.Notifications.WS.Timeout.Write) * time.Millisecond,
 		tokenTimeout: time.Duration(cfg.Notifications.WS.Timeout.Token) * time.Millisecond,
 		msgListener:  listener,
-		msgService:   msgService,
 		upgrader: websocket.Upgrader{
 			HandshakeTimeout: time.Duration(cfg.Notifications.WS.Timeout.Handshake) * time.Millisecond,
 			ReadBufferSize:   0, // setting buffer sizes to 0 will just use the default http.ResponseWriter buffer size instead

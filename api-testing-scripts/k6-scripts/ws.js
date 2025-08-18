@@ -7,23 +7,25 @@ export default function() {
     var tokens = undefined
     const username = 'subscriber'
     const password = 'Password123!'
-    const url = 'ws://localhost:8081/api/messages/stream'
+    const url = 'ws://localhost:8081/api/messages/stream/'
 
     const res = ws.connect(url,{}, function(socket) {
         socket.on('open', () => console.log('ws connected'))
 
         socket.on('message', (data) => {
-            if(data === 'token exp') {
+            const msg = JSON.parse(data)
+            if(msg == "authenticate") {
                 console.log('Authentication has expired, refreshing...')
                 if(!tokens) {
                     tokens = authenticate(username, password)
                 } else {
                     tokens.auth = refreshAuthentication(tokens.refresh)
                 }
+                console.log(tokens)
                 socket.send(tokens.auth)
                 console.log('Authentication refreshed')
             } else {
-                console.log('Message received: ', JSON.parse(data))
+                console.log('Message received: ', msg)
             }
         })
 

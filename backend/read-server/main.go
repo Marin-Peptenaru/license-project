@@ -3,7 +3,6 @@ package main
 import (
 	"commons/config"
 	"commons/repo"
-	commonservices "commons/service"
 	"commons/utils"
 	mongoutils "commons/utils/mongo"
 	"context"
@@ -40,12 +39,8 @@ func main() {
 
 	userRepo := repo.NewMgmUserRepository()
 	topicRepo := repo.NewMgmTopicRepository()
-	messageRepo := repo.NewMgmMessageRepository()
-
-	msgService := commonservices.NewMessageService(userRepo, topicRepo, messageRepo)
 
 	msgListener := service.NewMessageListener(appContext, userRepo, topicRepo, cfg)
-	msgController := controller.NewMessageController(msgListener, msgService)
 
 	r := chi.NewRouter()
 	r.Use(middleware.Logger)
@@ -60,14 +55,12 @@ func main() {
 		ExposedHeaders: []string{"Link"},
 	}))
 
-	msgController.InitEndpoints(r)
-
 	var messageNotificationController controller.MessageNotificationsController
 
 	if cfg.Notifications.Protocol == "ws" {
-		messageNotificationController = controller.WSMessageNotificationsController(msgListener, msgService, cfg)
+		messageNotificationController = controller.WSMessageNotificationsController(msgListener, cfg)
 	} else {
-		messageNotificationController = controller.SSEMEssageNotificationController(msgListener, msgService, cfg)
+		messageNotificationController = controller.SSEMEssageNotificationController(msgListener, cfg)
 	}
 
 	messageNotificationController.InitEndpoints(r)

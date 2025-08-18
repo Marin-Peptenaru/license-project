@@ -4,7 +4,6 @@ import (
 	"commons/config"
 	"commons/domain"
 	"commons/middleware"
-	commonservices "commons/service"
 	"commons/utils"
 	httputils "commons/utils/http-utils"
 	"context"
@@ -23,7 +22,6 @@ type messageNotificationControllerSSE struct {
 	ping         bool
 	pingInterval time.Duration
 	listener     service.MessageListener
-	msgService   commonservices.MessageService
 }
 
 func (m *messageNotificationControllerSSE) listenWithPing(w http.ResponseWriter, messages <-chan domain.Message, userId string, ctx context.Context) {
@@ -131,12 +129,11 @@ func (m *messageNotificationControllerSSE) InitEndpoints(r chi.Router) {
 
 }
 
-func SSEMEssageNotificationController(listener service.MessageListener, msgService commonservices.MessageService, cfg *config.Config) MessageNotificationsController {
+func SSEMEssageNotificationController(listener service.MessageListener, cfg *config.Config) MessageNotificationsController {
 	return &messageNotificationControllerSSE{
 		flush:        cfg.Notifications.SSE.Flush,
 		ping:         cfg.Notifications.SSE.Ping.Enabled,
 		pingInterval: time.Duration(cfg.Notifications.SSE.Ping.Interval) * time.Second,
 		listener:     listener,
-		msgService:   msgService,
 	}
 }
