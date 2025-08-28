@@ -1,0 +1,338 @@
+[
+  {
+    "v": 9,
+    "name": "License",
+    "folders": [
+      {
+        "v": 9,
+        "name": "Auth",
+        "folders": [],
+        "requests": [
+          {
+            "v": "15",
+            "name": "Authenticate",
+            "method": "POST",
+            "endpoint": "http://localhost:8080/api/auth",
+            "params": [],
+            "headers": [],
+            "preRequestScript": "",
+            "testScript": "",
+            "auth": {
+              "authType": "inherit",
+              "authActive": true
+            },
+            "body": {
+              "contentType": "application/json",
+              "body": "{\n  \"username\": \"subscriber\",\n  \"password\": \"Password123!\"\n}"
+            },
+            "requestVariables": [],
+            "responses": {}
+          },
+          {
+            "v": "15",
+            "name": "Refresh",
+            "method": "POST",
+            "endpoint": "http://localhost:8080/api/auth/refresh",
+            "params": [],
+            "headers": [],
+            "preRequestScript": "",
+            "testScript": "",
+            "auth": {
+              "authType": "bearer",
+              "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NTU1MzYwNzMsImlhdCI6MTc1NTUyODg3MywicmVmcmVzaCI6dHJ1ZSwidXNlciI6Im1hcmluIiwidXNlcl9pZCI6IjY4OGY5NDcxOWY5YTVjODkyNDZiYmE3OSJ9.phoy-iZXmH-Zdgd3c8y5Ma0kvA8HFWwq6HdMWLhzXOs",
+              "authActive": true
+            },
+            "body": {
+              "contentType": "application/json",
+              "body": "{\n  \"username\": \"test_user3\",\n  \"email\": \"test3@mail.com\",\n  \"password\": \"Password123!\"\n}"
+            },
+            "requestVariables": [],
+            "responses": {}
+          }
+        ],
+        "auth": {
+          "authActive": true,
+          "authType": "inherit"
+        },
+        "headers": [],
+        "_ref_id": "coll_mdvu9k8f_cc32a6b6-b14a-4d14-9fa4-173d84803174"
+      },
+      {
+        "v": 9,
+        "name": "user",
+        "folders": [],
+        "requests": [
+          {
+            "v": "15",
+            "name": "Register user",
+            "method": "POST",
+            "endpoint": "http://localhost:8080/api/register",
+            "params": [],
+            "headers": [],
+            "preRequestScript": "",
+            "testScript": "",
+            "auth": {
+              "authType": "inherit",
+              "authActive": true
+            },
+            "body": {
+              "contentType": "application/json",
+              "body": "{\n  \"username\": \"subscriber\",\n  \"email\": \"sub@mail.com\",\n  \"password\": \"Password123!\"\n}"
+            },
+            "requestVariables": [],
+            "responses": {}
+          },
+          {
+            "v": "15",
+            "name": "User Details",
+            "method": "GET",
+            "endpoint": "http://localhost:8080/api/users",
+            "params": [],
+            "headers": [],
+            "preRequestScript": "",
+            "testScript": "",
+            "auth": {
+              "authType": "bearer",
+              "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NTYzMjY1NzgsImlhdCI6MTc1NjMyNjUxOCwicmVmcmVzaCI6ZmFsc2UsInVzZXIiOiJtYXJpbiIsInVzZXJfaWQiOiI2ODhmOTQ3MTlmOWE1Yzg5MjQ2YmJhNzkifQ.rHoFFMruBhFJv1WZekfik6xNQgokBx-3cfjrDTPiN0w",
+              "authActive": true
+            },
+            "body": {
+              "contentType": "application/json",
+              "body": "{\n  \"username\": \"test_user3\",\n  \"email\": \"test3@mail.com\",\n  \"password\": \"Password123!\"\n}"
+            },
+            "requestVariables": [],
+            "responses": {}
+          },
+          {
+            "v": "15",
+            "name": "Search",
+            "method": "GET",
+            "endpoint": "http://localhost:8080/api/users/search/?username=r",
+            "params": [],
+            "headers": [],
+            "preRequestScript": "",
+            "testScript": "",
+            "auth": {
+              "authType": "bearer",
+              "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NTUyNzU5NjUsImlhdCI6MTc1NTI3NTA2NSwicmVmcmVzaCI6ZmFsc2UsInVzZXIiOiJzdWJzY3JpYmVyIiwidXNlcl9pZCI6IjY4OWY1NjhlN2ZhNWQxYTg2NzZjYmFlMSJ9.eahAPpY0T4Gx-dsJjEFCBNF5lVu2SWzXRswqQcSS38A",
+              "authActive": true
+            },
+            "body": {
+              "contentType": "application/json",
+              "body": "{\n  \"username\": \"test_user3\",\n  \"email\": \"test3@mail.com\",\n  \"password\": \"Password123!\"\n}"
+            },
+            "requestVariables": [],
+            "responses": {}
+          }
+        ],
+        "auth": {
+          "authType": "inherit",
+          "authActive": true
+        },
+        "headers": [],
+        "_ref_id": "coll_mdvu9k8f_6e2382bc-74e1-40ad-9801-117856c66944"
+      },
+      {
+        "v": 9,
+        "name": "topics",
+        "folders": [],
+        "requests": [
+          {
+            "v": "15",
+            "name": "create",
+            "method": "POST",
+            "endpoint": "http://localhost:8080/api/topics/",
+            "params": [],
+            "headers": [],
+            "preRequestScript": "",
+            "testScript": "",
+            "auth": {
+              "authType": "bearer",
+              "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NTUxMDA5NTcsImlhdCI6MTc1NTEwMDA1NywicmVmcmVzaCI6ZmFsc2UsInVzZXIiOiJtYXJpbiIsInVzZXJfaWQiOiI2ODhmOTQ3MTlmOWE1Yzg5MjQ2YmJhNzkifQ.57N0oQbheAL7jJVnqMV39oCBc3ZfclhLLprtrLYXAag",
+              "authActive": true
+            },
+            "body": {
+              "contentType": "application/json",
+              "body": "{\n  \"title\": \"test topic 1\",\n  \"public\": true\n}"
+            },
+            "requestVariables": [],
+            "responses": {}
+          },
+          {
+            "v": "15",
+            "name": "subscribe",
+            "method": "PUT",
+            "endpoint": "http://localhost:8080/api/topics/subscribe",
+            "params": [],
+            "headers": [],
+            "preRequestScript": "",
+            "testScript": "",
+            "auth": {
+              "authType": "bearer",
+              "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NTYzMzM1OTQsImlhdCI6MTc1NjMzMjk5NCwicmVmcmVzaCI6ZmFsc2UsInVzZXIiOiJzdWJzY3JpYmVyIiwidXNlcl9pZCI6IjY4OWY1NjhlN2ZhNWQxYTg2NzZjYmFlMSJ9.9PvvmT9ILp9fy4KsfdBbC5qwowtv-htx8KPqg0K4FHc",
+              "authActive": true
+            },
+            "body": {
+              "contentType": "application/json",
+              "body": "{\n  \"id\": \"689cb3c89ad5eef521419b66\"\n}"
+            },
+            "requestVariables": [],
+            "responses": {}
+          },
+          {
+            "v": "15",
+            "name": "unsubscribe",
+            "method": "PUT",
+            "endpoint": "http://localhost:8080/api/topics/unsubscribe",
+            "params": [],
+            "headers": [],
+            "preRequestScript": "",
+            "testScript": "",
+            "auth": {
+              "authType": "bearer",
+              "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NTUyNzU5NjUsImlhdCI6MTc1NTI3NTA2NSwicmVmcmVzaCI6ZmFsc2UsInVzZXIiOiJzdWJzY3JpYmVyIiwidXNlcl9pZCI6IjY4OWY1NjhlN2ZhNWQxYTg2NzZjYmFlMSJ9.eahAPpY0T4Gx-dsJjEFCBNF5lVu2SWzXRswqQcSS38A",
+              "authActive": true
+            },
+            "body": {
+              "contentType": "application/json",
+              "body": "{\n  \"title\": \"test topic 1\"\n}"
+            },
+            "requestVariables": [],
+            "responses": {}
+          },
+          {
+            "v": "15",
+            "name": "subscribed",
+            "method": "GET",
+            "endpoint": "http://localhost:8080/api/topics/subscribed",
+            "params": [],
+            "headers": [],
+            "preRequestScript": "",
+            "testScript": "",
+            "auth": {
+              "authType": "bearer",
+              "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NTYzMzQ1MTIsImlhdCI6MTc1NjMzMzkxMiwicmVmcmVzaCI6ZmFsc2UsInVzZXIiOiJzdWJzY3JpYmVyIiwidXNlcl9pZCI6IjY4OWY1NjhlN2ZhNWQxYTg2NzZjYmFlMSJ9.j1T7fdmn1fG-iiUzO6A1gkDN5nXHBoPjlaJZR_GC0Fs",
+              "authActive": true
+            },
+            "body": {
+              "contentType": "application/json",
+              "body": "{\n  \"username\": \"test_user3\",\n  \"email\": \"test3@mail.com\",\n  \"password\": \"Password123!\"\n}"
+            },
+            "requestVariables": [],
+            "responses": {}
+          },
+          {
+            "v": "15",
+            "name": "details",
+            "method": "GET",
+            "endpoint": "http://localhost:8080/api/topics/689cb3c89ad5eef521419b66",
+            "params": [],
+            "headers": [],
+            "preRequestScript": "",
+            "testScript": "",
+            "auth": {
+              "authType": "bearer",
+              "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NTUyNzM3NTYsImlhdCI6MTc1NTI3Mjg1NiwicmVmcmVzaCI6ZmFsc2UsInVzZXIiOiJzdWJzY3JpYmVyIiwidXNlcl9pZCI6IjY4OWY1NjhlN2ZhNWQxYTg2NzZjYmFlMSJ9.t_LI1U6QAeLjQTOu9oiNMmfOcgscqW_Cg92rMZLXBTg",
+              "authActive": true
+            },
+            "body": {
+              "contentType": "application/json",
+              "body": "{\n  \"username\": \"test_user3\",\n  \"email\": \"test3@mail.com\",\n  \"password\": \"Password123!\"\n}"
+            },
+            "requestVariables": [],
+            "responses": {}
+          },
+          {
+            "v": "15",
+            "name": "search",
+            "method": "GET",
+            "endpoint": "http://localhost:8080/api/topics/?admin=marin",
+            "params": [],
+            "headers": [],
+            "preRequestScript": "",
+            "testScript": "",
+            "auth": {
+              "authType": "bearer",
+              "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NTYzMjcyMzUsImlhdCI6MTc1NjMyNjYzNSwicmVmcmVzaCI6ZmFsc2UsInVzZXIiOiJtYXJpbiIsInVzZXJfaWQiOiI2ODhmOTQ3MTlmOWE1Yzg5MjQ2YmJhNzkifQ.rAZStsGQI4coGvx86ebr9zh7DLwqWGDB19PBfp2a_Bc",
+              "authActive": true
+            },
+            "body": {
+              "contentType": "application/json",
+              "body": "{\n  \"username\": \"test_user3\",\n  \"email\": \"test3@mail.com\",\n  \"password\": \"Password123!\"\n}"
+            },
+            "requestVariables": [],
+            "responses": {}
+          }
+        ],
+        "auth": {
+          "authActive": true,
+          "authType": "inherit"
+        },
+        "headers": [],
+        "_ref_id": "coll_mdvu9k8h_dd24bf8c-52cb-4fa3-b3e8-070869ea3b35"
+      },
+      {
+        "v": 9,
+        "name": "messages",
+        "folders": [],
+        "requests": [
+          {
+            "v": "15",
+            "name": "Send",
+            "method": "POST",
+            "endpoint": "http://localhost:8080/api/messages/",
+            "params": [],
+            "headers": [],
+            "preRequestScript": "",
+            "testScript": "",
+            "auth": {
+              "authType": "bearer",
+              "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NTYzMjM3MDcsImlhdCI6MTc1NjMyMzY0NywicmVmcmVzaCI6ZmFsc2UsInVzZXIiOiJtYXJpbiIsInVzZXJfaWQiOiI2ODhmOTQ3MTlmOWE1Yzg5MjQ2YmJhNzkifQ.bX1qkAcusbf7bV1ylsWeM2FkA76Z6dr5dyx3f8ZXUZw",
+              "authActive": true
+            },
+            "body": {
+              "contentType": "application/json",
+              "body": "{\n  \"topic\": \"689cb3c89ad5eef521419b66\",\n  \"content\": \"This one should be parsed\"\n}"
+            },
+            "requestVariables": [],
+            "responses": {}
+          },
+          {
+            "v": "15",
+            "name": "search",
+            "method": "GET",
+            "endpoint": "http://localhost:8080/api/messages/?to=test%20topic%201",
+            "params": [],
+            "headers": [],
+            "preRequestScript": "",
+            "testScript": "",
+            "auth": {
+              "authType": "bearer",
+              "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NTUzNTI2NDgsImlhdCI6MTc1NTM1MTc0OCwicmVmcmVzaCI6ZmFsc2UsInVzZXIiOiJtYXJpbiIsInVzZXJfaWQiOiI2ODhmOTQ3MTlmOWE1Yzg5MjQ2YmJhNzkifQ.kDNSWv3Kb-iDFmicG0IYGvPjK4FAKaPVM92sslLeQXs",
+              "authActive": true
+            },
+            "body": {
+              "contentType": "application/json",
+              "body": "{\n  \"username\": \"test_user3\",\n  \"email\": \"test3@mail.com\",\n  \"password\": \"Password123!\"\n}"
+            },
+            "requestVariables": [],
+            "responses": {}
+          }
+        ],
+        "auth": {
+          "authActive": true,
+          "authType": "inherit"
+        },
+        "headers": [],
+        "_ref_id": "coll_mdvu9k8h_07672f4f-1021-47f5-812a-1ac5e5c32ee2"
+      }
+    ],
+    "requests": [],
+    "auth": {
+      "authActive": true,
+      "authType": "bearer"
+    },
+    "headers": [],
+    "_ref_id": "coll_mdvu9k8h_fb7d307e-e66a-46a7-9676-a37baeef81d0"
+  }
+]
