@@ -1,0 +1,45 @@
+server:
+  host: "localhost"
+  port: 8081
+
+database:
+  name: "mgm_db"
+  cluster: "testcluster.ldnpdl3.mongodb.net"
+  username: "marin" 
+  password: "Password10"
+  options: "retryWrites=true&w=majority&appName=TestCluster"
+
+security:
+  authtokenduration: 10 # in minutes
+  refreshtokenduration: 120 # in minutes
+  tokensecret: "mysecret"
+
+logging:
+  filename: "logs/log.txt"
+  maxsize: 512
+  maxbackups: 3
+  maxage: 1
+  compress: false
+  debug: true
+
+redis: 
+  protocol: "tcp"
+  url: "localhost:6379"
+  maxidle: 10
+  maxactive: 100
+  count: 100
+  waittime: 200 # ms
+
+notifications: 
+  protocol: "sse" # ws or sse
+  ws:
+    timeout: #all in ms
+      handshake: 1000
+      write: 200
+      token: 5000
+  sse:
+    flush: true
+    ping:
+      enabled: true
+      interval: 5 # in s
+    

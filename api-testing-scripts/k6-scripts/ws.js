@@ -1,16 +1,18 @@
-import {authenticate, refreshAuthentication} from "./utils.js"
+import {authenticate, MockSubscriptionHandler, refreshAuthentication} from "./utils.js"
 import ws from 'k6/ws'
 import {check} from 'k6'
 
 export default function() {
 
     var tokens = undefined
-    const username = 'subscriber'
-    const password = 'Password123!'
+    const username = __ENV.CREDENTIALS_USERNAME
+    const password = __ENV.CREDENTIALS_PASSWORD
+    const subscriptionChangeInterval = __ENV.SUB_CHANGE_INTERVAL ?? 5000
     const url = 'ws://localhost:8081/api/messages/stream/'
 
+    var subscriptionHandler = undefined
     const res = ws.connect(url,{}, function(socket) {
-        socket.on('open', () => console.log('ws connected'))
+        socket.on('open', () => console.warn('ws connected'))
 
         socket.on('message', (data) => {
             const msg = JSON.parse(data)
@@ -18,14 +20,20 @@ export default function() {
                 console.log('Authentication has expired, refreshing...')
                 if(!tokens) {
                     tokens = authenticate(username, password)
+                    subscriptionHandler = new MockSubscriptionHandler(tokens.auth, __VU)
+                    socket.setInterval(() => subscriptionHandler.changeSubscriptions(), subscriptionChangeInterval)
                 } else {
                     tokens.auth = refreshAuthentication(tokens.refresh)
+                    subscriptionHandler.setToken(tokens.auth)
                 }
-                console.log(tokens)
                 socket.send(tokens.auth)
                 console.log('Authentication refreshed')
             } else {
                 console.log('Message received: ', msg)
+            }
+
+            if(Math.floor(Math.random() * 10) % 2 == 0) {
+                subscriptionHandler.changeSubscriptions()
             }
         })
 
@@ -33,6 +41,5 @@ export default function() {
     }) 
 
     check(res, {'status is 101': (r) => r && r.status === 101})
-
 
 }

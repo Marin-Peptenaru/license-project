@@ -1,0 +1,40 @@
+version: "0.2"
+networks:
+  default: {}
+services:
+  redis:
+    image: docker.io/library/redis:latest
+    expose: ["6379"]
+    ports: 
+      - "6379:6379"
+    networks: [default]
+    restart: unless-stopped
+  rest-api:
+    image: localhost/rest-api:latest
+    expose: ["8080"]
+    ports: 
+      - "8080:8080"
+    volumes:
+      - "./config.yaml:/etc/api/config.yaml:ro"
+      - "rest_api_logs:/app/logs"
+    networks: [default]
+    depends_on:
+      - redis
+    restart: unless-stopped
+  notifications-api:
+    image: localhost/notifications-api:latest
+    expose: ["8080"]
+    ports: 
+      - "8081:8080"
+    volumes:
+      - "./config.yaml:/etc/api/config.yaml:ro"
+      - "notifications_api_logs:/app/logs"
+    networks: [default]
+    depends_on:
+      - redis
+    restart: unless-stopped
+
+
+volumes:
+  rest_api_logs:
+  notifications_api_logs:

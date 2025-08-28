@@ -4,7 +4,7 @@ go 1.19
 
 require (
 	github.com/go-chi/jwtauth/v5 v5.1.0
-	github.com/gomodule/redigo v1.8.9
+	github.com/gomodule/redigo v1.9.2
 	github.com/kamva/mgm/v3 v3.5.0
 	github.com/xdg-go/pbkdf2 v1.0.0
 	go.mongodb.org/mongo-driver v1.11.2

@@ -4,7 +4,6 @@ WORKDIR /app
 
 COPY ./commons ./commons
 WORKDIR /app/commons
-RUN pwd
 RUN go mod tidy
 
 WORKDIR /app
@@ -13,8 +12,10 @@ COPY ./write-server ./write-server
 WORKDIR /app/write-server
 RUN go mod tidy
 
-RUN CGO_ENABLED=0 go build -o /write-server-go 
+RUN CGO_ENABLED=0 go build -o /app/rest-api
+WORKDIR /app
+RUN rm -rf ./commons ./write-server
 
 EXPOSE 8080
 
-CMD ["./write-server-go ./commons/config.yaml"]
+CMD ["./rest-api", "/etc/api/config.yaml"]

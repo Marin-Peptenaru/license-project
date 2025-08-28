@@ -2,14 +2,17 @@ package utils
 
 import (
 	"commons/config"
+	"fmt"
 
 	"github.com/gomodule/redigo/redis"
+	"go.uber.org/zap"
 )
 
 var pool *redis.Pool
 
 func InitRedisPool(cfg *config.Config) {
 
+	Logger.Debug("using redis configuration", zap.String("redis", fmt.Sprintf("%s", cfg.Redis)))
 	pool = &redis.Pool{
 		MaxIdle:   cfg.Redis.MaxIdle,
 		MaxActive: cfg.Redis.MaxActive,

@@ -9,7 +9,7 @@ require (
 	github.com/go-chi/chi/v5 v5.0.8
 	github.com/go-chi/cors v1.2.1
 	github.com/go-chi/jwtauth/v5 v5.1.0
-	github.com/gomodule/redigo v1.8.9
+	github.com/gomodule/redigo v1.9.2
 	github.com/gorilla/websocket v1.5.0
 	github.com/leonsteinhaeuser/observer v1.1.0
 	go.uber.org/zap v1.24.0
@@ -33,7 +33,7 @@ require (
 	github.com/montanaflynn/stats v0.0.0-20171201202039-1bf9dbcd8cbe // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
-	github.com/stretchr/testify v1.8.0 // indirect
+	github.com/stretchr/testify v1.8.4 // indirect
 	github.com/xdg-go/pbkdf2 v1.0.0 // indirect
 	github.com/xdg-go/scram v1.1.1 // indirect
 	github.com/xdg-go/stringprep v1.0.3 // indirect

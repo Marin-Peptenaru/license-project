@@ -96,8 +96,9 @@ func (m *messageNotificationControllerSSE) ListenForMessages(w http.ResponseWrit
 	}
 
 	userId := claims["user_id"].(string)
+	expire := claims["exp"].(time.Time)
 
-	tokenExpOrReqClosed, cancel := context.WithDeadline(r.Context(), claims["exp"].(time.Time))
+	tokenExpOrReqClosed, cancel := context.WithDeadline(r.Context(), expire)
 	defer cancel()
 
 	userMessages, err := m.listener.MessagesForUser(tokenExpOrReqClosed, userId)
@@ -113,6 +114,12 @@ func (m *messageNotificationControllerSSE) ListenForMessages(w http.ResponseWrit
 		m.listenWithPing(w, userMessages, userId, tokenExpOrReqClosed)
 	} else {
 		m.listenWithoutPing(w, userMessages, userId, tokenExpOrReqClosed)
+	}
+
+	if time.Now().After(expire) || time.Now().Equal(expire) {
+		none := struct{}{}
+		sseEvent, _ := sse.Event(none, "auth-expired")
+		sseEvent.Send(w, true)
 	}
 
 	utils.Logger.Info("closing connection for user", zap.String("userId", userId))

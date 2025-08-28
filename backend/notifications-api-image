@@ -4,7 +4,6 @@ WORKDIR /app
 
 COPY ./commons ./commons
 WORKDIR /app/commons
-RUN pwd
 RUN go mod tidy
 
 WORKDIR /app
@@ -13,9 +12,10 @@ COPY ./read-server ./read-server
 WORKDIR /app/read-server
 RUN go mod tidy
 
-RUN CGO_ENABLED=0 go build -o /read-server-go 
-
+RUN CGO_ENABLED=0 go build -o /app/notifications-api
+WORKDIR /app
+RUN rm -rf ./commons ./read-server
 EXPOSE 8080
 
-CMD ["./read-server-go ./commons/config.yaml"]
+CMD ["./notifications-api",  "/etc/api/config.yaml"]
 
