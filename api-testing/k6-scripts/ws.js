@@ -8,7 +8,7 @@ export default function() {
     const username = __ENV.CREDENTIALS_USERNAME
     const password = __ENV.CREDENTIALS_PASSWORD
     const subscriptionChangeInterval = __ENV.SUB_CHANGE_INTERVAL ?? 5000
-    const url = 'ws://localhost:8081/api/messages/stream/'
+    const url = 'ws://localhost:8888/api/messages/stream/'
 
     var subscriptionHandler = undefined
     const res = ws.connect(url,{}, function(socket) {
@@ -30,10 +30,6 @@ export default function() {
                 console.log('Authentication refreshed')
             } else {
                 console.log('Message received: ', msg)
-            }
-
-            if(Math.floor(Math.random() * 10) % 2 == 0) {
-                subscriptionHandler.changeSubscriptions()
             }
         })
 

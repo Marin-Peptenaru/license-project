@@ -4,7 +4,7 @@ export const headers = {
     'Content-Type': 'application/json',
 }
 
-export const url = 'http://localhost:8080/api/'
+export const url = 'http://localhost:8888/api/'
 export const endpoints = {
     auth: `${url}auth/`,
     refreshAuth: `${url}auth/refresh/`,

@@ -10,7 +10,7 @@ database:
   options: "retryWrites=true&w=majority&appName=TestCluster"
 
 security:
-  authtokenduration: 10 # in minutes
+  authtokenduration: 1 # in minutes
   refreshtokenduration: 120 # in minutes
   tokensecret: "mysecret"
 
